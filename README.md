@@ -1,0 +1,3 @@
+# Exchanging your own languge with people all over the world
+
+this applicaion is mainly made for Korean and foreigners who want to learn korean and are wiling to teach korean people their first language....
