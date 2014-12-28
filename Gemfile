@@ -2,14 +2,21 @@ source 'https://rubygems.org'
 
 gem 'rails',                '4.2.0.rc3'
 gem 'bcrypt',               '3.1.7'
-gem 'bootstrap-sass',		'3.2.0.0'
-gem 'sass-rails',           '5.0.0.beta1'
 gem 'uglifier',             '2.5.3'
 gem 'coffee-rails',         '4.1.0'
-gem 'jquery-rails',         '4.0.0.beta2'
-gem 'turbolinks',           '2.3.0'
 gem 'jbuilder',             '2.2.3'
 gem 'sdoc',                 '0.4.0', group: :doc
+
+gem 'turbolinks'
+gem 'jquery-rails'
+gem 'sass-rails', '~> 4.0.3'
+gem 'bootstrap-sass', '~> 3.3.1.0'
+gem 'autoprefixer-rails'
+gem 'simple_form'
+gem 'friendly_id', '~> 5.0.0'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'acts-as-taggable-on'
 
 group :development, :test do
   gem 'sqlite3',     '1.3.9'
