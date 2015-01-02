@@ -8,9 +8,8 @@ def current_user
 	if(user_id = session[:user_id])
 	@current_user ||= User.find_by(id: user_id)#find로 찾을경우 current_user가 없으면 에러 발생 find_by는 nill 리턴
 	elsif(user_id = cookies.signed[:user_id])
-	raise
 	user=User.find_by(id: user_id)
-	if user && user.authenticated?(cookies[:remember_token])
+	if user && user.authenticated?(:remember, cookies[:remember_token])
 	 log_in user
 	 @current_user = user
 	 end
