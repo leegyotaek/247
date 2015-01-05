@@ -11,10 +11,17 @@ get 'signup' => 'users#new'
 get    'login'   => 'sessions#new'
 post   'login'   => 'sessions#create'
 delete 'logout'  => 'sessions#destroy'
-resources :users
+
+resources :users do
+ member do
+  get :following, :followers
+ end
+end
+
 resources :account_activations, only: [:edit]
 resources :password_resets, only: [:create, :new, :edit, :update]
 resources :microposts, only:[:create, :destroy]
+resources :relationships, only:[:create, :destroy]
 
 
 
