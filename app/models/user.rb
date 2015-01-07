@@ -15,6 +15,18 @@ class User < ActiveRecord::Base
   has_many :followers, through: :passive_relationships
 
 
+  #teacher and student
+  has_many :relationships_as_student , class_name: "StudTeachRelationship",
+              foreign_key: "student_id", dependent: :destroy
+
+  has_many :relationships_as_teacher, class_name: "StudTeachRelationship",
+              foreign_key: "teacher_id", dependent: :destroy
+
+  has_many :students, through: :relationships_as_teacher
+  has_many :teachers, through: :relationships_as_student
+
+
+
 
   
 
@@ -91,13 +103,19 @@ class User < ActiveRecord::Base
     Micropost.where("user_id IN (#{following_ids})
                      OR user_id = :user_id", user_id: id)
     end
-  def follow(other_user)
+  def follow(other_user, as_a_teacher = false)
     active_relationships.create(followed_id: other_user.id)
+    if as_a_teacher
+    relationships_as_student.create(teacher_id: other_user.id)
+    end
     
   end
 
-  def unfollow(other_user)
+  def unfollow(other_user , as_a_teacher = false)
     active_relationships.find_by(followed_id: other_user.id).destroy
+    if as_a_teacher
+    relationships_as_student.find_by(teacher_id: other_user.id).destroy
+    end
   end
 
 

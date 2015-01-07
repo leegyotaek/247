@@ -13,7 +13,7 @@ gem 'sdoc',                 '0.4.0', group: :doc
 gem 'will_paginate',           '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
 gem 'turbolinks'
-gem 'jbuilder',                '2.2.3'
+
 gem 'jquery-rails'
 gem 'sass-rails', '~> 4.0.3'
 gem 'bootstrap-sass', '~> 3.3.1.0'
