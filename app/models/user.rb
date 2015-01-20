@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   before_save :downcase_email
   before_create :create_activation_digest
   
+  has_many :pictures, as: :imageable , dependent: :destroy
   has_many :microposts , dependent: :destroy
   has_many :active_relationships, class_name: "Relationship",
                          foreign_key: "follower_id",
@@ -14,16 +15,6 @@ class User < ActiveRecord::Base
   has_many :following , through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships
 
-
-  
-
-
-
-  
-
-
-
-
   validates :name,  presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
@@ -32,6 +23,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   validates :password, length: {minimum: 6}, allow_blank: true
+
 
 
   def self.digest(string)
