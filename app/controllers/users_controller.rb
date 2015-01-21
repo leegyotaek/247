@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :set_user , only: [:show , :edit , :update, :edstroy, :following, :followers, 
+    :correct_user, :update_profile]
   before_action :logged_in_user, only: [ :index, :edit,:update, :following, :followers]
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
@@ -7,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
-  @user = User.find(params[:id])
+  render 'update_profile' if @user.newbie 
   @microposts = @user.microposts.paginate(page: params[:page])
   redirect_to root_url and return unless @user.activated?
   end
@@ -27,18 +29,24 @@ class UsersController < ApplicationController
 end
 
 def edit
-  @user = User.find(params[:id])
+
 end
 
 
 def update
-  @user = User.find(params[:id])
+
   if @user.update_attributes(user_params)
+     @user.update_attributes(newbie: false)
     flash[:success] = "업데이트 완료"
     redirect_to @user
   else
     render 'edit'
   end
+end
+
+def update_profile
+
+
 end
 
 
@@ -51,15 +59,14 @@ end
 
 def index
   @users = User.where(activated: true).paginate(page: params[:page])
-end
+end 
+
 
 def following
   @title = "following"
-  @user = User.find(params[:id])
   @users = @user.following.paginate(page: params[:page])
   render 'show_follow'
-
-
+  User.find(params[:id])
 end
 
 def followers
@@ -72,8 +79,16 @@ end
 
 
 private
+
+
+  def set_user
+
+    @user = User.find(params[:id])
+
+
+  end
   def user_params
-  	params.require(:user).permit(:name,:email, :birthday, :password, :password_confirmation)
+  	params.require(:user).permit(:name,:email, :birthday, :password, :password_confirmation, :introduce, :interests)
   end
 
  

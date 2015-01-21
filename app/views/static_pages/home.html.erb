@@ -1,8 +1,8 @@
 <% if logged_in? %>
   
-<% if current_user.activated || current_user.newbie? %>
+<% if current_user.activated && current_user.newbie %>
  
- do something...
+
 
 <% end %>
 

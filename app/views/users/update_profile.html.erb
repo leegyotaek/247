@@ -1,0 +1,36 @@
+<% provide(:title, 'update_profile') %>
+<h1>프로필 필수 옵션 설정</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@user , html: { multipart: true }) do |f| %>
+
+    <%= render 'shared/error_messages', object:f.object %>
+
+    <%= fields_for :languages, @user.languages.new  do |language_field| %>
+    언어
+    <%= language_field.text_field :name %>
+    level
+    <%= language_field.text_field :level %>
+    <% end %>
+
+    <%= f.label :introduce , '소개' %>
+    <%= f.text_area :introduce, class: 'form-control' %>
+
+
+     <%= fields_for :pictures , @user.pictures.new  do |pic_field| %>
+    전체프로필 사진
+    <%= pic_field.file_field :name ,  accept: 'image/jpeg,image/gif,image/png'  %>
+
+    <% end %>
+
+	<%= f.label :interests , '관심사' %>
+	<%= f.text_field :interests , class: 'form-control' %>
+
+
+      <%= f.submit "update", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+

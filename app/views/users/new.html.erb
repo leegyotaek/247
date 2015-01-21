@@ -19,7 +19,8 @@
       <%= f.password_field :password_confirmation %>
 
       <%= f.label :birthday, "생년월일" %>
-      <%= f.password_field :birthday   %>
+      <%= f.date_field :birthday %>
+
 
 
       <%= f.submit "Create my account", class: "btn btn-primary" %>

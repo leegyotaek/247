@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   has_many :followers, through: :passive_relationships
 
   has_many :languages
+  accepts_nested_attributes_for :languages
 
   validates :name,  presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150120214145) do
+ActiveRecord::Schema.define(version: 20150121112905) do
 
   create_table "languages", force: true do |t|
     t.string   "name"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20150120214145) do
     t.text     "introduce"
     t.string   "interests"
     t.string   "status"
+    t.boolean  "newbie",            default: true
   end
 
   add_index "users", ["contury", "city"], name: "index_users_on_contury_and_city"

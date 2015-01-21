@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'profiles/new'
+
   get 'password_resets/new'
 
   get 'password_resets/edit'
@@ -11,6 +13,12 @@ get 'signup' => 'users#new'
 get    'login'   => 'sessions#new'
 post   'login'   => 'sessions#create'
 delete 'logout'  => 'sessions#destroy'
+
+
+
+get 'profile' => 'profiles#new'
+post 'profile' => 'profiles#create'
+
 
 resources :users do
  member do
