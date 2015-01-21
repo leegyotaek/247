@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150120160914) do
+ActiveRecord::Schema.define(version: 20150120214145) do
+
+  create_table "languages", force: true do |t|
+    t.string   "name"
+    t.integer  "level"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "sort"
+  end
+
+  add_index "languages", ["name"], name: "index_languages_on_name"
+  add_index "languages", ["sort"], name: "index_languages_on_sort"
+  add_index "languages", ["user_id"], name: "index_languages_on_user_id"
 
   create_table "microposts", force: true do |t|
     t.text     "content"
