@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'friendships/create'
+
+  get 'friendships/destroy'
+
   get 'profiles/new'
 
   get 'password_resets/new'
@@ -23,6 +27,9 @@ post 'profile' => 'profiles#create'
 resources :users do
  member do
   get :following, :followers
+  post :accept
+  get :friends
+
  end
 end
 
@@ -30,6 +37,8 @@ resources :account_activations, only: [:edit]
 resources :password_resets, only: [:create, :new, :edit, :update]
 resources :microposts, only:[:create, :destroy]
 resources :relationships, only:[:create, :destroy]
+resources :friendships, only:[:create, :destroy] 
+
 
 
 

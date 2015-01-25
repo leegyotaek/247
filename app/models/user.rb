@@ -12,8 +12,16 @@ class User < ActiveRecord::Base
   has_many :passive_relationships, class_name: "Relationship",
                          foreign_key: "followed_id",
                          dependent: :destroy
+  
   has_many :following , through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships
+  has_many :friendships,  dependent: :destroy 
+  has_many :complet_friendships, -> { where status: "friends" } , class_name: "Friendship"
+  has_many :friends , through: :complet_friendships
+  has_many :passive_friendships ,  -> { where status: "pending" }, class_name: "Friendship",
+              foreign_key: "friend_id", dependent: :destroy
+  has_many :request_friends, through: :passive_friendships , source: :user
+
 
   has_many :languages
   accepts_nested_attributes_for :languages
@@ -102,6 +110,50 @@ class User < ActiveRecord::Base
   def following?(other_user)
     following.include?(other_user) #include? method :  변수에 저장안하고 디비내에서 바로 처리함
   end
+
+  
+
+  def friendship_for(other_user)
+    friendships.find_by(friend_id: other_user.id)
+  end
+
+
+  def friend?(other_user)
+    friends.include?(other_user)
+  end
+
+  def sayonara(other_user)
+    if friend?(other_user)
+      other_user.friendship_for(self).destroy
+    end
+    friendship_for(other_user).destroy
+    
+  end
+
+  def was_requested_from?(other_user)
+    other_user.pending_friends?(self)
+  end
+
+  def pending_friends?(other_user)
+    @friendship = friendships.find_by(friend_id: other_user.id)
+    @friendship && @friendship.status == "pending"
+  end
+
+  def ask_for_friends(other_user)
+    friendships.create(friend_id: other_user.id, status: "pending") unless other_user.was_requested_from?(self)
+  end
+
+  def accept_friend_request(other_user)
+    if friendships.create(friend_id: other_user.id, status: "friends", accepted_at: Time.now)
+      @other_user_friendship = other_user.friendship_for(self)
+      @other_user_friendship.update_attributes(status: "friends", accepted_at: Time.now)
+
+    end
+  end
+
+ 
+
+  
 
   private
 

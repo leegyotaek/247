@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user , only: [:show , :edit , :update, :edstroy, :following, :followers, 
-    :correct_user, :update_profile]
+    :correct_user, :update_profile, :friends]
   before_action :logged_in_user, only: [ :index, :edit,:update, :following, :followers]
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
-  render 'update_profile' if @user.newbie 
+  render 'update_profile' if current_user.newbie 
   @microposts = @user.microposts.paginate(page: params[:page])
   redirect_to root_url and return unless @user.activated?
   end
@@ -66,7 +66,6 @@ def following
   @title = "following"
   @users = @user.following.paginate(page: params[:page])
   render 'show_follow'
-  User.find(params[:id])
 end
 
 def followers
@@ -74,6 +73,20 @@ def followers
     @user  = User.find(params[:id])
     @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'
+end
+
+def accept #친구수락
+    @friend = User.find(params[:id])
+    current_user.accept_friend_request(@friend)
+    respond_to do |format|
+      format.html {redirect_to :back, notice: "become friends"}
+   end 
+end
+
+def friends
+  @users = @user.friends.paginate(page: params[:page])
+  render 'show_friends'
+  @requesters = @user.request_friends
 end
       
 

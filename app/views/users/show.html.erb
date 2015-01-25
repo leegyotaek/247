@@ -6,12 +6,22 @@
         <%= @user.name %>
       </h1>
     </section>
+
+    <% if current_user?@user %>
+    <%= link_to friends_user_path(@user) , clas: "btn btn-default btn-sm" do %>
+  
+  <span class="glyphicon glyphicon-user">friends : <%=  @user.friends.count %> 명</span>
+  
+  <% end %>
+  <% end %>
+  <br>
     <section class="stats">
       <%= render 'shared/stats' %>
     </section>
   </aside>
   <div class="col-md-8">
-    <%= render 'follow_form' if logged_in? %>
+    <!-- <%= render 'follow_form' if logged_in? %> -->
+    <%= render 'friend_form' if logged_in? %>
     <% if @user.microposts.any? %>
       <h3>Microposts (<%= @user.microposts.count %>)</h3>
       <ol class="microposts">
