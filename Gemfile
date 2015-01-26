@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails',                '4.2.0.rc3'
+gem 'rails',                '4.2.0'
 gem 'bcrypt',               '3.1.7'
 gem 'faker',          '1.4.2' # make sample users with semi-realistic names and email addresses
 gem 'carrierwave',             '0.10.0'
@@ -15,7 +15,7 @@ gem 'bootstrap-will_paginate', '0.0.10'
 gem 'turbolinks'
 
 gem 'jquery-rails'
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails', '~> 5.0.0'
 gem 'bootstrap-sass', '~> 3.3.1.0'
 gem 'autoprefixer-rails'
 gem 'simple_form'
