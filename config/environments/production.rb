@@ -21,14 +21,14 @@ Rails.application.configure do
   # config.action_dispatch.rack_cache = true
 
   # Disable Rails's static asset server (Apache or NGINX will already do this).
-  config.serve_static_assets = true
+  config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
   config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = true
+  config.assets.compile = false
 
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
