@@ -1,0 +1,6 @@
+.nested-fields
+	= f.input :language 
+	
+	= f.input :level, collection: [['Beginner', 1 ] ,['intermediate', 2],['advanced', 3],['fluent', 4],['native', 5]]
+	= link_to_remove_association "Remove language", f, class: "btn btn-default form-button"
+  

@@ -5,7 +5,10 @@ class User < ActiveRecord::Base
   before_create :create_activation_digest
   
   has_many :pictures, as: :imageable , dependent: :destroy
+  accepts_nested_attributes_for :pictures, reject_if: proc { |attributes| attributes['name'].blank? } , :allow_destroy => true
+
   has_many :microposts , dependent: :destroy
+
   has_many :active_relationships, class_name: "Relationship",
                          foreign_key: "follower_id",
                          dependent: :destroy
@@ -23,8 +26,11 @@ class User < ActiveRecord::Base
   has_many :request_friends, through: :passive_friendships , source: :user
 
 
-  has_many :languages
-  accepts_nested_attributes_for :languages
+  has_many :languages ,-> { where sort: nil } , dependent: :destroy
+  accepts_nested_attributes_for :languages, :reject_if => :all_blank , :allow_destroy => true
+
+  has_many :wish_languages ,  -> { where sort: "wish" } , class_name: "Language"
+  accepts_nested_attributes_for :wish_languages, :reject_if => :all_blank , :allow_destroy => true
 
   validates :name,  presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
@@ -34,6 +40,11 @@ class User < ActiveRecord::Base
   has_secure_password
 
   validates :password, length: {minimum: 6}, allow_blank: true
+
+
+  def language_name
+    ::LanguageSelect::LANGUAGES[language]
+  end
 
 
 

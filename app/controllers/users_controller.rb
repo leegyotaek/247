@@ -100,8 +100,12 @@ private
 
 
   end
+  
   def user_params
-  	params.require(:user).permit(:name,:email, :birthday, :password, :password_confirmation, :introduce, :interests)
+  	params.require(:user).permit(:name,:email, :birthday, :password, :password_confirmation, :introduce, 
+      :interests, :status, :gender, :country, :region, :city,  pictures_attributes: [:id, :name, :imageable_id, :imageable_type, :is_public, :_destroy] , 
+      languages_attributes: [:id, :language , :level , :user_id , :sort, :_destroy], 
+      wish_languages_attributes: [:id, :language , :level , :user_id , :sort, :_destroy])
   end
 
  

@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150123085828) do
+ActiveRecord::Schema.define(version: 20150128170459) do
 
-  create_table "friendships", force: true do |t|
+  create_table "friendships", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "friend_id"
     t.datetime "created_at",  null: false
@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 20150123085828) do
   add_index "friendships", ["user_id", "friend_id"], name: "index_friendships_on_user_id_and_friend_id", unique: true
   add_index "friendships", ["user_id"], name: "index_friendships_on_user_id"
 
-  create_table "languages", force: true do |t|
-    t.string   "name"
+  create_table "languages", force: :cascade do |t|
+    t.string   "language"
     t.integer  "level"
     t.integer  "user_id"
     t.datetime "created_at", null: false
@@ -36,11 +36,11 @@ ActiveRecord::Schema.define(version: 20150123085828) do
     t.string   "sort"
   end
 
-  add_index "languages", ["name"], name: "index_languages_on_name"
+  add_index "languages", ["language"], name: "index_languages_on_language"
   add_index "languages", ["sort"], name: "index_languages_on_sort"
   add_index "languages", ["user_id"], name: "index_languages_on_user_id"
 
-  create_table "microposts", force: true do |t|
+  create_table "microposts", force: :cascade do |t|
     t.text     "content"
     t.integer  "user_id"
     t.datetime "created_at", null: false
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20150123085828) do
   add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
   add_index "microposts", ["user_id"], name: "index_microposts_on_user_id"
 
-  create_table "pictures", force: true do |t|
+  create_table "pictures", force: :cascade do |t|
     t.string   "name"
     t.integer  "imageable_id"
     t.string   "imageable_type"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20150123085828) do
 
   add_index "pictures", ["imageable_id"], name: "index_pictures_on_imageable_id"
 
-  create_table "relationships", force: true do |t|
+  create_table "relationships", force: :cascade do |t|
     t.integer  "follower_id"
     t.integer  "followed_id"
     t.datetime "created_at",  null: false
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 20150123085828) do
   add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
   add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
     t.datetime "created_at",                        null: false
@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 20150123085828) do
     t.string   "gender"
     t.date     "birthday"
     t.string   "region"
-    t.string   "contury"
+    t.string   "country"
     t.string   "city"
     t.text     "introduce"
     t.string   "interests"
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 20150123085828) do
     t.boolean  "newbie",            default: true
   end
 
-  add_index "users", ["contury", "city"], name: "index_users_on_contury_and_city"
+  add_index "users", ["country", "city"], name: "index_users_on_country_and_city"
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["gender"], name: "index_users_on_gender"
 

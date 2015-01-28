@@ -1,0 +1,54 @@
+
+
+
+- provide(:title, "Edit user")
+
+%h1 Update your profile
+
+.row
+  .col-md-6.col-md-offset-3
+    =simple_form_for @user  do |f| 
+
+      =render 'shared/error_messages' , object: f.object
+      
+      %h3 Pictures
+      #pictures
+
+        = f.simple_fields_for :pictures , html: { multipart: true } do |picture|
+          = render 'picture_fields', :f => picture
+        .links
+          = link_to_add_association 'add pic', f, :pictures
+
+      =f.input :status , label: "남긴말"
+
+      %h3 I can speak...
+      #languages
+        = f.simple_fields_for :languages  do |language|
+          = render 'language_fields', :f => language
+        .links
+          = link_to_add_association 'add languages', f, :languages
+
+
+      %h3 I want to learn..
+      #languages
+        = f.simple_fields_for :wish_languages  do |wish_language|
+          = render 'wish_language_fields', :f => wish_language
+        .links
+          = link_to_add_association 'add languages', f, :wish_languages
+
+      =f.input :gender, label: "성별" , collection: ["여자", "남자"], prompt: "성별을 선택하세요"
+
+      =f.input :country , priority: ["KR"]
+      =f.input :region
+      =f.input :city
+
+      =f.input :interests
+
+
+      =f.submit "Save chages" , class: "btn btn-primary"
+
+
+
+
+
+

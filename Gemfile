@@ -21,6 +21,11 @@ gem 'autoprefixer-rails'
 gem 'simple_form'
 gem 'friendly_id', '~> 5.0.0'
 gem 'acts-as-taggable-on'
+gem 'cocoon', '~> 1.2.6'
+gem 'haml', '~> 4.0.6'
+gem 'language_select', '~> 0.0.2'
+gem 'country_select', '~> 2.1.0'
+
 
 group :development, :test do
   gem 'sqlite3',     '1.3.9'
