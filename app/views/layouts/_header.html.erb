@@ -2,8 +2,9 @@
   <div class="container">
     <!-- <%= link_to "sample app", '#', id: "logo" %> -->
     <nav>
-      <% if logged_in? %>
       <ul class="nav navbar-nav navbar-left">
+      <% if logged_in? %>
+      
         <li><%= link_to("logo", root_path , class: "") %></li>
         <li><%= link_to "1:1언어교환",   '#' %></li>
         <li><%= link_to "자유모임", '#' %></li>
