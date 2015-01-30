@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150128170459) do
+ActiveRecord::Schema.define(version: 20150129080835) do
 
   create_table "friendships", force: :cascade do |t|
     t.integer  "user_id"
@@ -39,6 +39,18 @@ ActiveRecord::Schema.define(version: 20150128170459) do
   add_index "languages", ["language"], name: "index_languages_on_language"
   add_index "languages", ["sort"], name: "index_languages_on_sort"
   add_index "languages", ["user_id"], name: "index_languages_on_user_id"
+
+  create_table "matching_options", force: :cascade do |t|
+    t.string   "language"
+    t.string   "interests"
+    t.integer  "age_from"
+    t.integer  "age_to"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "matching_options", ["user_id"], name: "index_matching_options_on_user_id"
 
   create_table "microposts", force: :cascade do |t|
     t.text     "content"
@@ -95,6 +107,10 @@ ActiveRecord::Schema.define(version: 20150128170459) do
     t.string   "interests"
     t.string   "status"
     t.boolean  "newbie",            default: true
+    t.string   "matching_lan"
+    t.integer  "matching_age_from"
+    t.integer  "matching_age_to"
+    t.string   "matching_interest"
   end
 
   add_index "users", ["country", "city"], name: "index_users_on_country_and_city"
