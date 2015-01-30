@@ -5,4 +5,5 @@ class AddnMatchingColumnToUsers < ActiveRecord::Migration
   add_column :users , :matching_age_to , :integer
   add_column :users , :matching_interest , :string
   end
+  
 end
