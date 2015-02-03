@@ -1,31 +1,23 @@
-<header class="">
-    <!-- <%= link_to "sample app", '#', id: "logo" %> -->
-    <nav>
-      <ul class="">
-      <% if logged_in? %>
-      
-        <li><%= link_to("logo", root_path , class: "") %></li>
-        <li><%= link_to "1:1언어교환",   '#' %></li>
-        <li><%= link_to "자유모임", '#' %></li>
-      </ul>
-      <ul class="">
-        <li><%= link_to "Users", users_path %></li>
-        <li class="">
-          <a href="#" class="">
-            <%=current_user.name %> <b class="caret"></b>
-          </a>
-          <ul class="">
-            <li><%= link_to "Profile", current_user %></li>
-            <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-            <li class=""></li>
-            <li>
-              <%= link_to "Log out", logout_path, method: "delete" %>
-            </li>
-          </ul>
-        </li>
-        <% else %>
-        <li><%= link_to "Log in", login_path %></li>
-        <% end %>
-      </ul>
-    </nav>
-</header>
+
+<!-- <%= link_to "sample app", '#', id: "logo" %> -->
+<% if logged_in? %>
+<%= link_to "1:1언어교환",   '#' %>
+<%= link_to "자유모임", '#' %>
+
+
+<%= link_to "Users", users_path %>
+
+
+<%=current_user.name %>
+
+<%= link_to "Profile", current_user %>
+<%= link_to "Settings", edit_user_path(current_user) %>
+
+
+<%= link_to "Log out", logout_path, method: "delete" %>
+
+
+
+<% else %>
+<%= link_to "Log in", login_path %>
+<% end %>

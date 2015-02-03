@@ -1,0 +1,35 @@
+<polymer-element name="my-scroll-layout">	
+  <template>
+    <style>    
+      :host {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+      }
+      #core_scroll_header_panel {
+        width: 100%;
+        height: 100%;
+        left: 0px;
+        top: 0px;
+        position: absolute;
+      }
+    </style>
+    <core-scroll-header-panel condenses id="core_scroll_header_panel">
+      <core-toolbar id="core_toolbar">        
+        <div id="div1"><content select="#msl_logo"></content></div>
+        <div id="div" flex><content select="#msl_header"></content></div>
+      </core-toolbar>
+      <section id="section"><content select="#msl_body"></content></section>
+      <section id="section1"><content select="#msl_footer"></content></section>
+    </core-scroll-header-panel>
+  </template>
+
+  <script>
+
+    Polymer({
+      
+    });
+
+  </script>
+</polymer-element>
