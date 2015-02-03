@@ -10,9 +10,6 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
+//= require webcomponentsjs/webcomponents.min
+//= require jquery.min
 //= require jquery_ujs
-//= require bootstrap
-//= require turbolinks
-//= require cocoon
-//= require_tree .

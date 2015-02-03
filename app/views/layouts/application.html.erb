@@ -2,28 +2,42 @@
 <html>
 <head>
   <title>LanguageApp|<%= yield(:title) %></title>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <!--   stylesheet_link_tag 'application', { media: 'all',
                                      'data-turbolinks-track' => true } 
  파라미터로 마지막 인자가 해쉬일경우 중괄호 생략가능, "-"가(data-turbolinks-track) 있을경우 new syntex(data-turbolinks-track: true) 사용못함, hashrocket형으로 표현
                                  -->
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  <%= render 'layouts/shim' %>
-  
+  <%= html_import_tag "application", "data-turbolinks-track" => true %>  
+  <%= render 'layouts/shim' %>  
 </head>
 <body>
-  <%= render 'layouts/header' %>
-
-    <div class="container">
- <% flash.each do |message_type, message| %>
-  
+  <core-scaffold>
+  <core-header-panel navigation flex mode="seamed">
+  <%= link_to(root_path) do %>
+    <core-toolbar>Application</core-toolbar>
+  <% end %>
+    <core-menu theme="core-light-theme">
+      <core-item icon="settings" label="item1"></core-item>
+      <core-item icon="settings" label="item2"></core-item>
+    </core-menu>
+  </core-header-panel>
+  <div tool><%= render 'layouts/header' %></div>
+  <div>
+    <% flash.each do |message_type, message| %>  
   <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
   <!-- equal <div class="alert alert-<%= message_type %>"><%= message %></div> -->
-<% end %>     
-<%= yield %>
-</div>
-</body>
+  <% end %>     
+  <%= yield %>
+  </div>
+
 <%= render 'layouts/footer' %>
 <%= debug(params) if Rails.env.development? %>
+</core-scaffold>
+  
+  
+  <%= javascript_include_tag 'custom', 'data-turbolinks-track' => true %>
+</body>
 </html>
