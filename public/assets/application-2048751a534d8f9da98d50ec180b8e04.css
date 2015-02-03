@@ -1,0 +1,886 @@
+@import url("//fonts.googleapis.com/css?family=Oxygen:700");
+@import url("//fonts.googleapis.com/css?family=Open+Sans");
+/*
+ * PolymerThemes v0.4.0
+ * Homepage: http://polymerthemes.com
+ * Copyright 2014 Polymer Themes
+ * Licensed under BSD
+ * Based on Polymer: http://www.polymer-project.org/
+ * Compatible with Polymer 0.5.1
+ */
+/* line 11, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html {
+  font-family: 'Oxygen', sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+/* line 18, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html,
+body {
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+  background-color: #fff;
+  color: #2d2d2d;
+}
+
+/* line 26, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html .font-special,
+html /deep/ .font-special {
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* line 30, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html core-header-panel,
+html /deep/ core-header-panel {
+  height: 100%;
+}
+
+/* line 34, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html core-header-panel[mode=cover]::shadow #mainContainer,
+html /deep/ core-header-panel[mode=cover]::shadow #mainContainer {
+  left: 70px;
+}
+
+/* line 38, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html .core-header,
+html /deep/ .core-header {
+  height: 60px;
+  font-size: 18px;
+  padding: 0 10px;
+  transition: height 0.2s;
+  background-color: #e7e7e7;
+  color: #777;
+}
+
+/* line 47, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html .core-header a,
+html /deep/ .core-header a {
+  color: #777;
+}
+
+/* line 51, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html .core-header paper-item,
+html /deep/ .core-header paper-item {
+  font-size: 18px;
+}
+
+/* line 55, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html .core-header.tall,
+html /deep/ .core-header.tall {
+  height: 180px;
+}
+
+/* line 59, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html .core-header.medium-tall,
+html /deep/ .core-header.medium-tall {
+  height: 120px;
+}
+
+/* line 63, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html .core-header /deep/ core-menu-button a,
+html /deep/ .core-header /deep/ core-menu-button a {
+  color: #444;
+}
+
+/* line 67, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html .content,
+html /deep/ .content {
+  background: linear-gradient(#d6e3e7, #add8e6);
+}
+
+/* line 71, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html .wrapper,
+html /deep/ .wrapper {
+  text-align: center;
+}
+
+/* line 75, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html section,
+html /deep/ section {
+  text-align: center;
+  padding: 40px 0px;
+}
+
+/* line 80, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html section[hero],
+html /deep/ section[hero] {
+  background-color: #f3f3f3;
+}
+
+/* line 84, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html h1,
+html /deep/ h1,
+html h2,
+html /deep/ h2,
+html h3,
+html /deep/ h3,
+html h4,
+html /deep/ h4,
+html h5,
+html /deep/ h5,
+html h6,
+html /deep/ h6 {
+  font-weight: 400;
+  margin: 0px;
+  padding: 0px;
+}
+
+/* line 100, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html h1,
+html /deep/ h1,
+html h3,
+html /deep/ h3,
+html h5,
+html /deep/ h5 {
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* line 108, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html h1,
+html /deep/ h1 {
+  font-size: 60px;
+  margin: 30px 0px;
+}
+
+/* line 113, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html h2,
+html /deep/ h2 {
+  color: #777;
+  font-size: 40px;
+  margin: 20px 0px;
+}
+
+/* line 119, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html h3,
+html /deep/ h3 {
+  font-size: 25px;
+  margin: 15px 0px;
+}
+
+/* line 124, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html h4,
+html /deep/ h4 {
+  font-size: 20px;
+}
+
+/* line 128, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html a,
+html /deep/ a {
+  color: #777;
+  text-decoration: none;
+}
+
+/* line 133, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html a:hover,
+html /deep/ a:hover {
+  text-decoration: underline;
+}
+
+/* line 137, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html .core-header /deep/ a:hover,
+html /deep/ .core-header /deep/ a:hover {
+  text-decoration: none;
+}
+
+/* line 141, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html #ripple,
+html /deep/ #ripple,
+html::shadow #ripple,
+html /deep/ ::shadow #ripple {
+  color: #afc5dc;
+}
+
+/* line 147, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html [autofocus],
+html /deep/ [autofocus] {
+  color: #446e9b;
+}
+
+/* line 151, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-button,
+html /deep/ paper-button {
+  margin: 2px;
+}
+
+/* line 155, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-button[link],
+html /deep/ paper-button[link] {
+  text-decoration: underline;
+}
+
+/* line 159, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-button[disabled],
+html /deep/ paper-button[disabled] {
+  color: #545660 !important;
+  background: #afb1b9 !important;
+}
+
+/* line 164, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-button[raised],
+html /deep/ paper-button[raised] {
+  color: #777;
+}
+
+/* line 168, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-button #ripple,
+html /deep/ paper-button #ripple,
+html paper-button::shadow #ripple,
+html /deep/ paper-button::shadow #ripple {
+  color: #c9c9c9;
+}
+
+/* line 174, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-button[primary],
+html /deep/ paper-button[primary] {
+  color: #446e9b;
+}
+
+/* line 178, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-button[primary] #ripple,
+html /deep/ paper-button[primary] #ripple,
+html paper-button[primary]::shadow #ripple,
+html /deep/ paper-button[primary]::shadow #ripple {
+  color: #afc5dc;
+}
+
+/* line 184, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-button[primary][raised],
+html /deep/ paper-button[primary][raised] {
+  background-color: #446e9b;
+  color: #fff;
+}
+
+/* line 189, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-button[primary][raised] #ripple,
+html /deep/ paper-button[primary][raised] #ripple,
+html paper-button[primary][raised]::shadow #ripple,
+html /deep/ paper-button[primary][raised]::shadow #ripple {
+  color: #3a5e84;
+}
+
+/* line 195, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-button[secondary],
+html /deep/ paper-button[secondary] {
+  color: #80cbc4;
+}
+
+/* line 199, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-button[secondary] #ripple,
+html /deep/ paper-button[secondary] #ripple,
+html paper-button[secondary]::shadow #ripple,
+html /deep/ paper-button[secondary]::shadow #ripple {
+  color: #cceae7;
+}
+
+/* line 205, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-button[secondary][raised],
+html /deep/ paper-button[secondary][raised] {
+  background-color: #80cbc4;
+  color: #fff;
+}
+
+/* line 210, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-button[secondary][raised] #ripple,
+html /deep/ paper-button[secondary][raised] #ripple,
+html paper-button[secondary][raised]::shadow #ripple,
+html /deep/ paper-button[secondary][raised]::shadow #ripple {
+  color: #5dbdb4;
+}
+
+/* line 216, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-button[success],
+html /deep/ paper-button[success] {
+  color: #9dc56e;
+}
+
+/* line 220, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-button[success] #ripple,
+html /deep/ paper-button[success] #ripple,
+html paper-button[success]::shadow #ripple,
+html /deep/ paper-button[success]::shadow #ripple {
+  color: #d8e8c5;
+}
+
+/* line 226, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-button[success][raised],
+html /deep/ paper-button[success][raised] {
+  background-color: #9dc56e;
+  color: #456026;
+}
+
+/* line 231, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-button[success][raised] #ripple,
+html /deep/ paper-button[success][raised] #ripple,
+html paper-button[success][raised]::shadow #ripple,
+html /deep/ paper-button[success][raised]::shadow #ripple {
+  color: #87b84d;
+}
+
+/* line 237, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-button[info],
+html /deep/ paper-button[info] {
+  color: #ffb74d;
+}
+
+/* line 241, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-button[info] #ripple,
+html /deep/ paper-button[info] #ripple,
+html paper-button[info]::shadow #ripple,
+html /deep/ paper-button[info]::shadow #ripple {
+  color: #ffe2b8;
+}
+
+/* line 247, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-button[info][raised],
+html /deep/ paper-button[info][raised] {
+  background-color: #ffb74d;
+  color: #fff;
+}
+
+/* line 252, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-button[info][raised] #ripple,
+html /deep/ paper-button[info][raised] #ripple,
+html paper-button[info][raised]::shadow #ripple,
+html /deep/ paper-button[info][raised]::shadow #ripple {
+  color: #ffa31b;
+}
+
+/* line 258, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-button[warning],
+html /deep/ paper-button[warning] {
+  color: #fadd60;
+}
+
+/* line 262, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-button[warning] #ripple,
+html /deep/ paper-button[warning] #ripple,
+html paper-button[warning]::shadow #ripple,
+html /deep/ paper-button[warning]::shadow #ripple {
+  color: #fdf1bf;
+}
+
+/* line 268, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-button[warning][raised],
+html /deep/ paper-button[warning][raised] {
+  background-color: #fadd60;
+  color: #776413;
+}
+
+/* line 273, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-button[warning][raised] #ripple,
+html /deep/ paper-button[warning][raised] #ripple,
+html paper-button[warning][raised]::shadow #ripple,
+html /deep/ paper-button[warning][raised]::shadow #ripple {
+  color: #f8d22e;
+}
+
+/* line 279, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-button[error],
+html /deep/ paper-button[error] {
+  color: #ff6e40;
+}
+
+/* line 283, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-button[error] #ripple,
+html /deep/ paper-button[error] #ripple,
+html paper-button[error]::shadow #ripple,
+html /deep/ paper-button[error]::shadow #ripple {
+  color: #ffc5b3;
+}
+
+/* line 289, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-button[error][raised],
+html /deep/ paper-button[error][raised] {
+  background-color: #ff6e40;
+  color: #fff;
+}
+
+/* line 294, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-button[error][raised] #ripple,
+html /deep/ paper-button[error][raised] #ripple,
+html paper-button[error][raised]::shadow #ripple,
+html /deep/ paper-button[error][raised]::shadow #ripple {
+  color: #ff4a10;
+}
+
+/* line 300, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-button[link],
+html /deep/ paper-button[link] {
+  color: #000;
+}
+
+/* line 304, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-button[link] #ripple,
+html /deep/ paper-button[link] #ripple,
+html paper-button[link]::shadow #ripple,
+html /deep/ paper-button[link]::shadow #ripple {
+  color: #999;
+}
+
+/* line 310, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-button[link][raised],
+html /deep/ paper-button[link][raised] {
+  background-color: #fff;
+  color: #000;
+}
+
+/* line 315, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-button[link][raised] #ripple,
+html /deep/ paper-button[link][raised] #ripple,
+html paper-button[link][raised]::shadow #ripple,
+html /deep/ paper-button[link][raised]::shadow #ripple {
+  color: #d9d9d9;
+}
+
+/* line 321, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-checkbox,
+html /deep/ paper-checkbox {
+  padding: 20px;
+}
+
+/* line 325, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-checkbox::shadow #ink,
+html /deep/ paper-checkbox::shadow #ink {
+  color: #777;
+  /* Change the ink color for checked state */
+}
+
+/* line 330, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-checkbox::shadow #ink[checked],
+html /deep/ paper-checkbox::shadow #ink[checked] {
+  color: #446e9b;
+}
+
+/* line 334, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-checkbox::shadow #checkbox,
+html /deep/ paper-checkbox::shadow #checkbox {
+  border-color: #777;
+  /* Change the checkbox checked color */
+}
+
+/* line 339, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-checkbox::shadow #checkbox.checked,
+html /deep/ paper-checkbox::shadow #checkbox.checked {
+  border-color: #446e9b;
+}
+
+/* line 343, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-fab,
+html /deep/ paper-fab {
+  background-color: #446e9b;
+}
+
+/* line 347, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-fab::shadow core-icon,
+html /deep/ paper-fab::shadow core-icon {
+  color: #fff !important;
+}
+
+/* line 351, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html core-toolbar paper-tabs,
+html /deep/ core-toolbar paper-tabs {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+/* line 356, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-tabs,
+html /deep/ paper-tabs,
+html core-toolbar,
+html /deep/ core-toolbar {
+  background-color: #e7e7e7;
+  color: #777;
+  -webkit-box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* line 365, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-tabs.transparent-teal,
+html /deep/ paper-tabs.transparent-teal {
+  background-color: transparent;
+  color: #e7e7e7;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+/* line 372, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-tabs.transparent-teal::shadow #selectionBar,
+html /deep/ paper-tabs.transparent-teal::shadow #selectionBar {
+  background-color: #e7e7e7;
+}
+
+/* line 376, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-tabs.transparent-teal paper-tab::shadow #ink,
+html /deep/ paper-tabs.transparent-teal paper-tab::shadow #ink {
+  color: #e7e7e7;
+}
+
+/* line 380, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-tabs[noink][nobar] paper-tab.core-selected,
+html /deep/ paper-tabs[noink][nobar] paper-tab.core-selected {
+  color: #80cbc4;
+}
+
+/* line 384, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-tabs::shadow *,
+html /deep/ paper-tabs::shadow * {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+/* line 393, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-tabs::shadow #selectionBar,
+html /deep/ paper-tabs::shadow #selectionBar {
+  background-color: #80cbc4;
+}
+
+/* line 397, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-tab::shadow #ink,
+html /deep/ paper-tab::shadow #ink {
+  color: #80cbc4;
+}
+
+/* line 401, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-toast,
+html /deep/ paper-toast {
+  background: #323232;
+  color: #f1f1f1;
+  text-align: left;
+}
+
+/* line 407, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-toast .highlight,
+html /deep/ paper-toast .highlight {
+  color: #ffb74d;
+}
+
+/* line 411, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-toast::shadow *,
+html /deep/ paper-toast::shadow * {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+/* line 420, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-input[focused] .floated-label,
+html /deep/ paper-input[focused] .floated-label {
+  color: #446e9b;
+}
+
+/* line 424, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-input[focused] .error-text,
+html /deep/ paper-input[focused] .error-text,
+html paper-input[focused] .error-icon,
+html /deep/ paper-input[focused] .error-icon {
+  color: #ff6e40;
+}
+
+/* line 430, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-input .focused-underline,
+html /deep/ paper-input .focused-underline {
+  background-color: #777;
+}
+
+/* line 434, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-input.invalid .focused-underline,
+html /deep/ paper-input.invalid .focused-underline {
+  background-color: #ff6e40;
+}
+
+/* line 438, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-input.invalid[focused] .floated-label,
+html /deep/ paper-input.invalid[focused] .floated-label {
+  color: #ff6e40;
+}
+
+/* line 442, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-input[disabled],
+html /deep/ paper-input[disabled] {
+  color: #afb1b9;
+}
+
+/* line 446, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-input-decorator /deep/ .label-text,
+html /deep/ paper-input-decorator /deep/ .label-text,
+html paper-input-decorator /deep/ .error,
+html /deep/ paper-input-decorator /deep/ .error {
+  /* inline label,  floating label, error message and error icon color when the input is unfocused */
+  color: #6c6c6c;
+}
+
+/* line 453, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-input-decorator /deep/ .unfocused-underline,
+html /deep/ paper-input-decorator /deep/ .unfocused-underline {
+  /* line color when the input is unfocused */
+  background-color: #6c6c6c;
+}
+
+/* line 458, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-input-decorator /deep/ .focused-underline,
+html /deep/ paper-input-decorator /deep/ .focused-underline {
+  /* line color when the input is focused */
+  background-color: #446e9b;
+}
+
+/* line 463, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-input-decorator /deep/ .cursor,
+html /deep/ paper-input-decorator /deep/ .cursor {
+  /* cursor color during the focus transition */
+  background-color: #446e9b;
+}
+
+/* line 468, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-input-decorator /deep/ ::-webkit-input-placeholder,
+html /deep/ paper-input-decorator /deep/ ::-webkit-input-placeholder {
+  /* platform specific rules for placeholder text */
+  color: #6c6c6c;
+}
+
+/* line 473, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-input-decorator /deep/ ::-moz-placeholder,
+html /deep/ paper-input-decorator /deep/ ::-moz-placeholder {
+  color: #6c6c6c;
+}
+
+/* line 477, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-input-decorator /deep/ :-ms-input-placeholder,
+html /deep/ paper-input-decorator /deep/ :-ms-input-placeholder {
+  color: #6c6c6c;
+}
+
+/* line 481, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-input-decorator[focused] .floated-label .label-text,
+html /deep/ paper-input-decorator[focused] .floated-label .label-text,
+html paper-input-decorator[focused] /deep/ .floated-label .label-text,
+html /deep/ paper-input-decorator[focused] /deep/ .floated-label .label-text {
+  /* floating label color when the input is focused */
+  color: #446e9b;
+}
+
+/* line 488, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-input-decorator.invalid[focused] /deep/ .floated-label .label-text,
+html /deep/ paper-input-decorator.invalid[focused] /deep/ .floated-label .label-text,
+html paper-input-decorator[focused] /deep/ .error,
+html /deep/ paper-input-decorator[focused] /deep/ .error {
+  /* floating label, error message nad error icon color when the input is invalid and focused */
+  color: #ff6e40;
+}
+
+/* line 495, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-input-decorator.invalid /deep/ .floated-label .label-text,
+html /deep/ paper-input-decorator.invalid /deep/ .floated-label .label-text,
+html paper-input-decorator /deep/ .error,
+html /deep/ paper-input-decorator /deep/ .error {
+  /* floating label, error message nad error icon color when the input is invalid and not focused */
+  color: #ff6e40;
+}
+
+/* line 502, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-input-decorator.invalid /deep/ .focused-underline,
+html /deep/ paper-input-decorator.invalid /deep/ .focused-underline,
+html paper-input-decorator.invalid /deep/ .cursor,
+html /deep/ paper-input-decorator.invalid /deep/ .cursor {
+  /* line and cursor color when the input is invalid and focused */
+  background-color: #ff6e40;
+}
+
+/* line 509, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html .toolbar,
+html /deep/ .toolbar {
+  color: #777;
+  background: #e7e7e7;
+}
+
+/* line 514, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html .card,
+html /deep/ .card {
+  background: #fff;
+}
+
+/* line 518, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-item,
+html /deep/ paper-item {
+  background-color: #d3d3d3;
+  color: #777;
+}
+
+/* line 523, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-item:hover,
+html /deep/ paper-item:hover {
+  background-color: #e7e7e7;
+}
+
+/* line 527, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-item.core-selected,
+html /deep/ paper-item.core-selected {
+  background-color: #dcdcdc;
+}
+
+/* line 531, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-dropdown::shadow #background,
+html /deep/ paper-dropdown::shadow #background {
+  background-color: #d3d3d3;
+}
+
+/* line 535, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html .small,
+html /deep/ .small {
+  font-size: 12px;
+}
+
+/* line 539, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html .logo,
+html /deep/ .logo {
+  font-size: 21px;
+}
+
+/* line 543, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html .logo a,
+html /deep/ .logo a {
+  font-weight: 700;
+  color: #777;
+}
+
+/* line 548, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html .inverse,
+html /deep/ .inverse {
+  background-color: #7ec0ee;
+  color: #fff;
+}
+
+/* line 553, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-progress::shadow #activeProgress,
+html /deep/ paper-progress::shadow #activeProgress {
+  background-color: #446e9b;
+}
+
+/* line 557, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-progress::shadow #secondaryProgress,
+html /deep/ paper-progress::shadow #secondaryProgress {
+  background-color: #80cbc4;
+}
+
+/* line 561, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-radio-button::shadow #ink,
+html /deep/ paper-radio-button::shadow #ink {
+  color: #afc5dc;
+}
+
+/* line 565, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-radio-button::shadow #ink[checked],
+html /deep/ paper-radio-button::shadow #ink[checked] {
+  color: #afc5dc;
+}
+
+/* line 569, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-radio-button::shadow #onRadio,
+html /deep/ paper-radio-button::shadow #onRadio {
+  background-color: #446e9b;
+}
+
+/* line 573, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-radio-button::shadow #offRadio,
+html /deep/ paper-radio-button::shadow #offRadio {
+  background-color: #fff;
+}
+
+/* line 577, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-toggle-button::shadow paper-radio-button::shadow #ink,
+html /deep/ paper-toggle-button::shadow paper-radio-button::shadow #ink {
+  color: #afc5dc;
+}
+
+/* line 581, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-toggle-button::shadow paper-radio-button::shadow #ink[checked],
+html /deep/ paper-toggle-button::shadow paper-radio-button::shadow #ink[checked] {
+  color: #afc5dc;
+}
+
+/* line 585, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-toggle-button::shadow paper-radio-button::shadow #onRadio,
+html /deep/ paper-toggle-button::shadow paper-radio-button::shadow #onRadio {
+  background-color: #446e9b;
+}
+
+/* line 589, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-toggle-button::shadow paper-radio-button::shadow #offRadio,
+html /deep/ paper-toggle-button::shadow paper-radio-button::shadow #offRadio {
+  background-color: #fff;
+}
+
+/* line 593, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-toggle-button::shadow #toggleBar,
+html /deep/ paper-toggle-button::shadow #toggleBar {
+  background-color: #777;
+}
+
+/* line 597, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-toggle-button::shadow #toggleBar[checked],
+html /deep/ paper-toggle-button::shadow #toggleBar[checked] {
+  background-color: #446e9b;
+}
+
+/* line 601, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-slider::shadow #sliderBar::shadow #activeProgress,
+html /deep/ paper-slider::shadow #sliderBar::shadow #activeProgress {
+  background-color: #446e9b;
+}
+
+/* line 605, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-slider::shadow #sliderBar::shadow #secondaryProgress,
+html /deep/ paper-slider::shadow #sliderBar::shadow #secondaryProgress {
+  background-color: #80cbc4;
+}
+
+/* line 609, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-slider::shadow #sliderKnobInner,
+html /deep/ paper-slider::shadow #sliderKnobInner {
+  background-color: #446e9b;
+}
+
+/* line 613, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-slider::shadow #sliderKnobInner::before,
+html /deep/ paper-slider::shadow #sliderKnobInner::before {
+  background-color: #446e9b;
+}
+
+/* line 617, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-icon-button[disabled]::shadow core-icon,
+html /deep/ paper-icon-button[disabled]::shadow core-icon {
+  color: #afb1b9 !important;
+}
+
+/* line 621, /home/ksk/rails_dev/limitless-tundra-5055/app/assets/stylesheets/common.scss */
+html paper-spinner:not([default-spinner])::shadow .circle,
+html /deep/ paper-spinner:not([default-spinner])::shadow .circle {
+  border-color: #446e9b;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+
+
