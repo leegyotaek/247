@@ -1,7 +1,15 @@
 module SessionsHelper
+
+
+
 def log_in(user)
  session[:user_id] = user.id
+ if user.matching_lan.present? && user.first_login_today?
+ 	user.search_for_matcher
+ end
+
 end
+
 
 
 def current_user

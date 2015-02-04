@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150129080835) do
+ActiveRecord::Schema.define(version: 20150130170223) do
 
   create_table "friendships", force: :cascade do |t|
     t.integer  "user_id"
@@ -40,18 +40,6 @@ ActiveRecord::Schema.define(version: 20150129080835) do
   add_index "languages", ["sort"], name: "index_languages_on_sort"
   add_index "languages", ["user_id"], name: "index_languages_on_user_id"
 
-  create_table "matching_options", force: :cascade do |t|
-    t.string   "language"
-    t.string   "interests"
-    t.integer  "age_from"
-    t.integer  "age_to"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "matching_options", ["user_id"], name: "index_matching_options_on_user_id"
-
   create_table "microposts", force: :cascade do |t|
     t.text     "content"
     t.integer  "user_id"
@@ -75,15 +63,15 @@ ActiveRecord::Schema.define(version: 20150129080835) do
   add_index "pictures", ["imageable_id"], name: "index_pictures_on_imageable_id"
 
   create_table "relationships", force: :cascade do |t|
-    t.integer  "follower_id"
-    t.integer  "followed_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "matcher_id"
+    t.integer  "matched_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id"
-  add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
-  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
+  add_index "relationships", ["matched_id"], name: "index_relationships_on_matched_id"
+  add_index "relationships", ["matcher_id", "matched_id"], name: "index_relationships_on_matcher_id_and_matched_id", unique: true
+  add_index "relationships", ["matcher_id"], name: "index_relationships_on_matcher_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

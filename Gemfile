@@ -11,13 +11,11 @@ gem 'coffee-rails',         '4.1.0'
 gem 'jbuilder',             '2.2.3'
 gem 'sdoc',                 '0.4.0', group: :doc
 gem 'will_paginate',           '3.0.7'
-gem 'bootstrap-will_paginate', '0.0.10'
+#gem 'bootstrap-will_paginate', '0.0.10'
 gem 'turbolinks'
 
 gem 'jquery-rails'
 gem 'sass-rails', '~> 5.0.0'
-gem 'bootstrap-sass', '~> 3.3.1.0'
-gem 'autoprefixer-rails'
 gem 'simple_form'
 gem 'friendly_id', '~> 5.0.0'
 gem 'acts-as-taggable-on'
@@ -25,6 +23,9 @@ gem 'cocoon', '~> 1.2.6'
 gem 'haml', '~> 4.0.6'
 gem 'language_select', '~> 0.0.2'
 gem 'country_select', '~> 2.1.0'
+gem 'bower-rails'
+gem 'emcee'
+gem 'polymer-rails'
 
 
 group :development, :test do

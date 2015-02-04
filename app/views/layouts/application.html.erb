@@ -1,29 +1,44 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>LanguageApp|<%= yield(:title) %></title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <!--   stylesheet_link_tag 'application', { media: 'all',
-                                     'data-turbolinks-track' => true } 
- 파라미터로 마지막 인자가 해쉬일경우 중괄호 생략가능, "-"가(data-turbolinks-track) 있을경우 new syntex(data-turbolinks-track: true) 사용못함, hashrocket형으로 표현
-                                 -->
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  <%= render 'layouts/shim' %>
-  
-</head>
-<body>
-  <%= render 'layouts/header' %>
+  <head>
+    <title>LanguageApp|<%= yield(:title) %></title>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <!--   stylesheet_link_tag 'application', { media: 'all',
+                                       'data-turbolinks-track' => true } 
+   파라미터로 마지막 인자가 해쉬일경우 중괄호 생략가능, "-"가(data-turbolinks-track) 있을경우 new syntex(data-turbolinks-track: true) 사용못함, hashrocket형으로 표현
+  -->
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= html_import_tag "application", "data-turbolinks-track" => true %>  
+    <%= render 'layouts/shim' %>  
+  </head>
+  <body>
+    
 
-    <div class="container">
- <% flash.each do |message_type, message| %>
-  
-  <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
-  <!-- equal <div class="alert alert-<%= message_type %>"><%= message %></div> -->
-<% end %>     
-<%= yield %>
-</div>
-</body>
-<%= render 'layouts/footer' %>
-<%= debug(params) if Rails.env.development? %>
+    <my-scroll-layout>
+      <div id="msl_logo">
+        <%= link_to(root_path) do %>
+        LOGO
+        <% end %>
+      </div>
+      <div id="msl_header">
+        <%= render 'layouts/header' %>
+      </div>
+      <div id="msl_body">
+        <% flash.each do |message_type, message| %>  
+        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+        <!-- equal <div class="alert alert-<%= message_type %>"><%= message %></div> -->
+        <% end %>     
+        <%= yield %>
+      </div>
+      <div id="msl_footer">
+        <%= render 'layouts/footer' %>
+        <%= debug(params) if Rails.env.development? %>
+      </div>
+    </my-scroll-layout>
+
+    <!-- custom js import -->
+    <%= javascript_include_tag 'custom', 'data-turbolinks-track' => true %>
+  </body>
 </html>
