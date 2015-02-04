@@ -14,8 +14,8 @@
     <%= render 'layouts/shim' %>  
   </head>
   <body>
-    
-
+    <%= html_import_tag "my_scroll_layout/my_scroll_layout", "data-turbolinks-track" => true %>
+      
     <my-scroll-layout>
       <div id="msl_logo">
         <%= link_to(root_path) do %>
