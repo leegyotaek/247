@@ -204,16 +204,15 @@ class User < ActiveRecord::Base
 
   def matchings_for_today
 
-    today_matcher_ids = active_relationships.where(created_at: (Time.now.midnight..Time.now)).map(&:matched_id)
+      today_matcher_ids = active_relationships.where(created_at: (Time.now.midnight..Time.now)).map(&:matched_id)
 
+    if today_matcher_ids.any?
+      @matchings = matchings.where(id: today_matcher_ids).all 
+    else
+      @matchings = search_for_matcher
 
-    @matchings = matchings.where(id: today_matcher_ids).all 
+    end 
 
-    if @matchings.nil?
-    @matchings = []
-    end
-
-    return @matchings
     
   end
 
@@ -230,16 +229,15 @@ class User < ActiveRecord::Base
 
    def create_for_matchers(matchers)
 
+     if matchers.count >= 2
 
-    matchers.each do |matcher|
+        matchers.each do |matcher|
 
-    active_relationships.build(matched_id: matcher.id).save
-    
+        active_relationships.build(matched_id: matcher.id).save
+       end
 
-   end
-
-   update_attribute(:updated_at, Time.now) if matchers.count >= 2
-     
+     end
+       
    end
   
 
