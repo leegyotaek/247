@@ -213,6 +213,14 @@ class User < ActiveRecord::Base
 
     end 
 
+
+    if @matchings.nil?
+
+      @matchings = []
+
+    end 
+
+    return @matchings
     
   end
 
