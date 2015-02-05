@@ -166,7 +166,7 @@ class User < ActiveRecord::Base
 
    if (matching_age_from == nil || matching_age_to == nil) && matching_interest != nil  
    @valid_users = base_users.where("interests LIKE ?" , "%#{matching_interest}%").take(count)
-   create_for_matchers(@valid_users)
+   @matchers = create_for_matchers(@valid_users)
    
    
    elsif matching_age_from.present? && matching_age_to.present? && matching_interest == nil #나이 설정했을경우
@@ -176,7 +176,7 @@ class User < ActiveRecord::Base
     base_users.each do |base_user|
 
       if @valid_users.count > count
-        create_for_matchers(@valid_users)
+       @matchers = create_for_matchers(@valid_users)
       elsif base_user.age && base_user.age >= matching_age_from &&  base_user.age <= matching_age_to
         @valid_users << base_user
       end
@@ -190,9 +190,13 @@ class User < ActiveRecord::Base
    else #나이나 관심사 설정 안한 유저
   
    @valid_users = base_users.take(count)
-   create_for_matchers(@valid_users)
+   @matchers = create_for_matchers(@valid_users)
 
    end
+
+   return  @matchers
+
+
   end
 
 
@@ -200,7 +204,16 @@ class User < ActiveRecord::Base
 
   def matchings_for_today
 
-    matchings.where(created_at: Time.now.midnight..Time.now)
+    today_matcher_ids = active_relationships.where(created_at: (Time.now.midnight..Time.now)).map(&:matched_id)
+
+
+    @matchings = matchings.where(id: today_matcher_ids).all 
+
+    if @matchings.nil?
+    @matchings = []
+    end
+
+    return @matchings
     
   end
 

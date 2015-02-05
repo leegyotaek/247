@@ -4,10 +4,6 @@ module SessionsHelper
 
 def log_in(user)
  session[:user_id] = user.id
- if user.matching_lan.present? && user.first_login_today?
- 	user.search_for_matcher
- end
-
 end
 
 
@@ -29,6 +25,13 @@ end
 def logged_in?
 	!current_user.nil?
 end
+
+
+
+def first_logged_in_today?
+current_user.first_login_today?
+end
+
 
 def forget(user)
 	user.forget
