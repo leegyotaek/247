@@ -1,5 +1,23 @@
 class StaticPagesController < ApplicationController
+
+  before_action :set_matcher 
   def home
+
+  end
+
+
+  def matching
+
+    @req_matchers = current_user.req_matchers
+
+    
+  end
+
+
+  private
+
+  def set_matcher
+
   if logged_in?
 
 
@@ -10,5 +28,6 @@ class StaticPagesController < ApplicationController
   end
  
   end
+    
   end
 end
