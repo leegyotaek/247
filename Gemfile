@@ -26,7 +26,6 @@ gem 'language_select', '~> 0.0.2'
 gem 'country_select', '~> 2.1.0'
 gem 'bower-rails'
 gem 'emcee'
-gem 'polymer-rails'
 
 
 group :development, :test do
