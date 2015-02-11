@@ -1,7 +1,12 @@
 module SessionsHelper
+
+
+
 def log_in(user)
  session[:user_id] = user.id
+ user.update_attribute(:updated_at , Time.now)
 end
+
 
 
 def current_user
@@ -21,6 +26,13 @@ end
 def logged_in?
 	!current_user.nil?
 end
+
+
+
+def first_logged_in_today?
+current_user.first_login_today?
+end
+
 
 def forget(user)
 	user.forget

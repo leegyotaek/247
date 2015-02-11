@@ -32,6 +32,20 @@
 
       =f.input :interests , label: "관심사"
 
+      %h3 1:1 매칭 설정
+
+      =f.input :matching_lan , label: "배우고 싶은 언어"  , collection: ["English", "Korean", "Japanese", "Chinese"]
+
+      / =f.input :matching_interest , label: "관심사" , collection: current_user.interests.split(",")
+
+      %h4 나이
+
+
+      =f.input :matching_age_from  , collection: 14..60 
+
+      =f.input :matching_age_to  , collection: 14..60 
+
+
 
       =f.submit "Save chages" , class: "btn btn-primary"
 

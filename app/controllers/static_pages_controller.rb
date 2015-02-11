@@ -1,8 +1,33 @@
 class StaticPagesController < ApplicationController
+
+  before_action :set_matcher 
   def home
-  if logged_in?
-  @micropost = current_user.microposts.build if logged_in?
-  @feed_items = current_user.feed.paginate(page: params[:page])
+
   end
+
+
+  def matching
+
+    @req_matchers = current_user.req_matchers
+
+    
+  end
+
+
+  private
+
+  def set_matcher
+
+  if logged_in?
+
+
+  @matchers ||= current_user.matchings_for_today
+  
+  if @matchers.empty?
+  flash.now[:danger] = "no matchings , set your matching option again"
+  end
+ 
+  end
+    
   end
 end

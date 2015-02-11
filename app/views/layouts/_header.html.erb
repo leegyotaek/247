@@ -1,23 +1,23 @@
 
 <!-- <%= link_to "sample app", '#', id: "logo" %> -->
 <% if logged_in? %>
-<%= link_to "1:1언어교환",   '#',class:"major" %>
+
+<%= link_to "1:1언어교환", matching_path ,class:"major" %>
+
 <%= link_to "자유모임", '#',class:"major" %>
 
-
 <%= link_to "Users", users_path %>
-
 
 <%=current_user.name %>
 
 <%= link_to "Profile", current_user %>
-<%= link_to "Settings", edit_user_path(current_user) %>
 
+<%= link_to "Settings", edit_user_path(current_user) %>
 
 <%= link_to "Log out", logout_path, method: "delete" %>
 
-
-
 <% else %>
+
 <%= link_to "Log in", login_path,class:"minor" %>
+
 <% end %>

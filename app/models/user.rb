@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessor :remember_token, :activation_token, :reset_token
+  attr_accessor :remember_token, :activation_token, :reset_token, :age
 
   before_save :downcase_email
   before_create :create_activation_digest
@@ -9,15 +9,21 @@ class User < ActiveRecord::Base
 
   has_many :microposts , dependent: :destroy
 
+  
+  #matchings
   has_many :active_relationships, class_name: "Relationship",
-                         foreign_key: "follower_id",
+                         foreign_key: "matcher_id",
                          dependent: :destroy
   has_many :passive_relationships, class_name: "Relationship",
-                         foreign_key: "followed_id",
+                         foreign_key: "matched_id",
                          dependent: :destroy
   
-  has_many :following , through: :active_relationships, source: :followed
-  has_many :followers, through: :passive_relationships
+  has_many :matchings , through: :active_relationships, source: :matched
+  has_many :req_matchers, through: :passive_relationships, source: :matcher
+  
+
+
+  #friends
   has_many :friendships,  dependent: :destroy 
   has_many :complet_friendships, -> { where status: "friends" } , class_name: "Friendship"
   has_many :friends , through: :complet_friendships
@@ -102,26 +108,145 @@ class User < ActiveRecord::Base
     
   end
 
-    def feed
-    following_ids = "SELECT followed_id FROM relationships
-                     WHERE  follower_id = :user_id"
-    Micropost.where("user_id IN (#{following_ids})
-                     OR user_id = :user_id", user_id: id)
+
+
+
+
+
+  #   def feed
+  #   following_ids = "SELECT followed_id FROM relationships
+  #                    WHERE  follower_id = :user_id"
+  #   Micropost.where("user_id IN (#{following_ids})
+  #                    OR user_id = :user_id", user_id: id)
+  #   end
+  
+  # def follow(other_user)
+  #   active_relationships.create(followed_id: other_user.id)
+  # end
+
+  # def unfollow(other_user )
+  #   active_relationships.find_by(followed_id: other_user.id).destroy
+  # end
+
+
+  # def following?(other_user)
+  #   following.include?(other_user) #include? method :  변수에 저장안하고 디비내에서 바로 처리함
+  # end
+
+
+  def remove_ids # 매칭 성사가 되었던 유저들 id
+    remove_ids = ["#{self.id}"]
+    if self.matchings.any?
+    remove_ids << self.matchings.ids 
     end
-  def follow(other_user)
-    active_relationships.create(followed_id: other_user.id)
+
+    if self.req_matchers.any?
+      remove_ids << self.req_matchers.ids
+    end
+    remove_ids.join(",").split(",")
+  end
+
+
+  def first_login_today?
+
+    updated_at < Time.now.midnight
+
+
+  end
+
+
+  def search_for_matcher(count = 2)
+
+
+  matching_lan_user_ids = "Select user_id FROM languages
+                      WHERE language = :user_matching_language"
+
+   base_users = User.where("id IN (#{matching_lan_user_ids})" , 
+    user_matching_language: matching_lan ).where.not(id: self.remove_ids).order("updated_at DESC")
+
+   if (matching_age_from == nil || matching_age_to == nil) && matching_interest != nil  
+   @valid_users = base_users.where("interests LIKE ?" , "%#{matching_interest}%").take(count)
+   @matchers = create_for_matchers(@valid_users)
+   
+   
+   elsif matching_age_from.present? && matching_age_to.present? && matching_interest == nil #나이 설정했을경우
+
+    @valid_users = []
+
+    base_users.each do |base_user|
+
+      if @valid_users.count > count
+       @matchers = create_for_matchers(@valid_users)
+      elsif base_user.age && base_user.age >= matching_age_from &&  base_user.age <= matching_age_to
+        @valid_users << base_user
+      end
+
+
+    end
+
+
+    
+
+   else #나이나 관심사 설정 안한 유저
+  
+   @valid_users = base_users.take(count)
+   @matchers = create_for_matchers(@valid_users)
+
+   end
+
+   return  @matchers
+
+
+  end
+
+
+
+
+  def matchings_for_today
+
+      today_matcher_ids = active_relationships.where(created_at: (Time.now.midnight..Time.now)).map(&:matched_id)
+
+    if today_matcher_ids.any?
+      @matchings = matchings.where(id: today_matcher_ids).all 
+    else
+      @matchings = search_for_matcher
+
+    end 
+
+
+    if @matchings.nil?
+
+      @matchings = []
+
+    end 
+
+    return @matchings
     
   end
 
-  def unfollow(other_user )
-    active_relationships.find_by(followed_id: other_user.id).destroy
-  end
 
 
-  def following?(other_user)
-    following.include?(other_user) #include? method :  변수에 저장안하고 디비내에서 바로 처리함
-  end
 
+   def age
+
+    (Date.today - birthday).to_i / 365 if birthday.present?
+
+
+   end
+
+
+   def create_for_matchers(matchers)
+
+     if matchers.count >= 2
+
+        matchers.each do |matcher|
+
+        active_relationships.build(matched_id: matcher.id).save
+       end
+
+     end
+       
+   end
   
 
   def friendship_for(other_user)
