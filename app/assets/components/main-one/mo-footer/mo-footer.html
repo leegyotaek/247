@@ -1,0 +1,27 @@
+<polymer-element name="mo-footer" noscript>
+    <template>
+        <style>
+            :host {
+                display: block;
+                background-color: #3f3f3f;
+                color: #8f8f8f;
+                padding: 20px 40px;
+                font-size: 12px;
+            }
+            ::content > * /deep/ a {
+                color: #8f8f8f;
+                text-decoration: none;
+                -webkit-transition: all 0.2s ease-in-out;
+                -moz-transition: all 0.2s ease-in-out;
+                -ms-transition: all 0.2s ease-in-out;
+                -o-transition: all 0.2s ease-in-out;
+                transition: all 0.2s ease-in-out;
+            }
+            ::content > * /deep/ a:hover, ::content > * /deep/ a:active, ::content > * /deep/ a:focus {
+                color: #d3d3d3;
+                text-decoration: none;
+            }
+        </style>
+        <content></content>
+    </template>
+</polymer-element>

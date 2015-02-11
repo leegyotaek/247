@@ -1,0 +1,38 @@
+<polymer-element name="mo-footer-links" noscript>
+    <template>
+        <style>
+            :host {
+                display: block;
+                border-bottom: 1px solid #8f8f8f;
+                text-transform: uppercase;
+                padding-bottom: 20px;
+            }
+            ::content a {
+                font-size: 10px;
+                font-weight: 300;
+                color: #8f8f8f;
+                text-decoration: none;
+                position: relative;
+                padding: 0px 15px 0px 15px;
+            }
+            ::content a:first-child {
+                padding-left: 0px;
+            }
+            ::content a:after {
+                content: '|';
+                color: #8f8f8f;
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+            ::content a:last-child:after {
+                content: '';
+            }
+            ::content a:hover, ::content a:active, ::content a:focus {
+                color: #d3d3d3;
+                text-decoration: none;
+            }
+        </style>
+        <content></content>
+    </template>
+</polymer-element>

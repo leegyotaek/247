@@ -1,38 +1,31 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>LanguageApp|<%= yield(:title) %></title>
-		<%= csrf_meta_tags %>
-		<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-		<%= html_import_tag "application", "data-turbolinks-track" => true %>  
-		<%= render 'layouts/shim' %>  
-	</head>
-	<body>
-		<core-scaffold>
-			<core-header-panel navigation flex mode="seamed">
-			<%= link_to(root_path) do %>
-			<core-toolbar>Application</core-toolbar>
-			<% end %>
-			<core-menu theme="core-light-theme">
-			<core-item icon="settings" label="item1"></core-item>
-			<core-item icon="settings" label="item2"></core-item>
-		</core-menu>
-		</core-header-panel>
-		<div tool><%= render 'layouts/header' %></div>
-		<div>
-			<% flash.each do |message_type, message| %>  
-			<%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
-			<!-- equal <div class="alert alert-<%= message_type %>"><%= message %></div> -->
-			<% end %>     
-			<%= yield %>
-		</div>
+  <head>
+    <title>LanguageApp|<%= yield(:title) %></title>    
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">    
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= html_import_tag "application"%>  
+    <%= render 'layouts/shim' %>  
+    <%= csrf_meta_tags %>
+  </head>
+  <body>  
+      
+        <%= link_to(root_path) do %>
+        LOGO
+        <% end %>
+        <%= render 'layouts/header' %>
+        <% flash.each do |message_type, message| %>  
+        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+        <!-- equal <div class="alert alert-<%= message_type %>"><%= message %></div> -->
+        <% end %>     
+        <%= yield %>
+        <%= render 'layouts/footer' %>
+        <%= debug(params) if Rails.env.development? %>
 
-		<%= render 'layouts/footer' %>
-		<%= debug(params) if Rails.env.development? %>
-		</core-scaffold>
-
-	<%= javascript_include_tag 'custom', 'data-turbolinks-track' => true %>
-	</body>
+        <!-- custom js import -->
+        <%= javascript_include_tag 'custom', 'data-turbolinks-track' => true %>
+  </body>
 </html>

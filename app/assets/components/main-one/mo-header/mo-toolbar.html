@@ -1,0 +1,148 @@
+<polymer-element name="mo-toolbar" noscript attributes="collapseMinor collapseAll">
+    <template>
+        <style>
+            .majorToolbar > ::content a.major {
+                font-weight: 700;
+                float: left;
+                display: inline-block;
+                text-transform: uppercase;
+                text-decoration: none;
+                padding: 20px 20px;
+                margin-top: 5px;
+                border-bottom: 1px solid #fff;
+                color: #2d2d2d;
+                position: relative;
+            }
+            .majorToolbar > ::content a.major[active] {
+                margin-top: 0px;
+                border-top: 5px solid #f4511e;
+                border-bottom-color: #f4511e;
+                background-color: #f3f3f3;
+                color: #f4511e;
+            }
+            .majorToolbar > ::content a.major:hover {
+                background-color: #f3f3f3;
+                border-bottom-color: #f4511e;
+            }
+            .majorToolbar > ::content a.major:hover,
+            .majorToolbar > ::content a.major:active,
+            .majorToolbar > ::content a.major:focus{
+                color: #f4511e;
+                text-decoration: none;
+            }
+            .majorToolbar > ::content a.major[active]:after {
+                content: '';
+                display: inline-block;
+                position: absolute;
+                bottom: -6px;
+                left: 50%;
+                width: 0;
+                height: 0;
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-top: 5px solid #f4511e;
+                margin-left: -3px;
+            }
+            .minorToolbar > ::content a.minor {
+                font-weight: 700;
+                float: left;
+                display: inline-block;
+                text-transform: uppercase;
+                text-decoration: none;
+                padding: 20px 20px;
+                margin-top: 5px;
+                margin-bottom: 1px;
+                color: #2d2d2d;
+                position: relative;
+            }
+            .minorToolbar > ::content a.minor[active],
+            .minorToolbar > ::content a.minor:hover,
+            .minorToolbar > ::content a.minor:active,
+            .minorToolbar > ::content a.minor:focus {
+                color: #f4511e;
+                text-decoration: none;
+            }
+            core-menu-button {
+                margin: 6px 4px 6px;
+            }
+            core-menu-button core-menu {
+                margin: 0px;
+                border: 1px solid #f3f3f3;
+            }
+            core-menu-button ::content a {
+                display: block;
+                text-transform: uppercase;
+                text-decoration: none;
+                padding: 7px 20px;
+                color: #444444;
+                margin: 0px;
+            }
+            core-menu-button ::content a[active],
+            core-menu-button ::content a:hover,
+            core-menu-button ::content a:active,
+            core-menu-button ::content a:focus {
+                color: #f4511e;
+            }
+            core-menu-button ::content a:hover {
+                background-color: #f3f3f3;
+            }
+            core-menu-button::shadow core-menu {
+                margin: 0px;
+            }
+            hr {
+                border: 0;
+                height: 0;
+                border-top: 1px solid rgba(0, 0, 0, 0.1);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+                margin: 6px;
+            }
+        </style>
+
+        <template if="{{shouldCollapseAll}}">
+            <div horizontal layout>
+                <div flex></div>
+                <core-menu-button>
+                    <core-icon-button icon="menu"></core-icon-button>
+                    <core-dropdown class="dropdown" halign="right">
+                        <core-menu>
+                            <content select=".major"></content>
+                            <hr/>
+                            <content select=".minor"></content>
+                        </core-menu>
+                    </core-dropdown>
+                </core-menu-button>
+            </div>
+        </template>
+
+        <template if="{{shouldCollapseMinor && !shouldCollapseAll}}">
+            <div horizontal layout>
+                <div class="majorToolbar">
+                    <content select=".major"></content>
+                </div>
+                <div flex></div>
+                <core-menu-button>
+                    <core-icon-button icon="menu"></core-icon-button>
+                    <core-dropdown class="dropdown"  halign="right">
+                        <core-menu>
+                            <content select=".minor"></content>
+                        </core-menu>
+                    </core-dropdown>
+                </core-menu-button>
+            </div>
+        </template>
+
+        <div horizontal layout>
+            <div class="majorToolbar">
+                <content select=".major"></content>
+            </div>
+            <div flex></div>
+            <div class="minorToolbar">
+                <content select=".minor"></content>
+            </div>
+        </div>
+
+        <core-media-query query="max-width: {{collapseMinor}}" queryMatches="{{shouldCollapseMinor}}"></core-media-query>
+        <core-media-query query="max-width: {{collapseAll}}" queryMatches="{{shouldCollapseAll}}"></core-media-query>
+
+    </template>
+</polymer-element>
