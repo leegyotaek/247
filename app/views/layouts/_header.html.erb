@@ -6,15 +6,15 @@
 
 <%= link_to "자유모임", '#',class:"major" %>
 
-<%= link_to "Users", users_path %>
+<%= link_to "Users", users_path,class:"minor" %>
 
 <%=current_user.name %>
 
-<%= link_to "Profile", current_user %>
+<%= link_to "Profile", current_user,class:"minor" %>
 
-<%= link_to "Settings", edit_user_path(current_user) %>
+<%= link_to "Settings", edit_user_path(current_user),class:"minor" %>
 
-<%= link_to "Log out", logout_path, method: "delete" %>
+<%= link_to "Log out", logout_path, method: "delete",class:"minor" %>
 
 <% else %>
 
