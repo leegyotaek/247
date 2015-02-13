@@ -2,22 +2,32 @@
 <!-- <%= link_to "sample app", '#', id: "logo" %> -->
 <% if logged_in? %>
 
-<%= link_to "1:1언어교환", matching_path ,class:"major" %>
+<ml-toolbar isPhone="767px" isTablet="991px">
 
-<%= link_to "자유모임", '#',class:"major" %>
+<%= link_to "1:1언어교환", matching_path ,class:"mo-tb-left" %>
 
-<%= link_to "Users", users_path,class:"minor" %>
+<%= link_to "자유모임", '#',class:"mo-tb-left" %>
+
+<%= link_to "Users", users_path,class:"mo-tb-right" %>
 
 <%=current_user.name %>
 
-<%= link_to "Profile", current_user,class:"minor" %>
+<%= link_to "Profile", current_user,class:"mo-tb-fixed" %>
 
-<%= link_to "Settings", edit_user_path(current_user),class:"minor" %>
+<%= link_to "Settings", edit_user_path(current_user),class:"mo-tb-fixed" %>
 
-<%= link_to "Log out", logout_path, method: "delete",class:"minor" %>
+<%= link_to "Log out", logout_path, method: "delete",class:"mo-tb-fixed" %>
+
+</ml-toolbar>                          
 
 <% else %>
 
-<%= link_to "Log in", login_path,class:"minor" %>
+<ml-toolbar-beforelogin>                          
+
+<%= link_to "회원가입", signup_path, class:"mo-tb-fixed"%>
+
+<%= link_to "로그인", login_path,class:"mo-tb-fixed" %>
+
+</ml-toolbar>                          
 
 <% end %>

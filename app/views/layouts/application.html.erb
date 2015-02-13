@@ -3,8 +3,10 @@
   <head>
     <title>LanguageApp|<%= yield(:title) %></title>
     <%= csrf_meta_tags %>    
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">    
-    <%= stylesheet_link_tag    'my_theme', media: 'all','data-turbolinks-track' => true %>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">    
+    <link href="/assets/my_theme.scss" rel="stylesheet" shim-shadowdom/>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <!--   stylesheet_link_tag 'application', { media: 'all',
                                        'data-turbolinks-track' => true } 
@@ -18,35 +20,35 @@
     <!-- <div hidden>
     
     </div> -->
-    <main-one>
+    <main-layout>
 
-          <mo-header>            
+          <ml-header>            
               <%= link_to(root_path) do %>
               <home-link>
               LOGO
               </home-link>
               <% end %>
-              <mo-toolbar collapseMinor="991px" collapseAll="767px">
-                  <%= render 'layouts/header' %>
-              </mo-toolbar>                          
-          </mo-header>
+              
+              <%= render 'layouts/header' %>
+              
+          </ml-header>
 
-          <mo-body>
+          <ml-body>
           <% flash.each do |message_type, message| %>  
           <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
           <!-- equal <div class="alert alert-<%= message_type %>"><%= message %></div> -->
           <% end %>     
           <%= yield %>
-          </mo-body>
+          </ml-body>
 
-          <mo-footer>
-            <mo-footer-links>
+          <ml-footer>
+            <ml-footer-links>
               <%= link_to "logo", root_path%>
-            </mo-footer-links>
+            </ml-footer-links>
             <%= render 'layouts/footer' %>
-          </mo-footer>
+          </ml-footer>
 
-    </main-one>
+    </main-layout>
         <!-- custom js import -->
         <%= javascript_include_tag 'custom', 'data-turbolinks-track' => true %>
   </body>

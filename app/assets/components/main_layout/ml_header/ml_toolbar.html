@@ -1,7 +1,12 @@
-<polymer-element name="mo-toolbar" noscript attributes="collapseMinor collapseAll">
+<polymer-element name="ml-toolbar" noscript attributes="isPhone isTablet">
     <template>
-        <style>
-            .majorToolbar > ::content a.major {
+        <style>       
+            /**************************************************************/
+            /* 
+                스타일링 툴바
+             */
+            /**************************************************************/
+            .mo-tb-leftToolbar > ::content a.mo-tb-left {
                 font-weight: 700;
                 float: left;
                 display: inline-block;
@@ -13,24 +18,24 @@
                 color: #2d2d2d;
                 position: relative;
             }
-            .majorToolbar > ::content a.major[active] {
+            .mo-tb-leftToolbar > ::content a.mo-tb-left[active] {
                 margin-top: 0px;
                 border-top: 5px solid #f4511e;
                 border-bottom-color: #f4511e;
                 background-color: #f3f3f3;
                 color: #f4511e;
             }
-            .majorToolbar > ::content a.major:hover {
+            .mo-tb-leftToolbar > ::content a.mo-tb-left:hover {
                 background-color: #f3f3f3;
                 border-bottom-color: #f4511e;
             }
-            .majorToolbar > ::content a.major:hover,
-            .majorToolbar > ::content a.major:active,
-            .majorToolbar > ::content a.major:focus{
+            .mo-tb-leftToolbar > ::content a.mo-tb-left:hover,
+            .mo-tb-leftToolbar > ::content a.mo-tb-left:active,
+            .mo-tb-leftToolbar > ::content a.mo-tb-left:focus{
                 color: #f4511e;
                 text-decoration: none;
             }
-            .majorToolbar > ::content a.major[active]:after {
+            .mo-tb-leftToolbar > ::content a.mo-tb-left[active]:after {
                 content: '';
                 display: inline-block;
                 position: absolute;
@@ -43,7 +48,14 @@
                 border-top: 5px solid #f4511e;
                 margin-left: -3px;
             }
-            .minorToolbar > ::content a.minor {
+
+            /**************************************************************/
+            /* 
+                none스타일링 툴바
+             */
+            /**************************************************************/
+            .mo-tb-fixedToolbar > ::content a.mo-tb-fixed, 
+            .mo-tb-rightToolbar > ::content a.mo-tb-right {
                 font-weight: 700;
                 float: left;
                 display: inline-block;
@@ -55,13 +67,23 @@
                 color: #2d2d2d;
                 position: relative;
             }
-            .minorToolbar > ::content a.minor[active],
-            .minorToolbar > ::content a.minor:hover,
-            .minorToolbar > ::content a.minor:active,
-            .minorToolbar > ::content a.minor:focus {
+            .mo-tb-fixedToolbar > ::content a.mo-tb-fixed[active], 
+            .mo-tb-rightToolbar > ::content a.mo-tb-right[active],
+            .mo-tb-fixedToolbar > ::content a.mo-tb-fixed:hover, 
+            .mo-tb-rightToolbar > ::content a.mo-tb-right:hover,
+            .mo-tb-fixedToolbar > ::content a.mo-tb-fixed:active, 
+            .mo-tb-rightToolbar > ::content a.mo-tb-right:active,
+            .mo-tb-fixedToolbar > ::content a.mo-tb-fixed:focus, 
+            .mo-tb-rightToolbar > ::content a.mo-tb-right:focus {
                 color: #f4511e;
                 text-decoration: none;
             }
+
+            /****************************************************************/
+            /*
+                사용되는 엘리먼트 스타일링
+            */
+            /****************************************************************/
             core-menu-button {
                 margin: 6px 4px 6px;
             }
@@ -98,51 +120,64 @@
             }
         </style>
 
-        <template if="{{shouldCollapseAll}}">
-            <div horizontal layout>
+        <!-- Phone -->
+        <template if="{{isPhoneQuery}}">
+            <div horizontal layout center>
+                <div class="mo-tb-leftToolbar">
+                    <content select=".mo-tb-left"></content>
+                </div>
                 <div flex></div>
                 <core-menu-button>
                     <core-icon-button icon="menu"></core-icon-button>
                     <core-dropdown class="dropdown" halign="right">
                         <core-menu>
-                            <content select=".major"></content>
+                            <content select=".mo-tb-fixed"></content>
                             <hr/>
-                            <content select=".minor"></content>
+                            <content select=".mo-tb-right"></content>
                         </core-menu>
                     </core-dropdown>
                 </core-menu-button>
             </div>
         </template>
 
-        <template if="{{shouldCollapseMinor && !shouldCollapseAll}}">
-            <div horizontal layout>
-                <div class="majorToolbar">
-                    <content select=".major"></content>
+        <!-- Tablet -->
+        <template if="{{isTabletQuery && !isPhoneQuery}}">
+            <div horizontal layout center>
+                <div class="mo-tb-leftToolbar">
+                    <content select=".mo-tb-left"></content>
                 </div>
                 <div flex></div>
+                <div class="mo-tb-rightToolbar">
+                    <content select=".mo-tb-right"></content>
+                </div>                
                 <core-menu-button>
                     <core-icon-button icon="menu"></core-icon-button>
                     <core-dropdown class="dropdown"  halign="right">
                         <core-menu>
-                            <content select=".minor"></content>
+                            <content select=".mo-tb-fixed"></content>        
                         </core-menu>
                     </core-dropdown>
                 </core-menu-button>
             </div>
         </template>
 
-        <div horizontal layout>
-            <div class="majorToolbar">
-                <content select=".major"></content>
+        <!-- Desktop -->
+        <div horizontal layout center>
+            <div class="mo-tb-leftToolbar">
+                <content select=".mo-tb-left"></content>
             </div>
             <div flex></div>
-            <div class="minorToolbar">
-                <content select=".minor"></content>
+            <div class="mo-tb-rightToolbar">
+                <content select=".mo-tb-right"></content>
+            </div>
+            <div class="mo-tb-fixedToolbar">
+                <content select=".mo-tb-fixed"></content>
             </div>
         </div>
 
-        <core-media-query query="max-width: {{collapseMinor}}" queryMatches="{{shouldCollapseMinor}}"></core-media-query>
-        <core-media-query query="max-width: {{collapseAll}}" queryMatches="{{shouldCollapseAll}}"></core-media-query>
+        <core-media-query query="max-width: {{isPhone}}" queryMatches="{{isPhoneQuery}}"></core-media-query>
+        <core-media-query query="max-width: {{isTablet}}" queryMatches="{{isTabletQuery}}"></core-media-query>
+        
 
     </template>
 </polymer-element>

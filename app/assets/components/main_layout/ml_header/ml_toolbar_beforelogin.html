@@ -1,0 +1,39 @@
+<polymer-element name="ml-toolbar-beforelogin" noscript>
+    <template>
+        <style>
+            /**************************************************************/
+            /* 
+                none스타일링 툴바
+             */
+            /**************************************************************/
+            .mo-tb-fixedToolbar > ::content a.mo-tb-fixed {
+                font-weight: 700;
+                float: left;
+                display: inline-block;
+                text-transform: uppercase;
+                text-decoration: none;
+                padding: 20px 20px;
+                margin-top: 5px;
+                margin-bottom: 1px;
+                color: #2d2d2d;
+                position: relative;
+            }
+            .mo-tb-fixedToolbar > ::content a.mo-tb-fixed[active],
+            .mo-tb-fixedToolbar > ::content a.mo-tb-fixed:hover, 
+            .mo-tb-fixedToolbar > ::content a.mo-tb-fixed:active, 
+            .mo-tb-fixedToolbar > ::content a.mo-tb-fixed:focus {
+                color: #f4511e;
+                text-decoration: none;
+            }
+        </style>
+
+                <!-- Desktop -->
+        <div horizontal layout>
+            <div flex></div>
+            <div class="mo-tb-fixedToolbar">
+                    <content select=".mo-tb-fixed"></content>
+            </div>
+        </div>    
+
+    </template>
+</polymer-element>

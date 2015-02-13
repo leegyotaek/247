@@ -2,30 +2,75 @@
 <html>
   <head>
     <title>LanguageApp|<%= yield(:title) %></title>    
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">    
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <link href="/assets/my_theme.scss" rel="stylesheet" shim-shadowdom/>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= html_import_tag "application"%>  
+    <%= html_import_tag "application", 'data-turbolinks-track' => true%>  
     <%= render 'layouts/shim' %>  
     <%= csrf_meta_tags %>
   </head>
-  <body>  
-      
-        <%= link_to(root_path) do %>
-        LOGO
-        <% end %>
-        <%= render 'layouts/header' %>
-        <% flash.each do |message_type, message| %>  
-        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
-        <!-- equal <div class="alert alert-<%= message_type %>"><%= message %></div> -->
-        <% end %>     
-        <%= yield %>
+
+  <body touch-action="auto">
+
+      <ml-scaffold>
+
+        <core-header-panel navigation flex>
+
+            <%= link_to(root_path) do %>
+            <core-toolbar layout vertical center>            
+                <ml-highlight >
+                LOGO
+                </ml-highlight>            
+            </core-toolbar>
+            <% end %>
+
+            <core-menu>
+                <core-item>설정과</core-item>
+                <core-item>네비게이션 아이템을</core-item>
+                <core-item>여기에</core-item>
+                <core-item>여기에</core-item>
+                <core-item>여기에</core-item>
+                <core-item>여기에</core-item>
+                <core-item>여기에</core-item>
+                <core-item>여기에</core-item>
+                <core-item>여기에</core-item>
+                <core-item>여기에</core-item>
+                <core-item>여기에</core-item>
+                <core-item>여기에</core-item>
+                <core-item>여기에</core-item>
+                <core-item>여기에</core-item>
+                <core-item>여기에</core-item>
+                <core-item>여기에</core-item>
+                <core-item>여기에</core-item>
+                <core-item>여기에</core-item>
+            </core-menu>
+
+        </core-header-panel>
+        
+        <div ml-header>        
+            <%= render 'layouts/header' %>
+        </div>
+
+        <div layout vertical center ml-body>
+            <% flash.each do |message_type, message| %>  
+            <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+            <!-- equal <div class="alert alert-<%= message_type %>"><%= message %></div> -->
+            <% end %>     
+            <%= yield %>
+        </div>
+
+        <div layout vertical center ml-footer>
         <%= render 'layouts/footer' %>
         <%= debug(params) if Rails.env.development? %>
+        </div>
 
         <!-- custom js import -->
         <%= javascript_include_tag 'custom', 'data-turbolinks-track' => true %>
+
+      </ml-scaffold>
+
   </body>
 </html>
