@@ -58,11 +58,13 @@
             <% flash.each do |message_type, message| %>  
             <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
             <!-- equal <div class="alert alert-<%= message_type %>"><%= message %></div> -->
-            <% end %>     
+            <% end %>
+
             <%= yield %>
+            
         </div>
 
-        <div layout vertical center ml-footer>
+        <div ml-footer>
         <%= render 'layouts/footer' %>
         <%= debug(params) if Rails.env.development? %>
         </div>

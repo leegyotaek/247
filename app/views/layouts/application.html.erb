@@ -34,12 +34,14 @@
               
           </ml-header>
 
-          <ml-body>
+          <ml-body layout vertical center>
           <% flash.each do |message_type, message| %>  
           <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
           <!-- equal <div class="alert alert-<%= message_type %>"><%= message %></div> -->
-          <% end %>     
+          <% end %>
+
           <%= yield %>
+          
           </ml-body>
 
           <ml-footer>
