@@ -25,5 +25,14 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^0.4.0"
-  }
+  },
+  "_release": "2f30830ebd",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "2f30830ebd6816d480692b63cfdeaec8fc0be6f3"
+  },
+  "_source": "git://github.com/mvaldetaro/twbs-grid.git",
+  "_target": "*",
+  "_originalSource": "twbs-grid"
 }

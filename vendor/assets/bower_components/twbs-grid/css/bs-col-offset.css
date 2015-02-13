@@ -1,169 +1,169 @@
 :host([xsoffset="12"]) {
-  margin-left: 100%;
+  left: 100%;
 }
 :host([xsoffset="11"]) {
-  margin-left: 91.66666667%;
+  left: 91.66666667%;
 }
 :host([xsoffset="10"]) {
-  margin-left: 83.33333333%;
+  left: 83.33333333%;
 }
 :host([xsoffset="9"]) {
-  margin-left: 75%;
+  left: 75%;
 }
 :host([xsoffset="8"]) {
-  margin-left: 66.66666667%;
+  left: 66.66666667%;
 }
 :host([xsoffset="7"]) {
-  margin-left: 58.33333333%;
+  left: 58.33333333%;
 }
 :host([xsoffset="6"]) {
-  margin-left: 50%;
+  left: 50%;
 }
 :host([xsoffset="5"]) {
-  margin-left: 41.66666667%;
+  left: 41.66666667%;
 }
 :host([xsoffset="4"]) {
-  margin-left: 33.33333333%;
+  left: 33.33333333%;
 }
 :host([xsoffset="3"]) {
-  margin-left: 25%;
+  left: 25%;
 }
 :host([xsoffset="2"]) {
-  margin-left: 16.66666667%;
+  left: 16.66666667%;
 }
 :host([xsoffset="1"]) {
-  margin-left: 8.33333333%;
+  left: 8.33333333%;
 }
 :host([xsoffset="0"]) {
-  margin-left: 0%;
+  left: 0%;
 }
 
 @media (min-width: 768px) {
 
   :host([smoffset="12"]) {
-    margin-left: 100%;
+    left: 100%;
   }
   :host([smoffset="11"]) {
-    margin-left: 91.66666667%;
+    left: 91.66666667%;
   }
   :host([smoffset="10"]) {
-    margin-left: 83.33333333%;
+    left: 83.33333333%;
   }
   :host([smoffset="9"]) {
-    margin-left: 75%;
+    left: 75%;
   }
   :host([smoffset="8"]) {
-    margin-left: 66.66666667%;
+    left: 66.66666667%;
   }
   :host([smoffset="7"]) {
-    margin-left: 58.33333333%;
+    left: 58.33333333%;
   }
   :host([smoffset="6"]) {
-    margin-left: 50%;
+    left: 50%;
   }
   :host([smoffset="5"]) {
-    margin-left: 41.66666667%;
+    left: 41.66666667%;
   }
   :host([smoffset="4"]) {
-    margin-left: 33.33333333%;
+    left: 33.33333333%;
   }
   :host([smoffset="3"]) {
-    margin-left: 25%;
+    left: 25%;
   }
   :host([smoffset="2"]) {
-    margin-left: 16.66666667%;
+    left: 16.66666667%;
   }
   :host([smoffset="1"]) {
-    margin-left: 8.33333333%;
+    left: 8.33333333%;
   }
   :host([smoffset="0"]) {
-    margin-left: 0%;
+    left: 0%;
   }
 
 }
 
 @media (min-width: 992px) {
   :host([mdoffset="12"]) {
-    margin-left: 100%;
+    left: 100%;
   }
   :host([mdoffset="11"]) {
-    margin-left: 91.66666667%;
+    left: 91.66666667%;
   }
   :host([mdoffset="10"]) {
-    margin-left: 83.33333333%;
+    left: 83.33333333%;
   }
   :host([mdoffset="9"]) {
-    margin-left: 75%;
+    left: 75%;
   }
   :host([mdoffset="8"]) {
-    margin-left: 66.66666667%;
+    left: 66.66666667%;
   }
   :host([mdoffset="7"]) {
-    margin-left: 58.33333333%;
+    left: 58.33333333%;
   }
   :host([mdoffset="6"]) {
-    margin-left: 50%;
+    left: 50%;
   }
   :host([mdoffset="5"]) {
-    margin-left: 41.66666667%;
+    left: 41.66666667%;
   }
   :host([mdoffset="4"]) {
-    margin-left: 33.33333333%;
+    left: 33.33333333%;
   }
   :host([mdoffset="3"]) {
-    margin-left: 25%;
+    left: 25%;
   }
   :host([mdoffset="2"]) {
-    margin-left: 16.66666667%;
+    left: 16.66666667%;
   }
   :host([mdoffset="1"]) {
-    margin-left: 8.33333333%;
+    left: 8.33333333%;
   }
   :host([mdoffset="0"]) {
-    margin-left: 0%;
+    left: 0%;
   }
 }
 
 @media (min-width: 1200px) {
 
   :host([lgoffset="12"]) {
-    margin-left: 100%;
+    left: 100%;
   }
   :host([lgoffset="11"]) {
-    margin-left: 91.66666667%;
+    left: 91.66666667%;
   }
   :host([lgoffset="10"]) {
-    margin-left: 83.33333333%;
+    left: 83.33333333%;
   }
   :host([lgoffset="9"]) {
-    margin-left: 75%;
+    left: 75%;
   }
   :host([lgoffset="8"]) {
-    margin-left: 66.66666667%;
+    left: 66.66666667%;
   }
   :host([lgoffset="7"]) {
-    margin-left: 58.33333333%;
+    left: 58.33333333%;
   }
   :host([lgoffset="6"]) {
-    margin-left: 50%;
+    left: 50%;
   }
   :host([lgoffset="5"]) {
-    margin-left: 41.66666667%;
+    left: 41.66666667%;
   }
   :host([lgoffset="4"]) {
-    margin-left: 33.33333333%;
+    left: 33.33333333%;
   }
   :host([lgoffset="3"]) {
-    margin-left: 25%;
+    left: 25%;
   }
   :host([lgoffset="2"]) {
-    margin-left: 16.66666667%;
+    left: 16.66666667%;
   }
   :host([lgoffset="1"]) {
-    margin-left: 8.33333333%;
+    left: 8.33333333%;
   }
   :host([lgoffset="0"]) {
-    margin-left: 0%;
+    left: 0%;
   }
 
 }
