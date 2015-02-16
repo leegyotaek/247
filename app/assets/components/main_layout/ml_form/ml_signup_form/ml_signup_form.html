@@ -11,18 +11,20 @@
 				margin-bottom: 10px;
 				border-top: 1px solid #efefef;
 			}
-			div[signup-header]{
+			div[signup-top],
+			div[signup-middle],
+			div[signup-bottom]{
 				width: 100%;
 			}
-			div[signup-header] ::content h2, 
-			div[signup-header] ::content h3>a,
+			div[signup-top] ::content h2, 
+			div[signup-top] ::content h3>a,
 			::content [social-signup],
 			::content [email-signup]{
 				font-weight: 600;
 			}
 			::content [social-signup],
 			::content [email-signup],
-			div[signup-header] ::content h3{
+			div[signup-top] ::content h3{
 				color: #000;
 			}
 			::content #signup_form{
@@ -33,7 +35,7 @@
 
 			<div div-selector>
 
-				<div signup-header layout horizontal justified center>					
+				<div signup-top layout horizontal justified center>					
 					<div flex self-center>
 						<content select="[header-a]"></content>
 					</div>
@@ -45,6 +47,7 @@
 
 				<hr>
 
+				<div signup-middle>
 				<bs-row>
 					<bs-col md="4">
 						<div layout vertical center>
@@ -58,9 +61,11 @@
 						</div>
 					</bs-col>
 				</bs-row>
+				</div>
 
 				<hr>
 
+				<div signup-bottom>
 				<bs-row>
 					<bs-col md="4">
 						<div layout vertical center>
@@ -74,6 +79,7 @@
 						</div>
 					</bs-col>
 				</bs-row>
+				</div>
 
 			</div>
 
