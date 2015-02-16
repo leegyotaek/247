@@ -1,0 +1,76 @@
+<polymer-element name="ml-signup-form" noscript>
+	<template>
+		<style shim-shadowdom>
+			hr{
+				border-width: 0px;
+				border: 0.1em solid #dfdfdf;
+			}
+			div[div-selector]{
+				padding: 10px;
+				margin-top: 10px;
+				margin-bottom: 10px;
+				border-top: 1px solid #efefef;
+			}
+			div[signup-header]{
+				width: 100%;
+			}
+			div[signup-header] ::content h2{
+				font-weight: 600;
+			}
+			div[signup-header] ::content h4>a{
+				font-weight: 600;
+			}
+		</style>
+
+		<paper-shadow z="3">
+
+			<div div-selector>
+
+				<div signup-header layout horizontal justified center>					
+					<div flex self-center>
+						<content select="h2"></content>
+					</div>
+
+					<div flex self-end>
+						<content select="h4"></content>
+					</div>
+				</div>
+
+				<hr>
+
+				<bs-row>
+					<bs-col md="4">
+						<div layout vertical center>
+							<content select="[social-explain]"></content>
+						</div>
+					</bs-col>
+
+					<bs-col md="8">
+						<div layout vertical center>
+							페이스북 구글 가입
+						</div>
+					</bs-col>
+				</bs-row>
+
+				<hr>
+
+				<bs-row>
+					<bs-col md="4">
+						<div layout vertical center>
+							<content select="[email-explain]"></content>
+						</div>
+					</bs-col>
+
+					<bs-col md="8">
+						<div layout vertical center>
+							<content select="#signup_form"></content>
+						</div>
+					</bs-col>
+				</bs-row>
+
+			</div>
+
+		</paper-shadow>
+
+	</template>
+</polymer-element>

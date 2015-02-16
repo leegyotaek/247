@@ -1,0 +1,31 @@
+<!-- 사용할 때 submit helper method에 is:"core-input"을 달아준다. 일단은.. -->
+<polymer-element name="ml-submit-button" noscript>
+	<template>
+		<style shim-shadowdom>
+			:host{
+				display: block;
+				margin: 10px;
+			}
+			#submit_button::shadow .button-content{
+				padding: 0;
+			}
+
+			#submit_button::shadow #ripple{
+				color: black;
+			}
+
+			#submit_button ::content input{
+				cursor: pointer;
+				padding: 0.7em 0.57em;
+				border-radius: 10px;
+				color: #fff;
+				font-weight: 600;
+				background: rgba(244,81,30,0.9);
+			}
+			paper-button{
+				border-radius: 10px;
+			}			
+		</style>
+		<paper-button id="submit_button" raised><content select="input"><content></paper-button>
+	</template>
+</polymer-element>
