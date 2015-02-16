@@ -4,12 +4,14 @@
 
       <ml-signup-form>
 
-      <h2 header-a>계정 만들긔</h2>
+      <h2 header-a>계정 생성</h2>
       <h3 header-b>이미 회원이신가요?<%=link_to'여기', login_path%></h3>
       
-      <h3 social-signup>소셜계정을 이용한 계정 생성</h3>
+          
 
-      <h3 email-signup>이메일을 이용한 계정 생성</h3>          
+          <div social-auth>구글이랑 페북이랑 오아쓰 ㄲ</div>
+
+                    
 
           <%= form_for(@user, :html => {:id => "signup_form"})  do |f| %>
 
