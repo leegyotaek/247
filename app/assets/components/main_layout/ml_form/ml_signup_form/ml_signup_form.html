@@ -6,9 +6,8 @@
 				border: 0.1em solid #dfdfdf;
 			}
 			div[div-selector]{
+				display: block;
 				width: 100%;
-				margin-top: 10px;
-				margin-bottom: 10px;
 				border-top: 1px solid #efefef;
 			}
 			div[signup-top],
@@ -28,6 +27,7 @@
 				color: #000;
 			}
 			::content #signup_form{
+				width: 80%;
 			}
 		</style>
 
@@ -68,9 +68,7 @@
 				<div signup-bottom>
 				<bs-row>
 					<bs-col md="4">
-						<div layout vertical center>
 							<content select="[email-signup]"></content>
-						</div>
 					</bs-col>
 
 					<bs-col md="8">
