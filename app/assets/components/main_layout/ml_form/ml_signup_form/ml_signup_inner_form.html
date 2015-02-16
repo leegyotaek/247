@@ -1,6 +1,6 @@
 <polymer-element name="ml-signup-inner-form" noscript>
 	<template>
-		<style>
+		<style shim-shadowdom>
 			hr{
 				border-width: 0px;
 				margin: 1.2em 0 1.2em 0;
@@ -13,7 +13,7 @@
 				color: #d61d00;
 			}
 		</style>
-
+		
 		<div>
 			<content select="[for=user_name]"></content>
 			<br>

@@ -6,7 +6,7 @@
 				border: 0.1em solid #dfdfdf;
 			}
 			div[div-selector]{
-				padding: 10px;
+				width: 100%;
 				margin-top: 10px;
 				margin-bottom: 10px;
 				border-top: 1px solid #efefef;
@@ -14,11 +14,18 @@
 			div[signup-header]{
 				width: 100%;
 			}
-			div[signup-header] ::content h2{
+			div[signup-header] ::content h2, 
+			div[signup-header] ::content h3>a,
+			::content [social-signup],
+			::content [email-signup]{
 				font-weight: 600;
 			}
-			div[signup-header] ::content h4>a{
-				font-weight: 600;
+			::content [social-signup],
+			::content [email-signup],
+			div[signup-header] ::content h3{
+				color: #000;
+			}
+			::content #signup_form{
 			}
 		</style>
 
@@ -28,11 +35,11 @@
 
 				<div signup-header layout horizontal justified center>					
 					<div flex self-center>
-						<content select="h2"></content>
+						<content select="[header-a]"></content>
 					</div>
 
 					<div flex self-end>
-						<content select="h4"></content>
+						<content select="[header-b]"></content>
 					</div>
 				</div>
 
@@ -41,7 +48,7 @@
 				<bs-row>
 					<bs-col md="4">
 						<div layout vertical center>
-							<content select="[social-explain]"></content>
+							<content select="[social-signup]"></content>
 						</div>
 					</bs-col>
 
@@ -57,7 +64,7 @@
 				<bs-row>
 					<bs-col md="4">
 						<div layout vertical center>
-							<content select="[email-explain]"></content>
+							<content select="[email-signup]"></content>
 						</div>
 					</bs-col>
 
