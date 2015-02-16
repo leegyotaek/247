@@ -8,6 +8,8 @@
 			div[div-selector]{
 				display: block;
 				width: 100%;
+				margin-top: 10px;
+				margin-bottom: 10px;
 				border-top: 1px solid #efefef;
 			}
 			div[signup-top],
@@ -25,6 +27,11 @@
 			::content [email-signup],
 			div[signup-top] ::content h3{
 				color: #000;
+			}
+
+			::content [social-signup],
+			::content [email-signup]{
+				padding: 1rem;
 			}
 			::content #signup_form{
 				width: 80%;
@@ -50,9 +57,7 @@
 				<div signup-middle>
 				<bs-row>
 					<bs-col md="4">
-						<div layout vertical center>
 							<content select="[social-signup]"></content>
-						</div>
 					</bs-col>
 
 					<bs-col md="8">
