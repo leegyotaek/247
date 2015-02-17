@@ -1,7 +1,7 @@
 %h3 오늘의 매칭
 .row
 	.col-md-6.col-md-offset-3
-		=render @matchers
+		=render @pending_matchers
 
 %h3 나와 1:1 매칭을 원하는 친구
 -if @req_matchers.any?
@@ -9,7 +9,14 @@
 		.col-md-6.col-md-offset-3
 			=render  @req_matchers
 -else
-	no requests
+	%small no requests
 
 
 %h3 성사된 외국인 친구
+-if @matchers.any?
+	.row
+		.col-md-6.col-md-offset-3
+			=render  @matchers
+-else
+	%small no matchers
+

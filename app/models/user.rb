@@ -11,16 +11,20 @@ class User < ActiveRecord::Base
 
   
   #matchings
+
+  has_many :complet_relationships, ->{where status: "matched" } , class_name: "Relationship",
+                         foreign_key: "matcher_id",
+                         dependent: :destroy
   has_many :active_relationships, class_name: "Relationship",
                          foreign_key: "matcher_id",
                          dependent: :destroy
-  has_many :passive_relationships, class_name: "Relationship",
+  has_many :passive_relationships, -> { where status: "requested" } , class_name: "Relationship",
                          foreign_key: "matched_id",
                          dependent: :destroy
   
-  has_many :matchings , through: :active_relationships, source: :matched
+  has_many :matchers, through: :complet_relationships, source: :matched
+  has_many :pending_matchers , through: :active_relationships, source: :matched
   has_many :req_matchers, through: :passive_relationships, source: :matcher
-  
 
 
   #friends
@@ -136,8 +140,13 @@ class User < ActiveRecord::Base
 
   def remove_ids # 매칭 성사가 되었던 유저들 id
     remove_ids = ["#{self.id}"]
-    if self.matchings.any?
-    remove_ids << self.matchings.ids 
+    if self.friends.any?
+
+    remove_ids << self.friends.ids
+
+    end
+    if self.pending_matchers.any?
+    remove_ids << self.pending_matchers.ids 
     end
 
     if self.req_matchers.any?
@@ -207,7 +216,7 @@ class User < ActiveRecord::Base
       today_matcher_ids = active_relationships.where(created_at: (Time.now.midnight..Time.now)).map(&:matched_id)
 
     if today_matcher_ids.any?
-      @matchings = matchings.where(id: today_matcher_ids).all 
+      @matchings = pending_matchers.where(id: today_matcher_ids).all 
     else
       @matchings = search_for_matcher
 
