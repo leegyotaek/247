@@ -5,9 +5,8 @@
       <ml-signup-form>
 
       <h1 header-a>계정 생성</h1>
-      <h3 header-b>이미 회원이신가요?<%=link_to'여기', login_path%></h3> 
-
-          <div social-auth>구글이랑 페북이랑 오아쓰 ㄲ</div>                    
+      <h3 header-b>이미 회원이신가요?<%=link_to'여기', login_path%></h3>
+                    
 
           <%= form_for(@user, :html => {:id => "signup_form"})  do |f| %>
 
@@ -33,10 +32,10 @@
               <%= f.password_field :password_confirmation, is:"core-input" %>
             </paper-input-decorator>
 
-            <%= f.label :birthday, "생년월일" %>
-            <paper-input-decorator label="본인의 생년월일을 입력해 주세요." id="signup_birthday">
-              <%= f.date_field :birthday, is:"core-input" %>
-            </paper-input-decorator>
+            <div id="signup_birthday">
+            <%= f.label :birthday, "생년월일" %>            
+              <%= f.date_field :birthday%>
+            </div>
 
             <ml-submit-button id="signup_button"><%= f.submit "계정 생성", is:"core-input"%></ml-submit-button>
 
