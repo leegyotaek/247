@@ -7,17 +7,91 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">   
     <!-- <link href="my_theme.scss" rel="stylesheet" shim-shadowdom/> -->
-    <%= stylesheet_link_tag    'my_theme', media: 'all', 'data-turbolinks-track' => true,'shim-shadowdom':"" %>
+    <%= stylesheet_link_tag    'my_theme', media: 'all', 'data-turbolinks-track' => true,'shim-shadowdom':'nil' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <!--   stylesheet_link_tag 'application', { media: 'all',
                                        'data-turbolinks-track' => true } 
    파라미터로 마지막 인자가 해쉬일경우 중괄호 생략가능, "-"가(data-turbolinks-track) 있을경우 new syntex(data-turbolinks-track: true) 사용못함, hashrocket형으로 표현
   -->
+    <style>
+      body {
+      font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+      font-size: 14px;
+      margin: 0;
+      padding: 24px;
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+      -webkit-touch-callout: none;
+    }
+
+    section {
+      padding: 20px 0;
+    }
+
+    section > div {
+      padding: 14px;
+      font-size: 16px;
+    }
+
+    .card {
+      display: inline-block;
+      background: white;
+      box-sizing: border-box;
+      width: 100px;
+      height: 100px;
+      margin: 16px;
+      padding: 16px;
+      border-radius: 2px;
+    }
+
+    .fab {
+      display: inline-block;
+      background: white;
+      box-sizing: border-box;
+      width: 56px;
+      height: 56px;
+      margin: 16px;
+      padding: 16px;
+      border-radius: 50%;
+      text-align: center;
+    }
+
+  </style>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>      
     <%= html_import_tag "application", 'data-turbolinks-track' => true %>
     <%= render 'layouts/shim' %>    
   </head>
   <body touch-action="auto"> 
+    <template is="auto-binding">
+
+  <section>
+
+    <div>Shadows</div>
+
+    <paper-shadow class="card" z="0">
+      z = 0
+    </paper-shadow>
+
+    <paper-shadow class="card" z="1">
+      z = 1
+    </paper-shadow>
+
+    <paper-shadow class="card" z="2">
+      z = 2
+    </paper-shadow>
+
+    <paper-shadow class="card" z="3">
+      z = 3
+    </paper-shadow>
+
+    <paper-shadow class="card" z="4">
+      z = 4
+    </paper-shadow>
+
+    <paper-shadow class="card" z="5">
+      z = 5
+    </paper-shadow>
+
+  </section>
     <!-- <div hidden>
     
     </div> -->
