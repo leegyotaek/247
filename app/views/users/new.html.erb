@@ -33,8 +33,7 @@
             </paper-input-decorator>
 
             <div id="signup_birthday">
-            <%= f.label :birthday, "생년월일" %>            
-              <%= f.date_field :birthday%>
+              <polymer-date-picker-trigger opened="false"></polymer-date-picker-trigger>
             </div>
 
             <ml-submit-button id="signup_button"><%= f.submit "계정 생성", is:"core-input"%></ml-submit-button>
