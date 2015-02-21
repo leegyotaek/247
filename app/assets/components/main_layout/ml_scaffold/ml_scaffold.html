@@ -1,0 +1,115 @@
+<polymer-element name="ml-scaffold">
+	<template>
+
+		<style shim-shadowdom>
+		:host {
+			display: block;
+		}
+
+		[drawer] {
+			background-color: #fff;
+			box-shadow: 1px 0 1px rgba(0, 0, 0, 0.1);
+		}
+
+		[main] {
+			height: 100%;
+			background-color: #eee;
+		}
+
+		#drawerPanel:not([narrow]) #menuButton {
+			display: none;
+		}
+
+		#drawerPanel:not([narrow]) #navigation_pad{
+			display: none;
+		}
+
+		#menuButton{
+			border-radius: 50%;
+			color: #F4511E;
+			margin-left: 9px;
+			margin-right: 9px;
+		}
+
+
+		[drawer] > ::content core-header-panel a core-toolbar {
+			background-color: #fff;
+			width: 255px;
+		}
+		</style>
+
+		<core-drawer-panel id="drawerPanel" narrow="{{narrow}}" drawerWidth="{{drawerWidth}}" rightDrawer="{{rightDrawer}}" responsiveWidth="{{responsiveWidth}}" disableSwipe="{{disableSwipe}}">
+
+			<div vertical layout drawer>
+
+				<div id="navigation_pad" relative style="height: 64px;">
+				  <div fit></div>
+				</div>
+
+				<content select="[navigation]"></content>
+
+			</div>
+
+			<main-layout id="headerPanel" main mode="{{mode}}">
+
+				<ml-header>
+					<div layout horizontal center>
+						<template if="{{!rightDrawer}}">
+							<paper-icon-button id="menuButton" on-tap="{{togglePanel}}" icon="menu"></paper-icon-button>
+						</template>
+						<div flex>
+							<content select="[ml-header]"></content>
+						</div>
+					</div>
+				</ml-header>
+
+				<ml-body>
+					<content select="[ml-body]"></content>
+				</ml-body>
+
+				<ml-footer>
+					<content select="[ml-footer]"></content>
+				<ml-footer>
+
+			</main-layout>
+
+		</core-drawer-panel>
+
+	</template>
+<script>
+Polymer('ml-scaffold', {
+	publish: {
+		drawerWidth: '256px',
+		responsiveWidth: '991px',
+		rightDrawer: false,
+		disableSwipe: false,
+		mode: {value: 'seamed', reflect: true}
+	},
+
+	ready: function() {
+		this._scrollHandler = this.scroll.bind(this);
+		this.$.headerPanel.addEventListener('scroll', this._scrollHandler);
+	},    
+	detached: function() {
+		this.$.headerPanel.removeEventListener('scroll', this._scrollHandler);
+	},
+	togglePanel: function() {
+		this.$.drawerPanel.togglePanel();
+	},
+	openDrawer: function() {
+		this.$.drawerPanel.openDrawer();
+	},
+	closeDrawer: function() {
+		this.$.drawerPanel.closeDrawer();
+	},
+	get scroller() {
+		return this.$.headerPanel.scroller;
+	},
+
+	scroll: function(e) {
+		this.fire('scroll', {target: e.detail.target}, this, false);
+	}
+
+});
+</script>
+</polymer-element>

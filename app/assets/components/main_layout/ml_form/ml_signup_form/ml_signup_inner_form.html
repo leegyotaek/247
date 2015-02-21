@@ -1,0 +1,62 @@
+<polymer-element name="ml-signup-inner-form" noscript>
+	<template>
+		<style shim-shadowdom>
+			hr{
+				border-width: 0px;
+				margin: 1.2em 0 1.2em 0;
+			}
+			div ::content label{
+				cursor: pointer;
+				font-weight: 600;
+			}
+			div ::content label[fielderrors]{
+				color: #d61d00;
+			}
+		</style>
+
+		<div>
+			<content select="[for=user_name]"></content>
+			<br>
+			<content select="#signup_username"></content>
+		</div>
+
+		<hr>
+
+		<div>
+			<content select="[for=user_email]"></content>
+			<br>
+			<content select="#signup_email"></content>
+		</div>
+
+		<hr>
+
+		<div>
+			<content select="[for=user_password]"></content>
+			<br>
+			<content select="#signup_password"></content>
+		</div>
+
+		<hr>
+
+		<div>
+			<content select="[for=user_password_confirmation]"></content>
+			<br>
+			<content select="#signup_password_confirmation"></content>
+		</div>
+
+		<hr>
+
+		<div>
+			<content select="[for=user_birthday]"></content>
+			<br>
+			<content select="#signup_birthday"></content>
+		</div>
+
+		<hr>
+
+		<div layout vertical center>
+			<content select="#signup_button"></content>
+		</div>
+
+	</template>
+<polymer-element>

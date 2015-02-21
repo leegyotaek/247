@@ -1,0 +1,38 @@
+<polymer-element name="ml-header">
+	<template>
+		<style>			
+           :host {
+                font-size: 14px;
+                background-color: #fff;
+                display: block;
+                color: #2d2d2d;
+                border-bottom: 1px solid #d3d3d3;
+                padding: 0px;
+                white-space: nowrap;
+                /*header를 relative해줌으로써 드로어가 헤더의 밑으로 등장한다.*/
+                position: relative;
+                z-index: 1;
+            }
+            #top-border {
+                font-size: 0px;
+                line-height: 0px;
+                display: block;
+                height: 5px;
+                background-color: #2d2d2d;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                z-index: -1;
+            }         
+		</style>
+		<div id="top-border">&nbsp;</div>
+        <div id="content">
+            <content></content>
+        </div>
+        <div style="clear: both;"></div>
+	</template>
+	<script>
+		Polymer({});
+	</script>
+</polymer-element>

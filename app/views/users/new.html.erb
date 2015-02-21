@@ -1,29 +1,55 @@
-<% provide(:title, '회원가입') %>
-<h1>회원가입페이지</h1>
+<bs-container>
+  <bs-row>
+    <bs-col xc="12" sm="10" smoffset="1" md="8" mdoffset="2">
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@user) do |f| %>
+      <ml-signup-form>
 
-    	 <%= render 'shared/error_messages', object:f.object %>
-      <%= f.label :name, "이름" %>
-      <%= f.text_field :name %>
+      <h1 header-a>계정 생성</h1>
+      <h3 header-b>이미 회원이신가요?<%=link_to'여기', login_path%></h3>
+      
+          
 
-      <%= f.label :email, "email" %>
-      <%= f.text_field :email %>
+          <div social-auth>구글이랑 페북이랑 오아쓰 ㄲ</div>
 
-      <%= f.label :password , "비밀번호"%>
-      <%= f.password_field :password %>
+                    
 
-      <%= f.label :password_confirmation, "비밀번호 확인" %>
-      <%= f.password_field :password_confirmation %>
+          <%= form_for(@user, :html => {:id => "signup_form"})  do |f| %>
 
-      <%= f.label :birthday, "생년월일" %>
-      <%= f.date_field :birthday %>
+          <ml-signup-inner-form>
 
+            <%= f.label :name, "이름" %>
+            <paper-input-decorator label="본명을 지향합니다." id="signup_username">
+              <%= f.text_field :name, is:"core-input" %>
+            </paper-input-decorator>
 
+            <%= f.label :email, "e-mail" %>
+            <paper-input-decorator label="본인의 이메일을 입력해 주세요." id="signup_email">
+              <%= f.text_field :email, is:"core-input" %>
+            </paper-input-decorator>
 
-      <%= f.submit "Create my account", class: "btn btn-primary" %>
-    <% end %>
-  </div>
-</div>
+            <%= f.label :password , "비밀번호"%>
+            <paper-input-decorator label="비밀번호는 6자리 이상입니다." id="signup_password">
+              <%= f.password_field :password, is:"core-input" %>
+            </paper-input-decorator>
+
+            <%= f.label :password_confirmation, "비밀번호 확인" %>
+            <paper-input-decorator label="비밀번호를 확인해 주세요." id="signup_password_confirmation">
+              <%= f.password_field :password_confirmation, is:"core-input" %>
+            </paper-input-decorator>
+
+            <%= f.label :birthday, "생년월일" %>
+            <paper-input-decorator label="본인의 생년월일을 입력해 주세요." id="signup_birthday">
+              <%= f.date_field :birthday, is:"core-input" %>
+            </paper-input-decorator>
+
+            <ml-submit-button id="signup_button"><%= f.submit "계정 생성", is:"core-input"%></ml-submit-button>
+
+          </ml-signup-inner-form>  
+
+          <% end %>
+
+      </ml-signup-form>
+
+    </bs-col>
+  </bs-row>
+</bs-container>

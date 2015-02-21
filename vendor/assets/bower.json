@@ -4,6 +4,6 @@
     "polymer": "git://github.com/Polymer/polymer",
     "polymer-core-elements": "git://github.com/Polymer/core-elements",
     "polymer-paper-elements": "git://github.com/Polymer/paper-elements",
-    "polymer-themes": "latest"
+    "twbs-grid": "latest"
   }
 }

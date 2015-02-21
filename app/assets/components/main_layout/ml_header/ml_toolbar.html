@@ -1,0 +1,183 @@
+<polymer-element name="ml-toolbar" noscript attributes="isPhone isTablet">
+    <template>
+        <style>       
+            /**************************************************************/
+            /* 
+                스타일링 툴바
+             */
+            /**************************************************************/
+            .mo-tb-leftToolbar > ::content a.mo-tb-left {
+                font-weight: 700;
+                float: left;
+                display: inline-block;
+                text-transform: uppercase;
+                text-decoration: none;
+                padding: 20px 20px;
+                margin-top: 5px;
+                border-bottom: 1px solid #fff;
+                color: #2d2d2d;
+                position: relative;
+            }
+            .mo-tb-leftToolbar > ::content a.mo-tb-left[active] {
+                margin-top: 0px;
+                border-top: 5px solid #f4511e;
+                border-bottom-color: #f4511e;
+                background-color: #f3f3f3;
+                color: #f4511e;
+            }
+            .mo-tb-leftToolbar > ::content a.mo-tb-left:hover {
+                background-color: #f3f3f3;
+                border-bottom-color: #f4511e;
+            }
+            .mo-tb-leftToolbar > ::content a.mo-tb-left:hover,
+            .mo-tb-leftToolbar > ::content a.mo-tb-left:active,
+            .mo-tb-leftToolbar > ::content a.mo-tb-left:focus{
+                color: #f4511e;
+                text-decoration: none;
+            }
+            .mo-tb-leftToolbar > ::content a.mo-tb-left[active]:after {
+                content: '';
+                display: inline-block;
+                position: absolute;
+                bottom: -6px;
+                left: 50%;
+                width: 0;
+                height: 0;
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-top: 5px solid #f4511e;
+                margin-left: -3px;
+            }
+
+            /**************************************************************/
+            /* 
+                none스타일링 툴바
+             */
+            /**************************************************************/
+            .mo-tb-fixedToolbar > ::content a.mo-tb-fixed, 
+            .mo-tb-rightToolbar > ::content a.mo-tb-right {
+                font-weight: 700;
+                float: left;
+                display: inline-block;
+                text-transform: uppercase;
+                text-decoration: none;
+                padding: 20px 20px;
+                margin-top: 5px;
+                margin-bottom: 1px;
+                color: #2d2d2d;
+                position: relative;
+            }
+            .mo-tb-fixedToolbar > ::content a.mo-tb-fixed[active], 
+            .mo-tb-rightToolbar > ::content a.mo-tb-right[active],
+            .mo-tb-fixedToolbar > ::content a.mo-tb-fixed:hover, 
+            .mo-tb-rightToolbar > ::content a.mo-tb-right:hover,
+            .mo-tb-fixedToolbar > ::content a.mo-tb-fixed:active, 
+            .mo-tb-rightToolbar > ::content a.mo-tb-right:active,
+            .mo-tb-fixedToolbar > ::content a.mo-tb-fixed:focus, 
+            .mo-tb-rightToolbar > ::content a.mo-tb-right:focus {
+                color: #f4511e;
+                text-decoration: none;
+            }
+
+            /****************************************************************/
+            /*
+                사용되는 엘리먼트 스타일링
+            */
+            /****************************************************************/
+            core-menu-button {
+                margin: 6px 4px 6px;
+            }
+            core-menu-button core-menu {
+                margin: 0px;
+                border: 1px solid #f3f3f3;
+            }
+            core-menu-button ::content a {
+                display: block;
+                text-transform: uppercase;
+                text-decoration: none;
+                padding: 7px 20px;
+                color: #444444;
+                margin: 0px;
+            }
+            core-menu-button ::content a[active],
+            core-menu-button ::content a:hover,
+            core-menu-button ::content a:active,
+            core-menu-button ::content a:focus {
+                color: #f4511e;
+            }
+            core-menu-button ::content a:hover {
+                background-color: #f3f3f3;
+            }
+            core-menu-button::shadow core-menu {
+                margin: 0px;
+            }
+            hr {
+                border: 0;
+                height: 0;
+                border-top: 1px solid rgba(0, 0, 0, 0.1);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+                margin: 6px;
+            }
+        </style>
+
+        <!-- Phone -->
+        <template if="{{isPhoneQuery}}">
+            <div horizontal layout center>
+                <div class="mo-tb-leftToolbar">
+                    <content select=".mo-tb-left"></content>
+                </div>
+                <div flex></div>
+                <core-menu-button>
+                    <core-icon-button icon="menu"></core-icon-button>
+                    <core-dropdown class="dropdown" halign="right">
+                        <core-menu>
+                            <content select=".mo-tb-fixed"></content>
+                            <hr/>
+                            <content select=".mo-tb-right"></content>
+                        </core-menu>
+                    </core-dropdown>
+                </core-menu-button>
+            </div>
+        </template>
+
+        <!-- Tablet -->
+        <template if="{{isTabletQuery && !isPhoneQuery}}">
+            <div horizontal layout center>
+                <div class="mo-tb-leftToolbar">
+                    <content select=".mo-tb-left"></content>
+                </div>
+                <div flex></div>
+                <div class="mo-tb-rightToolbar">
+                    <content select=".mo-tb-right"></content>
+                </div>                
+                <core-menu-button>
+                    <core-icon-button icon="menu"></core-icon-button>
+                    <core-dropdown class="dropdown"  halign="right">
+                        <core-menu>
+                            <content select=".mo-tb-fixed"></content>        
+                        </core-menu>
+                    </core-dropdown>
+                </core-menu-button>
+            </div>
+        </template>
+
+        <!-- Desktop -->
+        <div horizontal layout center>
+            <div class="mo-tb-leftToolbar">
+                <content select=".mo-tb-left"></content>
+            </div>
+            <div flex></div>
+            <div class="mo-tb-rightToolbar">
+                <content select=".mo-tb-right"></content>
+            </div>
+            <div class="mo-tb-fixedToolbar">
+                <content select=".mo-tb-fixed"></content>
+            </div>
+        </div>
+
+        <core-media-query query="max-width: {{isPhone}}" queryMatches="{{isPhoneQuery}}"></core-media-query>
+        <core-media-query query="max-width: {{isTablet}}" queryMatches="{{isTabletQuery}}"></core-media-query>
+        
+
+    </template>
+</polymer-element>

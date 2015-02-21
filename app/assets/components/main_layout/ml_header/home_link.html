@@ -1,0 +1,23 @@
+<polymer-element name="home-link" noscript>
+    <template>
+        <style>
+        :host {
+            margin: 12px 10px 0px 10px;
+            display: inline-block;
+            float: left;
+        }
+        h1 {
+            margin:0px;
+            font-family:'Open Sans', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            display: inline;
+        }
+        h1 > a, h1 > a:hover, h1 > a:active, h1 > a:focus {
+            color: #2d2d2d;
+            text-decoration: none;
+        }
+        </style>
+        <h1><content></content></h1>
+    </template>
+</polymer-element>
