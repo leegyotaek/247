@@ -3,25 +3,18 @@
 		<style shim-shadowdom>
 			hr{
 				border-width: 0px;
-				border: 0.1em solid #dfdfdf;
+				border: 0.1rem solid #dfdfdf;
 			}
 
-			div[container]{
-				display: block;
+			.container{
+				display: inline-block;
 				width: 100%;
-				margin-top: 10px;
-				margin-bottom: 10px;
-				border-top: 1px solid #efefef;
+				margin-top: 1rem;
+				margin-bottom: 1rem;
 			}
 
-			div[signup-top],
-			div[signup-middle],
-			div[signup-bottom]{
-				width: 100%;
-			}
-
-			div[signup-top] ::content h2, 
-			div[signup-top] ::content h3>a,
+			.signup-top ::content h2, 
+			.signup-top ::content h3>a,
 			[social-signup],
 			[email-signup]{
 				font-weight: 600;
@@ -29,7 +22,7 @@
 
 			[social-signup],
 			[email-signup],
-			div[signup-top] ::content h3{
+			.signup-top ::content h3{
 				color: #000;
 			}
 
@@ -43,11 +36,9 @@
 			}
 		</style>
 
-		<paper-shadow z="3">
+			<div class="container">
 
-			<div container>
-
-				<div signup-top layout horizontal center>					
+				<div class="signup-top" layout horizontal center>					
 					<div flex self-center>
 						<content select="[header-a]"></content>
 					</div>
@@ -59,40 +50,38 @@
 
 				<hr>
 
-				<div signup-middle>
-				<bs-row>
-					<bs-col md="4">
-							<h3 social-signup>소셜계정을 이용한 계정 생성</h3>
-					</bs-col>
+				<div class="signup-middle">
+					<bs-row>
+						<bs-col md="4">
+								<h3 social-signup>소셜계정을 이용한 계정 생성</h3>
+						</bs-col>
 
-					<bs-col md="8">
-						<div layout vertical center>
-							<content select="social-auth"></content>
-						</div>
-					</bs-col>
-				</bs-row>
+						<bs-col md="8">
+							<div layout vertical center>
+								<content select="social-auth"></content>
+							</div>
+						</bs-col>
+					</bs-row>
 				</div>
 
 				<hr>
 
-				<div signup-bottom>
-				<bs-row>
-					<bs-col md="4">
-							<h3 email-signup>이메일을 이용한 계정 생성</h3>
-							<ml-highlight><h5 email-caution>빈칸을 모두 채워 주세요.</h5></ml-highlight>
-					</bs-col>
+				<div class="signup-bottom">
+					<bs-row>
+						<bs-col md="4">
+								<h3 email-signup>이메일을 이용한 계정 생성</h3>
+								<ml-highlight><h5 email-caution>빈칸을 모두 채워 주세요.</h5></ml-highlight>
+						</bs-col>
 
-					<bs-col md="8">
-						<div layout vertical center>
-							<content select="#signup_form"></content>
-						</div>
-					</bs-col>
-				</bs-row>
+						<bs-col md="8">
+							<div layout vertical center>
+								<content select="#signup_form"></content>
+							</div>
+						</bs-col>
+					</bs-row>
 				</div>
 
 			</div>
-
-		</paper-shadow>
 
 	</template>
 </polymer-element>
