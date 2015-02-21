@@ -12,6 +12,18 @@
 			div ::content label[fielderrors]{
 				color: #d61d00;
 			}
+			div ::content #signup_birthday input {
+				border: 1px solid #DDDDDD; 
+				background-color: #EEEEEE; 
+				color:#555555; 
+				padding: 0.4rem;
+				min-width: 100px; 
+				border-radius: 4px; 
+			}
+          	div ::content #signup_birthday input:hover {
+          		border: 1px solid #44B4E4; 
+          		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
+          	}
 		</style>
 
 		<div>
@@ -47,8 +59,6 @@
 		<hr>
 
 		<div>
-			<content select="[for=user_birthday]"></content>
-			<br>
 			<content select="#signup_birthday"></content>
 		</div>
 
