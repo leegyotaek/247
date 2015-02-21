@@ -1,4 +1,4 @@
-<polymer-element name="polymer-date-picker-trigger" attributes="range selectedDate startDate endDate halign opened">
+<polymer-element name="polymer-date-picker-trigger" attributes="range selectedDate startDate endDate halign opened name">
       <template>
         <style>
           input.date {border: 1px solid #DDDDDD; background-color: #EEEEEE; color:#555555; min-width: 200px; padding: 8px 10px; margin: 10px; border-radius: 4px; }
@@ -6,11 +6,11 @@
         </style>
         <template if="{{range != null}}">
           <polymer-date-picker id="datePicker" range startDate="{{startDate}}" endDate="{{endDate}}" relatedTarget="{{$.triggerRange}}" opened="{{opened}}" selected="custom" showRanges="true" timezone="America/New_York"></polymer-date-picker>
-          <input id="triggerRange" value="{{startDate}} to {{endDate}}" on-click="{{toggle}}" readonly class="date">
+          <input type="date" id="triggerRange" value="{{startDate}} to {{endDate}}" on-click="{{toggle}}" readonly class="date" name="{{name}}">
         </template>
         <template if="{{range == null}}">
           <polymer-date-picker id="datePicker" selectedDate="{{selectedDate}}" relatedTarget="{{$.trigger}}" opened="{{opened}}"></polymer-date-picker>
-          <input id="trigger" value="{{selectedDate}}" on-click="{{toggle}}" readonly class="date">
+          <input type="date" id="trigger" value="{{selectedDate}}" on-click="{{toggle}}" readonly class="date" name="{{name}}">
         </template>
       </template>
       <script>

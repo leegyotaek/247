@@ -5,6 +5,7 @@
     "polymer-core-elements": "git://github.com/Polymer/core-elements",
     "polymer-paper-elements": "git://github.com/Polymer/paper-elements",
     "twbs-grid": "latest",
-    "polymer-date-picker": "latest"
+    "polymer-date-picker": "latest",
+    "webshim": "latest"
   }
 }
