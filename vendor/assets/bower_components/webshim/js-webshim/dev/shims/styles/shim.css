@@ -511,7 +511,7 @@ progress.ws-style::-webkit-progress-value {
   top: 0;
   bottom: 0;
   height: 100%;
-  background: #0063a6 url(<%= asset_path 'webshim/js-webshim/dev/shims/styles/progress.png' %>);
+  background: #0063a6 url(progress.png);
   border: 0;
 }
 progress.ws-style::-moz-progress-bar {
@@ -519,7 +519,7 @@ progress.ws-style::-moz-progress-bar {
   top: 0;
   bottom: 0;
   height: 100%;
-  background: #0063a6 url(<%= asset_path 'webshim/js-webshim/dev/shims/styles/progress.png' %>);
+  background: #0063a6 url(progress.png);
   border: 0;
 }
 progress.ws-style::-ms-fill {
@@ -528,7 +528,7 @@ progress.ws-style::-ms-fill {
   top: 0;
   bottom: 0;
   height: 100%;
-  background: #0063a6 url(<%= asset_path 'webshim/js-webshim/dev/shims/styles/progress.png' %>);
+  background: #0063a6 url(progress.png);
   border: 0;
 }
 progress.ws-style > span.progress-value {
@@ -537,24 +537,24 @@ progress.ws-style > span.progress-value {
   top: 0;
   bottom: 0;
   height: 100%;
-  background: #0063a6 url(<%= asset_path 'webshim/js-webshim/dev/shims/styles/progress.png' %>);
+  background: #0063a6 url(progress.png);
   border: 0;
 }
 progress.ws-style:indeterminate::-webkit-progress-bar {
-  background-image: url(<%= asset_path 'webshim/js-webshim/dev/shims/styles/progress.gif' %>);
+  background-image: url(progress.gif);
 }
 progress.ws-style:indeterminate::-moz-progress-bar {
-  background-image: url(<%= asset_path 'webshim/js-webshim/dev/shims/styles/progress.gif' %>);
+  background-image: url(progress.gif);
 }
 progress.ws-style:indeterminate {
   animation-name: none;
-  background-image: url(<%= asset_path 'webshim/js-webshim/dev/shims/styles/progress.gif' %>);
+  background-image: url(progress.gif);
 }
 progress.ws-style.ws-indeterminate > span.progress-value {
   display: block !important;
   width: 100%;
   right: 0;
-  background-image: url(<%= asset_path 'webshim/js-webshim/dev/shims/styles/progress.gif' %>);
+  background-image: url(progress.gif);
 }
 
 details {
@@ -657,7 +657,7 @@ summary.summary-has-focus {
   cursor: not-allowed;
 }
 .ws-custom-file .ws-coverfile {
-  background: url(<%= asset_path 'webshim/js-webshim/dev/shims/styles/transparent.png' %>);
+  background: url(transparent.png);
   z-index: 10;
   cursor: pointer;
 }

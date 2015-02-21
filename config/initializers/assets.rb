@@ -8,7 +8,5 @@ Rails.application.config.assets.version = '1.0'
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-Rails.application.config.assets.precompile += %w( my_theme.css )
-Rails.application.config.assets.precompile += %w( custom.js )
-Rails.application.config.assets.precompile += %w( shims/styles/shim.css )
-Rails.application.config.assets.precompile += %w( shims/form-core.js )
+ Rails.application.config.assets.precompile += %w( custom.js )
+ Rails.application.config.assets.precompile += %w( my_theme.css )

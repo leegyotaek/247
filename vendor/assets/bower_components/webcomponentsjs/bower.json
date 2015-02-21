@@ -1,5 +1,6 @@
 {
   "name": "webcomponentsjs",
+  "main": "webcomponents.js",
   "version": "0.5.5",
   "homepage": "http://webcomponents.org",
   "authors": [
