@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.2.0'
+
 gem 'rails',                '4.2.0'
 gem 'bcrypt',               '3.1.7'
 gem 'faker',          '1.4.2' # make sample users with semi-realistic names and email addresses
