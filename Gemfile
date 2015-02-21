@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.2.0'
 
 gem 'rails',                '4.2.0'
 gem 'bcrypt',               '3.1.7'
@@ -26,6 +27,7 @@ gem 'language_select', '~> 0.0.2'
 gem 'country_select', '~> 2.1.0'
 gem 'bower-rails'
 gem 'emcee'
+gem 'webshims-rails'
 
 
 group :development, :test do

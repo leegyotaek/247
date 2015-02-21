@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>LanguageApp|<%= yield(:title) %></title>    
+    <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -10,7 +11,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= html_import_tag "application", 'data-turbolinks-track' => true%>  
     <%= render 'layouts/shim' %>  
-    <%= csrf_meta_tags %>
+    
   </head>
 
   <body touch-action="auto">
