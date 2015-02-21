@@ -7,7 +7,7 @@ class StaticPagesController < ApplicationController
 
 
   def matching
-
+    @matchers = current_user.matchers
     @req_matchers = current_user.req_matchers
 
     
@@ -21,9 +21,9 @@ class StaticPagesController < ApplicationController
   if logged_in?
 
 
-  @matchers ||= current_user.matchings_for_today
+  @pending_matchers ||= current_user.matchings_for_today
   
-  if @matchers.empty?
+  if @pending_matchers.empty?
   flash.now[:danger] = "no matchings , set your matching option again"
   end
  

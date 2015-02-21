@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150130170223) do
+ActiveRecord::Schema.define(version: 20150206063639) do
 
   create_table "friendships", force: :cascade do |t|
     t.integer  "user_id"
@@ -65,13 +65,15 @@ ActiveRecord::Schema.define(version: 20150130170223) do
   create_table "relationships", force: :cascade do |t|
     t.integer  "matcher_id"
     t.integer  "matched_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "status",     default: "pending"
   end
 
   add_index "relationships", ["matched_id"], name: "index_relationships_on_matched_id"
   add_index "relationships", ["matcher_id", "matched_id"], name: "index_relationships_on_matcher_id_and_matched_id", unique: true
   add_index "relationships", ["matcher_id"], name: "index_relationships_on_matcher_id"
+  add_index "relationships", ["status"], name: "index_relationships_on_status"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
