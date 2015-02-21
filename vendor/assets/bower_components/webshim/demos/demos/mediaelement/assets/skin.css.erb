@@ -69,13 +69,13 @@
     width: 32px;
     height: 32px;
     cursor: pointer;
-    background: transparent url(next-horizontal.png) no-repeat 0 0;
+    background: transparent url(<%= asset_path 'webshim/demos/demos/mediaelement/assets/next-horizontal.png' %>) no-repeat 0 0;
 }
 
 .jcarousel-skin-tango .jcarousel-direction-rtl .jcarousel-next-horizontal {
     left: 5px;
     right: auto;
-    background-image: url(prev-horizontal.png);
+    background-image: url(<%= asset_path 'webshim/demos/demos/mediaelement/assets/prev-horizontal.png' %>);
 }
 
 .jcarousel-skin-tango .jcarousel-next-horizontal:hover,
@@ -102,13 +102,13 @@
     width: 32px;
     height: 32px;
     cursor: pointer;
-    background: transparent url(prev-horizontal.png) no-repeat 0 0;
+    background: transparent url(<%= asset_path 'webshim/demos/demos/mediaelement/assets/prev-horizontal.png' %>) no-repeat 0 0;
 }
 
 .jcarousel-skin-tango .jcarousel-direction-rtl .jcarousel-prev-horizontal {
     left: auto;
     right: 5px;
-    background-image: url(next-horizontal.png);
+    background-image: url(<%= asset_path 'webshim/demos/demos/mediaelement/assets/next-horizontal.png' %>);
 }
 
 .jcarousel-skin-tango .jcarousel-prev-horizontal:hover, 
@@ -138,7 +138,7 @@
     width: 32px;
     height: 32px;
     cursor: pointer;
-    background: transparent url(next-vertical.png) no-repeat 0 0;
+    background: transparent url(<%= asset_path 'webshim/demos/demos/mediaelement/assets/next-vertical.png' %>) no-repeat 0 0;
 }
 
 .jcarousel-skin-tango .jcarousel-next-vertical:hover,
@@ -165,7 +165,7 @@
     width: 32px;
     height: 32px;
     cursor: pointer;
-    background: transparent url(prev-vertical.png) no-repeat 0 0;
+    background: transparent url(<%= asset_path 'webshim/demos/demos/mediaelement/assets/prev-vertical.png' %>) no-repeat 0 0;
 }
 
 .jcarousel-skin-tango .jcarousel-prev-vertical:hover,
@@ -212,7 +212,7 @@ height: 70px;
 
 /*
 .jcarousel-skin-tango .jcarousel-prev-horizontal {
-background-image: url(../images/prev-horizontal.png);
+background-image: url(<%= asset_path 'webshim/demos/demos/mediaelement/images/prev-horizontal.png' %>);
 top: 24px;
 left: -7px;
 }
@@ -220,7 +220,7 @@ left: -7px;
 
 /*
 .jcarousel-skin-tango .jcarousel-next-horizontal {
-background-image: url(../images/next-horizontal.png);
+background-image: url(<%= asset_path 'webshim/demos/demos/mediaelement/images/next-horizontal.png' %>);
 top: 24px;
 right: -7px;
 }

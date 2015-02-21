@@ -6,7 +6,6 @@
     "Alfonso Aguilar <laltfuns@gmail.com>"
   ],
   "description": "The Bootstrap Grid System Web Component",
-  "main": "twbs-grid.html",
   "keywords": [
     "web-components",
     "grid",
