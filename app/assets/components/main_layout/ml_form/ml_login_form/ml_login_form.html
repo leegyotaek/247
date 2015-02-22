@@ -1,17 +1,29 @@
 <polymer-element name="ml-login-form" noscript>
-	<template>
-		
-			<div layout vertical center style="height:400px">
+	<template>		
+		<style>
+			.container{
+				display: inline-block;
+				width: 100%;
+				margin-top: 1em;
+				margin-bottom: 1em;
+			}
 
-			    <content select="h2"></content>		
+			::content #login_form{
+				width: 80%;
+			}
+		</style>
 
-				<div flex>					
-					<content select="#login_form"></content>
-				</div>
+		<div class="container">
 
-			    <content select="#login_signup"></content>	
-			    
-		    </div>
+		    <content select="h2"></content>		
+
+			<div layout vertical center>					
+				<content select="#login_form"></content>
+			</div>
+
+		    
+		    
+	    </div>
 
 	</template>
 </polymer-element>

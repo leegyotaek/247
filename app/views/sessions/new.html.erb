@@ -25,11 +25,11 @@
             
             <ml-submit-button id="login_button"><%= f.submit "로그인",is:"core-input"%></ml-submit-button>
 
+            <span id="login_signup">New user? <%= link_to "Sign up now!", signup_path %></span>
+
           </ml-login-inner-form>
 
         <% end %>
-
-        <p id="login_signup">New user? <%= link_to "Sign up now!", signup_path %></p>
 
       </ml-login-form>
       
