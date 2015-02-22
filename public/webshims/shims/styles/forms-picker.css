@@ -350,7 +350,7 @@ SASS:
 }
 .input-picker .picker-list td > button {
   display: block;
-  padding: 1.58992em 0;
+  /*padding: 1.58992em 0;*/
   width: 100%;
   color: #000;
   background-color: #fff;
