@@ -1,11 +1,11 @@
 <polymer-element name="ml-login-form" noscript>
 	<template>		
 		<style shim-shadowdom>
-			.container{
+			:host{
 				display: block;
 				width: 100%;
-				margin-top: 1em;
-				margin-bottom: 1em;
+				margin-top: 1rem;
+				margin-bottom: 1rem;
 			}
 
 			::content #login_form{
@@ -13,15 +13,11 @@
 			}
 		</style>
 
-		<div class="container">
-
 		    <content select="h2"></content>		
 
 			<div layout vertical center>					
 				<content select="#login_form"></content>
-			</div>		    
-		    
-	    </div>
+			</div>
 
 	</template>
 </polymer-element>

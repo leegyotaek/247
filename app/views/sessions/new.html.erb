@@ -23,9 +23,9 @@
               <span>Remember me on this computer</span>
             <% end %>
             
-            <ml-submit-button id="login_button"><%= f.submit "로그인",is:"core-input"%></ml-submit-button>
+            <ml-submit-button class="login_bottom"><%= f.submit "로그인",is:"core-input"%></ml-submit-button>
 
-            <span id="login_signup">New user? <%= link_to "Sign up now!", signup_path %></span>
+            <span class="login_bottom">New user? <%= link_to "Sign up now!", signup_path %></span>
 
           </ml-login-inner-form>
 

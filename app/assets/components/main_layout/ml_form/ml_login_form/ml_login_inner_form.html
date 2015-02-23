@@ -1,4 +1,4 @@
-<polymer-element name="ml-login-inner-form" noscript>
+<!-- <polymer-element name="ml-login-inner-form" noscript>
 	<template>
 		<style>
 			.login_bottom{
@@ -27,15 +27,15 @@
 			<div flex></div>
 		</div>
 	</template>
-</polymer-element>
-<!-- <polymer-element name="ml-login-inner-form" noscript>
+</polymer-element> -->
+<polymer-element name="ml-login-inner-form" noscript>
 	<template>
-		<style>
+		<style shim-shadowdom>
 			::content .login_bottom{
 				position: relative;
 				display: inline-block;
 				float: left;
-				margin: 0.1em;
+				margin: 0.2rem;
 			}
 		</style>
 		<content select="#login_email"></content>
@@ -51,4 +51,4 @@
 			<div flex></div>
 		</div>
 	</template>
-</polymer-element> -->
+</polymer-element>
