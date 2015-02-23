@@ -1,21 +1,19 @@
 <polymer-element name="ml-login-inner-form" noscript>
 	<template>
-		<style>
-			.bottom_container{
-				display: block;
-				width: 100%;
-			}
-		</style>
 		<content select="#login_email"></content>
 		<content select="#login_password"></content>
 		<content select="#login_checkbox"></content>
 		<br>
 		<br>
-		<div class="bottom_container">
-			<div layout horizontal center>
-				<content select="#login_button"></content>
-				<content select="#login_signup"></content>
-			</div>
+		<div layout vertical center>
+			<bs-low>
+				<bs-col xs="4">
+					<content select="#login_button"></content>
+				</bs-col>
+				<bs-col xs="8">
+					<content select="#login_signup"></content>
+				</bs-col>
+			</bs-low>
 		</div>
 	</template>
 </polymer-element>
