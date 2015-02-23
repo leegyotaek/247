@@ -5,22 +5,16 @@
     
     :host {
       display: block;
+      height: 100%;
+      width: 100%;
+      background-color: #2d2d2d;
+      color: #8f8f8f;
     }
     
     [drawer] {
       background-color: #fff;
       box-shadow: 1px 0 1px rgba(0, 0, 0, 0.1);
-    }
-    
-    [main] {
-      height: 100%;
-      background-color: #eee;
-    }
-    
-    core-toolbar {
-      background-color: #526E9C;
-      color: #fff;
-    }
+    }    
     
     #drawerPanel:not([narrow]) #menuButton {
       display: none;
@@ -28,25 +22,32 @@
     
   </style>
 
-  <core-drawer-panel id="drawerPanel" narrow="{{narrow}}" drawerWidth="{{drawerWidth}}" responsiveWidth="{{responsiveWidth}}" disableSwipe="{{disableSwipe}}">
+  <core-drawer-panel id="drawerPanel" narrow="{{narrow}}" drawerWidth="{{drawerWidth}}" rightDrawer="{{rightDrawer}}" responsiveWidth="{{responsiveWidth}}" disableSwipe="{{disableSwipe}}">
 
     <div vertical layout drawer>
-
       <content select="[navigation], nav"></content>
-
     </div>
     
     <core-header-panel id="headerPanel" main mode="{{mode}}">
-
-      <div >
+      <ml-header>
+        <template if="{{!rightDrawer}}">
           <core-icon-button id="menuButton" icon="menu" on-tap="{{togglePanel}}"></core-icon-button>
-          <content select="[tool]"></content>
-      </div>
+        </template>
+        <content select="[header]"></content>
+        <template if="{{rightDrawer}}">
+          <core-icon-button id="menuButton" icon="menu" on-tap="{{togglePanel}}"></core-icon-button>
+        </template>
+      </ml-header>
       
-      <content select="*"></content>
+      <ml-body>
+        <content select="[body]"></content>
+      </ml-body>
+
+      <ml-footer>        
+        <content select="[footer]"></content>
+      </ml-footer>
       
     </core-header-panel>
-
   </core-drawer-panel>
 
 </template>
@@ -102,6 +103,8 @@
        * @type boolean
        * @default false
        */
+      rightDrawer: false,
+
       /**
        * If true, swipe to open/close the drawer is disabled.
        *
