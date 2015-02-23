@@ -1,8 +1,7 @@
 <polymer-element name="ml-login-inner-form" noscript>
 	<template>
 		<style>
-			::content #login_button,
-			::content #login_signup {
+			::content .login_bottom{
 				position: relative;
 				display: inline-block;
 				float: left;
@@ -14,10 +13,11 @@
 		<content select="#login_checkbox"></content>
 		<br>
 		<br>
-		<div layout horizontal center>
+		<div layout horizontal>
 			<div flex></div>
-			<content select="#login_button"></content>
-			<content select="#login_signup"></content>
+			<div>
+				<content select=".login_bottom"></content>
+			</div>
 			<div flex></div>
 		</div>
 	</template>
