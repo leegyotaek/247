@@ -1,6 +1,6 @@
 <polymer-element name="ml-login-form" noscript>
 	<template>		
-		<style>
+		<style shim-shadowdom>
 			.container{
 				display: inline-block;
 				width: 100%;
@@ -19,9 +19,7 @@
 
 			<div layout vertical center>					
 				<content select="#login_form"></content>
-			</div>
-
-		    
+			</div>		    
 		    
 	    </div>
 

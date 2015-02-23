@@ -1,16 +1,23 @@
 <polymer-element name="ml-login-inner-form" noscript>
 	<template>
+		<style>
+			.bottom_container{
+				display: block;
+				width: 100%;
+			}
+		</style>
 		<content select="#login_email"></content>
 		<content select="#login_password"></content>
 		<content select="#login_checkbox"></content>
 		<br>
 		<br>
-		<div layout vertical center>
+		<div class="bottom_container" layout vertical center>
 			<div layout horizontal center>
 				<div>
 				<content select="#login_button"></content>
 				</div>
-				<div flex></div>
+				&nbsp;
+				&nbsp;
 				<div>
 				<content select="#login_signup"></content>	
 				</div>
