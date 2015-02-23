@@ -11,13 +11,11 @@
 		<content select="#login_checkbox"></content>
 		<br>
 		<br>
-		<bs-low>
-			<bs-col xs="4" sm="3">
-				<content select="#login_button"></content>
-			</bs-col>
-			<bs-col xs="8" sm="9">
-				<content select="#login_signup"></content>
-			</bs-col>
-		</bs-low>
+		<div layout horizontal center>
+			<div flex></div>
+			<content select="#login_button"></content>
+			<content select="#login_signup"></content>
+			<div flex></div>
+		</div>
 	</template>
 </polymer-element>
