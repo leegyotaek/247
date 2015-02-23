@@ -1,11 +1,42 @@
 <polymer-element name="ml-login-inner-form" noscript>
 	<template>
 		<style>
+			#login_button,
+			#login_signup{
+				position: relative;
+				display: inline-block;
+				float: left;
+			}
+			::content #login_button,
+			::content #login_signup {
+				margin: 0.2em
+			}
+		</style>
+		<content select="#login_email"></content>
+		<content select="#login_password"></content>
+		<content select="#login_checkbox"></content>
+		<br>
+		<br>
+		<div layout horizontal center>
+			<div flex></div>
+			<div id="login_button" self-center>
+				<content select="#login_button"></content>
+			</div>
+			<div id="login_signup"self-end>
+				<content select="#login_signup"></content>
+			</div>
+			<div flex></div>
+		</div>
+	</template>
+</polymer-element>
+<!-- <polymer-element name="ml-login-inner-form" noscript>
+	<template>
+		<style>
 			::content .login_bottom{
 				position: relative;
 				display: inline-block;
 				float: left;
-				margin: 0.1em
+				margin: 0.1em;
 			}
 		</style>
 		<content select="#login_email"></content>
@@ -21,4 +52,4 @@
 			<div flex></div>
 		</div>
 	</template>
-</polymer-element>
+</polymer-element> -->
