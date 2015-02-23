@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   before_action :admin_user, only: :destroy
 
   layout 'scaffold_layout', :only => [:index, :show]
+  
   def new
   @user = User.new
   end
