@@ -162,18 +162,20 @@
         </template>
 
         <!-- Desktop -->
-        <div horizontal layout>
-            <div class="mo-tb-leftToolbar">
-                <content select=".mo-tb-left"></content>
+        <template if="{{!isTabletQuery && !isPhoneQuery}}">
+            <div horizontal layout>
+                <div class="mo-tb-leftToolbar">
+                    <content select=".mo-tb-left"></content>
+                </div>
+                <div flex></div>
+                <div class="mo-tb-rightToolbar">
+                    <content select=".mo-tb-right"></content>
+                </div>
+                <div class="mo-tb-fixedToolbar">
+                    <content select=".mo-tb-fixed"></content>
+                </div>
             </div>
-            <div flex></div>
-            <div class="mo-tb-rightToolbar">
-                <content select=".mo-tb-right"></content>
-            </div>
-            <div class="mo-tb-fixedToolbar">
-                <content select=".mo-tb-fixed"></content>
-            </div>
-        </div>
+        </template>
 
         <core-media-query query="max-width: {{isPhone}}" queryMatches="{{isPhoneQuery}}"></core-media-query>
         <core-media-query query="max-width: {{isTablet}}" queryMatches="{{isTabletQuery}}"></core-media-query>        
