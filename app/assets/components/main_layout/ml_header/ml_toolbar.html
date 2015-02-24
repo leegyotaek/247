@@ -122,14 +122,14 @@
 
         <!-- Phone -->
         <template if="{{isPhoneQuery}}">
-            <div horizontal layout center>
+            <div horizontal layout>
                 <div class="mo-tb-leftToolbar">
                     <content select=".mo-tb-left"></content>
                 </div>
                 <div flex></div>
                 <core-menu-button>
                     <core-icon-button icon="menu"></core-icon-button>
-                    <core-dropdown class="dropdown" halign="right">
+                    <core-dropdown class="dropdown" transition="core-transition-fade" halign="right">
                         <core-menu>
                             <content select=".mo-tb-fixed"></content>
                             <hr/>
@@ -142,7 +142,7 @@
 
         <!-- Tablet -->
         <template if="{{isTabletQuery && !isPhoneQuery}}">
-            <div horizontal layout center>
+            <div horizontal layout>
                 <div class="mo-tb-leftToolbar">
                     <content select=".mo-tb-left"></content>
                 </div>
@@ -152,7 +152,7 @@
                 </div>                
                 <core-menu-button>
                     <core-icon-button icon="menu"></core-icon-button>
-                    <core-dropdown class="dropdown"  halign="right">
+                    <core-dropdown class="dropdown" transition="core-transition-fade" halign="right">
                         <core-menu>
                             <content select=".mo-tb-fixed"></content>        
                         </core-menu>
@@ -162,7 +162,7 @@
         </template>
 
         <!-- Desktop -->
-        <div horizontal layout center>
+        <div horizontal layout>
             <div class="mo-tb-leftToolbar">
                 <content select=".mo-tb-left"></content>
             </div>
@@ -176,8 +176,7 @@
         </div>
 
         <core-media-query query="max-width: {{isPhone}}" queryMatches="{{isPhoneQuery}}"></core-media-query>
-        <core-media-query query="max-width: {{isTablet}}" queryMatches="{{isTabletQuery}}"></core-media-query>
-        
+        <core-media-query query="max-width: {{isTablet}}" queryMatches="{{isTabletQuery}}"></core-media-query>        
 
     </template>
 </polymer-element>
