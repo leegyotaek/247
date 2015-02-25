@@ -1,9 +1,54 @@
-<polymer-element name="ml-login-inner-form" noscript>
+<!-- <polymer-element name="ml-login-inner-form" noscript>
 	<template>
+		<style>
+			.login_bottom{
+				position: relative;
+				display: inline-block;
+				float: left;
+			}
+			::content #login_button,
+			::content #login_signup {
+				margin: 0.2em
+			}
+		</style>
 		<content select="#login_email"></content>
 		<content select="#login_password"></content>
 		<content select="#login_checkbox"></content>
 		<br>
-		<content select="#login_button"></content>
+		<br>
+		<div layout horizontal center>
+			<div flex></div>
+			<div class="login_bottom" self-center>
+				<content select="#login_button"></content>
+			</div>
+			<div class="login_bottom"self-end>
+				<content select="#login_signup"></content>
+			</div>
+			<div flex></div>
+		</div>
+	</template>
+</polymer-element> -->
+<polymer-element name="ml-login-inner-form" noscript>
+	<template>
+		<style shim-shadowdom>
+			::content .login_bottom{
+				position: relative;
+				display: inline-block;
+				float: left;
+				margin: 0.2rem;
+			}
+		</style>
+		<content select="#login_email"></content>
+		<content select="#login_password"></content>
+		<content select="#login_checkbox"></content>
+		<br>
+		<br>
+		<div layout horizontal>
+			<div flex></div>
+			<div>
+				<content select=".login_bottom"></content>
+			</div>
+			<div flex></div>
+		</div>
 	</template>
 </polymer-element>

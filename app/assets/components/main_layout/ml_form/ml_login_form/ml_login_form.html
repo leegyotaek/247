@@ -1,17 +1,23 @@
 <polymer-element name="ml-login-form" noscript>
-	<template>
-		
-			<div layout vertical center style="height:400px">
+	<template>		
+		<style shim-shadowdom>
+			:host{
+				display: block;
+				width: 100%;
+				margin-top: 1rem;
+				margin-bottom: 1rem;
+			}
 
-			    <content select="h2"></content>		
+			::content #login_form{
+				width: 80%;
+			}
+		</style>
 
-				<div flex>					
-					<content select="#login_form"></content>
-				</div>
+		    <content select="h2"></content>		
 
-			    <content select="#login_signup"></content>	
-			    
-		    </div>
+			<div layout vertical center>					
+				<content select="#login_form"></content>
+			</div>
 
 	</template>
 </polymer-element>

@@ -28,7 +28,6 @@ Example setting size to 32px x 32px:
 The core elements include several sets of icons. 
 To use the default set of icons, import  `core-icons.html` and use the `icon` attribute to specify an icon:
 
-    &lt;!-- import default iconset and core-icon --&gt;
     <link rel="import" href="/components/core-icons/core-icons.html">
 
     <core-icon icon="menu"></core-icon>
@@ -36,7 +35,6 @@ To use the default set of icons, import  `core-icons.html` and use the `icon` at
 To use a different built-in set of icons, import  `core-icons/<iconset>-icons.html`, and
 specify the icon as `<iconset>:<icon>`. For example:
 
-    &lt;!-- import communication iconset and core-icon --&gt;
     <link rel="import" href="/components/core-icons/communication-icons.html">
 
     <core-icon icon="communication:email"></core-icon>
@@ -59,6 +57,13 @@ See [core-icons](http://www.polymer-project.org/components/core-icons/demo.html)
 <link rel="import" href="../core-iconset/core-iconset.html">
 
 <style shim-shadowdom>
+/* Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt */
+
 html /deep/ core-icon {
   display: inline-block;
   vertical-align: middle;
@@ -69,6 +74,7 @@ html /deep/ core-icon {
   width: 24px;
 }
 </style>
+
 <polymer-element name="core-icon" attributes="src icon alt">
 <script>
 (function() {

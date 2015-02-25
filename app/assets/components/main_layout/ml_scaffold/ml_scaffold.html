@@ -1,115 +1,177 @@
 <polymer-element name="ml-scaffold">
-	<template>
+<template>
 
-		<style shim-shadowdom>
-		:host {
-			display: block;
-		}
+  <style>
+    
+    :host {
+      display: block;
+      height: 100%;
+      width: 100%;
+      background-color: #2d2d2d;
+      color: #8f8f8f;
+    }
+    
+    [drawer] {
+      background-color: #fff;
+      box-shadow: 1px 0 1px rgba(0, 0, 0, 0.1);
+    }    
+    
+    #drawerPanel:not([narrow]) #menuButton {
+      display: none;
+    }
+    
+  </style>
 
-		[drawer] {
-			background-color: #fff;
-			box-shadow: 1px 0 1px rgba(0, 0, 0, 0.1);
-		}
+  <core-drawer-panel id="drawerPanel" narrow="{{narrow}}" drawerWidth="{{drawerWidth}}" rightDrawer="{{rightDrawer}}" responsiveWidth="{{responsiveWidth}}" disableSwipe="{{disableSwipe}}">
 
-		[main] {
-			height: 100%;
-			background-color: #eee;
-		}
+    <div vertical layout drawer>
+      <content select="[navigation], nav"></content>
+    </div>
+    
+    <core-header-panel id="headerPanel" main mode="{{mode}}">
+      <ml-header>
+        <template if="{{!rightDrawer}}">
+          <core-icon-button id="menuButton" icon="menu" on-tap="{{togglePanel}}"></core-icon-button>
+        </template>
+        <content select="[header]"></content>
+        <template if="{{rightDrawer}}">
+          <core-icon-button id="menuButton" icon="menu" on-tap="{{togglePanel}}"></core-icon-button>
+        </template>
+      </ml-header>
+      
+      <ml-body>
+        <content select="[body]"></content>
+      </ml-body>
 
-		#drawerPanel:not([narrow]) #menuButton {
-			display: none;
-		}
+      <ml-footer>        
+        <content select="[footer]"></content>
+      </ml-footer>
+      
+    </core-header-panel>
+  </core-drawer-panel>
 
-		#drawerPanel:not([narrow]) #navigation_pad{
-			display: none;
-		}
-
-		#menuButton{
-			border-radius: 50%;
-			color: #F4511E;
-			margin-left: 9px;
-			margin-right: 9px;
-		}
-
-
-		[drawer] > ::content core-header-panel a core-toolbar {
-			background-color: #fff;
-			width: 255px;
-		}
-		</style>
-
-		<core-drawer-panel id="drawerPanel" narrow="{{narrow}}" drawerWidth="{{drawerWidth}}" rightDrawer="{{rightDrawer}}" responsiveWidth="{{responsiveWidth}}" disableSwipe="{{disableSwipe}}">
-
-			<div vertical layout drawer>
-
-				<div id="navigation_pad" relative style="height: 64px;">
-				  <div fit></div>
-				</div>
-
-				<content select="[navigation]"></content>
-
-			</div>
-
-			<main-layout id="headerPanel" main mode="{{mode}}">
-
-				<ml-header>
-					<div layout horizontal center>
-						<template if="{{!rightDrawer}}">
-							<paper-icon-button id="menuButton" on-tap="{{togglePanel}}" icon="menu"></paper-icon-button>
-						</template>
-						<div flex>
-							<content select="[ml-header]"></content>
-						</div>
-					</div>
-				</ml-header>
-
-				<ml-body>
-					<content select="[ml-body]"></content>
-				</ml-body>
-
-				<ml-footer>
-					<content select="[ml-footer]"></content>
-				<ml-footer>
-
-			</main-layout>
-
-		</core-drawer-panel>
-
-	</template>
+</template>
 <script>
-Polymer('ml-scaffold', {
-	publish: {
-		drawerWidth: '256px',
-		responsiveWidth: '991px',
-		rightDrawer: false,
-		disableSwipe: false,
-		mode: {value: 'seamed', reflect: true}
-	},
 
-	ready: function() {
-		this._scrollHandler = this.scroll.bind(this);
-		this.$.headerPanel.addEventListener('scroll', this._scrollHandler);
-	},    
-	detached: function() {
-		this.$.headerPanel.removeEventListener('scroll', this._scrollHandler);
-	},
-	togglePanel: function() {
-		this.$.drawerPanel.togglePanel();
-	},
-	openDrawer: function() {
-		this.$.drawerPanel.openDrawer();
-	},
-	closeDrawer: function() {
-		this.$.drawerPanel.closeDrawer();
-	},
-	get scroller() {
-		return this.$.headerPanel.scroller;
-	},
+  Polymer('ml-scaffold', {
+    
+    /**
+     * Fired when the main content has been scrolled.  `event.detail.target` returns
+     * the scrollable element which you can use to access scroll info such as
+     * `scrollTop`.
+     *
+     *     <core-scaffold on-scroll="{{scrollHandler}}">
+     *       ...
+     *     </core-scaffold>
+     *
+     *
+     *     scrollHandler: function(event) {
+     *       var scroller = event.detail.target;
+     *       console.log(scroller.scrollTop);
+     *     }
+     *
+     * @event scroll
+     */
+    
+    publish: {
+      
+      /**
+       * Width of the drawer panel.
+       *
+       * @attribute drawerWidth
+       * @type string
+       * @default '256px'
+       */
+      drawerWidth: '256px',
+      
+      /**
+       * When the browser window size is smaller than the `responsiveWidth`, 
+       * `core-drawer-panel` changes to a narrow layout. In narrow layout, 
+       * the drawer will be stacked on top of the main panel.
+       *
+       * @attribute responsiveWidth
+       * @type string
+       * @default '600px'
+       */    
+      responsiveWidth: '991px',
+      
+      /**
+       * If true, position the drawer to the right. Also place menu icon to
+       * the right of the content instead of left.
+       *
+       * @attribute rightDrawer
+       * @type boolean
+       * @default false
+       */
+      rightDrawer: false,
 
-	scroll: function(e) {
-		this.fire('scroll', {target: e.detail.target}, this, false);
-	}
+      /**
+       * If true, swipe to open/close the drawer is disabled.
+       *
+       * @attribute disableSwipe
+       * @type boolean
+       * @default false
+       */
+      disableSwipe: false,
+  
+      /**
+       * Used to control the header and scrolling behaviour of `core-header-panel`
+       *
+       * @attribute mode
+       * @type string
+       * @default 'seamed'
+       */     
+      mode: {value: 'seamed', reflect: true}
+    },
+    
+    ready: function() {
+      this._scrollHandler = this.scroll.bind(this);
+      this.$.headerPanel.addEventListener('scroll', this._scrollHandler);
+    },
+    
+    detached: function() {
+      this.$.headerPanel.removeEventListener('scroll', this._scrollHandler);
+    },
 
-});
+    /**
+     * Toggle the drawer panel
+     * @method togglePanel
+     */    
+    togglePanel: function() {
+      this.$.drawerPanel.togglePanel();
+    },
+
+    /**
+     * Open the drawer panel
+     * @method openDrawer
+     */      
+    openDrawer: function() {
+      this.$.drawerPanel.openDrawer();
+    },
+
+    /**
+     * Close the drawer panel
+     * @method closeDrawer
+     */     
+    closeDrawer: function() {
+      this.$.drawerPanel.closeDrawer();
+    },
+    
+    /**
+     * Returns the scrollable element on the main area.
+     *
+     * @property scroller
+     * @type Object
+     */
+    get scroller() {
+      return this.$.headerPanel.scroller;
+    },
+    
+    scroll: function(e) {
+      this.fire('scroll', {target: e.detail.target}, this, false);
+    }
+    
+  });
+
 </script>
 </polymer-element>

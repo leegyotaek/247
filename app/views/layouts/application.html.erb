@@ -6,11 +6,9 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">   
-    <!-- <link href="my_theme.scss" rel="stylesheet" shim-shadowdom/> -->
     <%= stylesheet_link_tag    'my_theme', media: 'all', 'data-turbolinks-track' => true,'shim-shadowdom' => 'nil' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <!--   stylesheet_link_tag 'application', { media: 'all',
-                                       'data-turbolinks-track' => true } 
+    <!--   
    파라미터로 마지막 인자가 해쉬일경우 중괄호 생략가능, "-"가(data-turbolinks-track) 있을경우 new syntex(data-turbolinks-track: true) 사용못함, hashrocket형으로 표현
   -->
   
@@ -26,25 +24,21 @@
 
           <ml-header>            
               <%= link_to(root_path) do %>
-              <home-link>
-              LOGO
-              </home-link>
-              <% end %>
-              
-              <%= render 'layouts/header' %>
-              
+                <home-link>
+                LOGO
+                </home-link>
+              <% end %>              
+              <%= render 'layouts/header' %>              
           </ml-header>
 
           <ml-body layout vertical center>
-          <ml-highlight>
-          <% flash.each do |message_type, message| %>  
-          <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
-          <!-- equal <div class="alert alert-<%= message_type %>"><%= message %></div> -->
-          <% end %>
-          </ml-highlight>
-
-          <%= yield %>
-          
+            <ml-highlight>
+            <% flash.each do |message_type, message| %>  
+              <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+              <!-- equal <div class="alert alert-<%= message_type %>"><%= message %></div> -->
+            <% end %>
+            </ml-highlight>
+          <%= yield %>          
           </ml-body>
 
           <ml-footer>
