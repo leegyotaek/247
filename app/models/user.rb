@@ -12,18 +12,29 @@ class User < ActiveRecord::Base
   
   #matchings
 
+  
+  has_many :active_relationships ,   class_name: "Relationship",
+                        foreign_key: "matcher_id",
+                          dependent: :destroy
+ 
+
+
   has_many :complet_relationships, ->{where status: "matched" } , class_name: "Relationship",
                          foreign_key: "matcher_id",
                          dependent: :destroy
-  has_many :active_relationships, class_name: "Relationship",
+
+  has_many :pending_relationships, ->{where status: "pending" } , class_name: "Relationship",
                          foreign_key: "matcher_id",
                          dependent: :destroy
-  has_many :passive_relationships, -> { where status: "requested" } , class_name: "Relationship",
+  has_many :passive_relationships, ->{where status: "requested"},  class_name: "Relationship",
                          foreign_key: "matched_id",
-                         dependent: :destroy
+                         dependent: :destroy                       
+
+
   
-  has_many :matchers, through: :complet_relationships, source: :matched
-  has_many :pending_matchers , through: :active_relationships, source: :matched
+  has_many :matchers, through: :active_relationships, source: :matched
+  has_many :matched_matchers, through: :complet_relationships, source: :matched
+  has_many :pending_matchers , through: :pending_relationships, source: :matched
   has_many :req_matchers, through: :passive_relationships, source: :matcher
 
 
@@ -117,27 +128,6 @@ class User < ActiveRecord::Base
 
 
 
-  #   def feed
-  #   following_ids = "SELECT followed_id FROM relationships
-  #                    WHERE  follower_id = :user_id"
-  #   Micropost.where("user_id IN (#{following_ids})
-  #                    OR user_id = :user_id", user_id: id)
-  #   end
-  
-  # def follow(other_user)
-  #   active_relationships.create(followed_id: other_user.id)
-  # end
-
-  # def unfollow(other_user )
-  #   active_relationships.find_by(followed_id: other_user.id).destroy
-  # end
-
-
-  # def following?(other_user)
-  #   following.include?(other_user) #include? method :  변수에 저장안하고 디비내에서 바로 처리함
-  # end
-
-
   def remove_ids # 매칭 성사가 되었던 유저들 id
     remove_ids = ["#{self.id}"]
     if self.friends.any?
@@ -145,8 +135,8 @@ class User < ActiveRecord::Base
     remove_ids << self.friends.ids
 
     end
-    if self.pending_matchers.any?
-    remove_ids << self.pending_matchers.ids 
+    if self.matchers.any?
+    remove_ids << self.matchers.ids 
     end
 
     if self.req_matchers.any?
@@ -213,10 +203,10 @@ class User < ActiveRecord::Base
 
   def matchings_for_today
 
-      today_matcher_ids = active_relationships.where(created_at: (Time.now.midnight..Time.now)).map(&:matched_id)
+      today_matcher_ids = active_relationships.where(created_at: (Time.now.midnight..Time.now)).where.not(status: "matched").map(&:matched_id)
 
     if today_matcher_ids.any?
-      @matchings = pending_matchers.where(id: today_matcher_ids).all 
+      @matchings = matchers.where(id: today_matcher_ids).all 
     else
       @matchings = search_for_matcher
 
@@ -235,6 +225,45 @@ class User < ActiveRecord::Base
 
 
 
+  def update_matcher(matcher, status)
+    if (relationship = self.active_relationships.find_by(matched_id: matcher.id))  
+    relationship.update_attribute(:status, status)
+    end
+    if status == "matched"
+
+      matcher.complet_relationships.build(matched_id: self.id).save
+
+    end
+  end
+
+
+  def accept_matcher_for(matcher)
+
+    
+    self.pending_relationships.create(matched_id: matcher.id , status: "matched")
+    matcher.update_matcher(self, "matched")
+
+
+
+  end
+
+
+
+  # def request_matcher(matcher)
+
+  #   if (relationship = self.active_relationships.find_by(matched_id: matcher.id))  
+  #   relationship.update_attribute(:status, "requested")
+  #   end
+  # end
+
+  # def cancel_request_matcher(matcher)
+  #    if (relationship = self.active_relationships.find_by(matched_id: matcher.id))  
+  #   relationship.update_attribute(:status, "pending")
+  #   end
+    
+  # end
+
+
 
    def age
 
@@ -250,14 +279,27 @@ class User < ActiveRecord::Base
 
         matchers.each do |matcher|
 
-        active_relationships.build(matched_id: matcher.id).save
+        pending_relationships.build(matched_id: matcher.id).save
        end
 
      end
        
    end
-  
 
+
+   def pending_matcher?(matcher)
+
+    @relationship = active_relationships.find_by(matched_id: matcher.id)
+
+    @relationship.status == 'pending'
+     
+   end
+
+   
+
+
+  
+  #친구관련
   def friendship_for(other_user)
     friendships.find_by(friend_id: other_user.id)
   end

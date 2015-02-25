@@ -90,7 +90,35 @@ def friends
   render 'show_friends'
   @requesters = @user.request_friends
 end
-      
+
+#matching 관련
+def request_matching
+  @matcher = User.find(params[:id])
+  current_user.update_matcher(@matcher, "requested")
+  redirect_to :back
+  
+end
+
+def enpending_matching
+  @matcher = User.find(params[:id])
+  current_user.update_matcher(@matcher, "pending")
+  redirect_to :back
+
+end
+
+def accept_matching
+  @matcher = User.find(params[:id])
+  @matcher.update_matcher(current_user, "matched")
+  redirect_to :back
+  
+end
+
+def reject_matching
+  @matcher = User.find(params[:id])
+  @matcher.update_matcher(current_user, "rejected")
+  redirect_to :back
+  
+end
 
 
 private
