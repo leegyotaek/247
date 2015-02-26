@@ -5,8 +5,18 @@ class UsersController < ApplicationController
     before_action :correct_user, only: [:edit, :update]
     before_action :admin_user, only: :destroy
 
-    layout 'application', :only => :update_profile
-    layout 'scaffold_layout', :only => [:index, :show, :edit]
+
+
+    #layout 'scaffold_layout', :only => [:index, :show, :edit]
+    layout :layout_method, :only => [:index, :show, :edit]
+
+    def layout_method
+      if current_user.newbie 
+      'newbie'
+      else
+      'scaffold_layout'
+      end
+    end
     
 
     def new
