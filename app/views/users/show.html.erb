@@ -1,30 +1,12 @@
 <% provide(:title, @user.name) %>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <div class="image_wraper"><%=image_tag @pic.name.url if @pic = @user.pictures.first  %> </div>
-        <%= @user.name %>
-      </h1>
-    </section>
+<%=image_tag @pic.name.url if @pic = @user.pictures.first  %>
+<%= @user.name %>
+<% if current_user?@user %>
+<%= link_to friends_user_path(@user) , clas: "btn btn-default btn-sm" do %>
+<span class="glyphicon glyphicon-user">friends : <%=  @user.friends.count %> 명</span>
+<% end %>
+<% end %>
+<br>
+<%= render 'shared/stats' %>
+<%= render 'friend_form' if logged_in? %>
 
-    <% if current_user?@user %>
-    <%= link_to friends_user_path(@user) , clas: "btn btn-default btn-sm" do %>
-  
-  <span class="glyphicon glyphicon-user">friends : <%=  @user.friends.count %> 명</span>
-  
-  <% end %>
-  <% end %>
-  <br>
-    <section class="stats">
-      <%= render 'shared/stats' %>
-    </section>
-  </aside>
-
-  <div class="col-md-8">
-
-    <%= render 'friend_form' if logged_in? %>
-
-
-
-</div>
