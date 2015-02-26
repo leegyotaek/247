@@ -1,0 +1,7 @@
+#matching_form
+  -if current_user.pending_matcher?(matcher)
+    =link_to "매칭받기" , request_matching_user_path(matcher), method: :post
+  -else
+    상대방의 매칭 승낙 대기중입니다...
+    =link_to "취소" , enpending_matching_user_path(matcher), method: :post
+ 

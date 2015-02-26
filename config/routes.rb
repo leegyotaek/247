@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-
-  get 'friendships/create'
-
-  get 'friendships/destroy'
-
+  
   get 'profiles/new'
 
   get 'password_resets/new'
@@ -31,6 +27,11 @@ resources :users do
   get :following, :followers
   post :accept
   get :friends
+  post :request_matching
+  post :enpending_matching
+  post :accept_matching
+  post :reject_matching
+
 
  end
 end
@@ -39,6 +40,9 @@ resources :account_activations, only: [:edit]
 resources :password_resets, only: [:create, :new, :edit, :update]
 resources :microposts, only:[:create, :destroy]
 resources :relationships, only:[:create, :destroy]
+
+
+
 resources :friendships, only:[:create, :destroy] 
 
 
