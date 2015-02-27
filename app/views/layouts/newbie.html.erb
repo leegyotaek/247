@@ -17,13 +17,15 @@
     <%= render 'layouts/shim' %>    
   </head>
   <body touch-action="auto"> 
-    <!-- <div hidden>
-    
-    </div> -->
     <main-layout>
-              
-          <%= yield %>
-
+      <core-header-panel>
+        <core-toolbar layout horizontal center-justified>
+          <div >
+            프로필 등록
+          </div>
+        </core-toolbar>
+        <%= yield %>
+      </core-header-panel>
     </main-layout>
         <!-- custom js import -->
         <%= javascript_include_tag 'custom', 'data-turbolinks-track' => true %>
