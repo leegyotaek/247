@@ -1,17 +1,31 @@
-<polymer-element name="ml-signip-firstconfig-form">
+<polymer-element name="ml-signip-firstconfig-form" noscript>
 	<template>
-		<style>
-		 :host{
-		 	display: block;
-		 	height: 100%;
-		 	width: 100%;
-		 	margin: 1rem;
-		 }
+		<style shim-shadowdom>
+	    .inner_from {
+	    	padding: 1rem 1rem 0.5rem 1rem;
+	    	border-radius: 0.5rem;
+	    	background-color: #fff;
+	    }
+	    section{
+	    	padding: 2rem;
+	    	background: inherit;
+	    }
+
+	    ::content .button-form{
+	    	margin-top: 0.3rem;
+	    }
 		</style>
-			<content>
-			</content>
+
+			<section>
+				<div layout horizontal center-justified>
+					<div class="inner_from">
+						<content select=".first_config_form"></content>
+						<div horizontal end-justified layout>
+							<content select=".button-form"></content>	
+						</div>
+					</div>
+				</div>
+			</section>
+
 	</template>
-	<script>
-	Polymer({});
-	</script>
 </polymer-element>
