@@ -1,54 +1,61 @@
-%bs-container
-  %bs-row
-    %bs-col{xs:"12", sm:"8", smoffset:"2", md:"6", mdoffset:"3"}
-      %ml-signip-firstconfig-form
-        =simple_form_for @user  do |f| 
+=simple_form_for @user  do |f| 
+  =render 'shared/error_messages' , object: f.object
 
-          =render 'shared/error_messages' , object: f.object
-          
+  %core-animated-pages{transitions:"cross-fade-all"}
+    %ml-signip-firstconfig-form
+      .first_config_form
+        =f.input :gender, label: "성별" , collection: ["여자", "남자"], prompt: "성별을 선택하세요"
+        %h3 I can speak...
+        #languages
+          = f.simple_fields_for :languages  do |language|
+            = render 'language_fields', :f => language
+          .links
+            = link_to_add_association 'add languages', f, :languages              
+        = f.input :introduce
+      .button-form
+        %paper-button{id:"nextclick0"} 다음
 
-          =f.input :gender, label: "성별" , collection: ["여자", "남자"], prompt: "성별을 선택하세요"
-          %h3 I can speak...
-          #languages
-            = f.simple_fields_for :languages  do |language|
-              = render 'language_fields', :f => language
-            .links
-              = link_to_add_association 'add languages', f, :languages
-          = f.input :introduce   
-          
+    %ml-signip-firstconfig-form
+      .first_config_form
+        %h3 전체공개 사진 설정
+        #pictures
+          = f.simple_fields_for :pictures , html: { multipart: true } do |picture|
+            = render 'picture_fields', :f => picture
+          .links
+            = link_to_add_association 'add pic', f, :pictures
+        =f.input :interests , label: "관심사"
+      .button-form
+        %paper-button{id:"beforeclick0"} 이전
+        %paper-button{id:"nextclick1"} 다음      
 
+    %ml-signip-firstconfig-form
+      .first_config_form
+        %h3 1:1 매칭 설정
+        =f.input :matching_lan , label: "배우고 싶은 언어"  , collection: ["English", "Korean", "Japanese", "Chinese"]
+        / =f.input :matching_interest , label: "관심사" , collection: current_user.interests.split(",")
 
+        %h4 나이
+        =f.input :matching_age_from  , collection: 14..60 
+        =f.input :matching_age_to  , collection: 14..60 
+      .button-form
+        %paper-button{id:"beforeclick1"} 이전
+        =f.submit "Save chages" , class: "btn btn-primary"
 
+:javascript
+   var eventQuery = document.querySelector('core-animated-pages');
+   for(var i=0; i<2; i++){
+     document.querySelector('#nextclick'+i).addEventListener("click", (function (index) {   
+            return function () {
+                eventQuery.selected = index+1;
+            };
+        }(i)), false);
 
-
-          %h3 전체공개 사진 설정
-          #pictures
-            = f.simple_fields_for :pictures , html: { multipart: true } do |picture|
-              = render 'picture_fields', :f => picture
-            .links
-              = link_to_add_association 'add pic', f, :pictures
-
-          =f.input :interests , label: "관심사"
-
-          %h3 1:1 매칭 설정
-
-          =f.input :matching_lan , label: "배우고 싶은 언어"  , collection: ["English", "Korean", "Japanese", "Chinese"]
-
-          / =f.input :matching_interest , label: "관심사" , collection: current_user.interests.split(",")
-
-          %h4 나이
-
-
-          =f.input :matching_age_from  , collection: 14..60 
-
-          =f.input :matching_age_to  , collection: 14..60 
-
-
-
-          =f.submit "Save chages" , class: "btn btn-primary"
-
-
-
+    document.querySelector('#beforeclick'+i).addEventListener("click", (function (index) {   
+          return function () {
+              eventQuery.selected = index;
+          };
+      }(i)), false);
+   }
 
 
 
