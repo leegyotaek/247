@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-ruby '2.2.0'
+#ruby '2.2.0'
+#일단 주석처리
 
 gem 'rails',                '4.2.0'
 gem 'bcrypt',               '3.1.7'
