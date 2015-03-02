@@ -1,0 +1,21 @@
+= link_to("모임개설", new_meeting_path)
+
+- @meetings.each_slice(3) do |meetings|
+	.row
+		- meetings.each do |meeting|
+			.col-md-4
+				.meeting
+					/ .image_wrapper
+					/ 	
+					= image_tag meeting.intro_img.url 
+					
+					
+					%h2
+						모임제목 -
+						=meeting.name
+
+
+
+
+
+

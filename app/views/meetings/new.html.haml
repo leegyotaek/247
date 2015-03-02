@@ -1,0 +1,24 @@
+=simple_form_for @meeting, html: { multipart: true} do |f|
+	- if @meeting.errors.any?
+		#errors
+			%p
+				= pluralize(@meeting.errors.count , "errors")
+			%ul
+				- @meeting.errors.full_messages.each do |msg|
+					%li=msg
+
+	.panel-body
+		= f.input :intro_img, label: "엠블러"  ,input_html: {class: 'form-control'}
+		= f.input :name, input_html: {class: 'form-control'}
+		= f.input :introduce, input_html: {class: 'form-control'}
+	= f.submit "생성"
+
+
+
+
+
+
+
+
+
+
