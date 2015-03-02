@@ -1,0 +1,31 @@
+<polymer-element name="ml-signup-firstconfig-form1" noscript>
+	<template>
+		<style shim-shadowdom>
+	    .inner_from {
+	    	padding: 1rem 1rem 0.5rem 1rem;
+	    	border-radius: 0.5rem;
+	    	background-color: #fff;
+	    }
+	    section{
+	    	padding: 2rem;
+	    	background: inherit;
+	    }
+
+	    ::content .button-form{
+	    	margin-top: 0.3rem;
+	    }
+		</style>
+
+			<section>
+				<div layout horizontal center-justified>
+					<div class="inner_from">
+						<content select=".first_config_form1"></content>
+						<div horizontal end-justified layout>
+							<content select=".button-form"></content>	
+						</div>
+					</div>
+				</div>
+			</section>
+
+	</template>
+</polymer-element>
