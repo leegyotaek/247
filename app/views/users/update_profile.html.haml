@@ -5,7 +5,8 @@
     %ml-signup-firstconfig-form0
       =f.input :gender, label: "성별" , collection: ["여자", "남자"], prompt: "성별을 선택하세요"
       %paper-button{:id=>"languages_add",:raised=>""}
-        = link_to_add_association '추가', f, :languages, :'data-association-insertion-method'=>"after"
+        = link_to_add_association(f, :languages, :'data-association-insertion-method'=>"after") do
+          %core-icon{:icon=>"add"}
       = f.simple_fields_for :languages  do |language|
         = render 'language_fields', :f => language         
       .text
