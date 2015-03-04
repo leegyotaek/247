@@ -1,0 +1,117 @@
+<polymer-element name="ml-signup-firstconfig-form0" noscript>
+	<template>
+		<style shim-shadowdom>
+	    .inner_from {
+	    	width: 91.66666667%;
+	    	padding: 0 1rem 0.5rem 1rem;
+	    	border-radius: 0.5rem;
+	    	background-color: #fff;
+	    }
+	    @media (min-width: 768px) {
+	      .inner_from {
+	    	width: 50%;
+		    }
+	    }
+	    @media (min-width: 992px) {
+	      .inner_from {
+	    	width: 41.66666667%;
+		    }
+	    }
+	    section{
+	    	padding: 2rem;
+	    	background: inherit;
+	    }
+
+	    hr{
+			border-width: 0.07rem;
+			border-color: rgba(0,0,0,0.1);
+			margin: 1.4rem 0 1.4rem 0;
+		}
+
+	    h2{
+	    	font-weight: 700;
+	    	color: #111;
+	    	padding-bottom: 1rem;
+	    }
+
+	    ::content .button-form{
+	    	margin-top: 0.3rem;
+	    }
+
+	    ::content div label, .label{
+	    	position: relative;
+	    	float: left;
+	    	display: inline-block;
+	    	font-weight: 700;
+	    	width: 25%;
+	    	text-align: right;
+	    	padding-right: 0.65rem;
+	    }
+
+	    ::content div label{
+	    	cursor: pointer;
+	    }
+
+	    #languages{
+	    	display: inline-block;
+	    	position: relative;
+	    	width: 100%;
+	    	padding-bottom: 1.3rem;
+	    }
+
+	    ::content .nested-fields{
+	    	display: inline-block;
+	    	position: relative;
+	    	width: 100%;
+	    	padding-top: 0.7rem;
+	    }
+
+	    ::content #languages_add{
+	    	position: absolute;
+	    	right: 0;
+	    	top: -0.875rem;
+	    	font-weight: 600;
+	    	border-radius: 50%;
+	    }
+
+	    ::content .nested-fields > div{
+	    	margin-bottom: 0.45rem;
+	    }
+
+	    ::content .nested-fields > a{
+	    	position: absolute;
+	    	right: 0;
+	    	top: 0;
+	    	padding-top: 0.7rem;
+	    }
+
+	    ::content .button-form paper-button{
+	    	font-weight: 700;
+	    	color: #434;
+	    }
+		</style>
+
+		<section>
+			<div layout horizontal center-justified>
+				<div class="inner_from">
+					<div layout horizontal center center-justified>
+						<h2>프로필 필수 옵션 설정</h2>
+					</div>
+					<content select=".select"></content>
+					<hr>
+					<div id="languages">
+						<span class="label">사용 언어</span>
+						<content select="#languages_add"></content>
+					</div>
+					<content select=".nested-fields"></content>
+					<hr>
+					<content select=".text"></content>
+					<div horizontal end-justified layout>
+						<content select=".button-form"></content>	
+					</div>
+				</div>
+			</div>
+		</section>
+
+	</template>
+</polymer-element>
