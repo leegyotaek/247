@@ -21,7 +21,9 @@
     %ml-signup-firstconfig-form1
       #pictures
         = f.simple_fields_for :pictures , html: { multipart: true } do |picture|
-          = picture.input :name , label:  "프로필 사진"
+          = render 'picture_fields', :f => picture
+        .links
+          = link_to_add_association 'add pic', f, :pictures
       =f.input :interests , label: "관심사"
       .button-form
         %paper-button{id:"beforeclick0"} 이전
