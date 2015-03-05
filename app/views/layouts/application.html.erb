@@ -12,12 +12,11 @@
   -->
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %> 
     <%= csrf_meta_tags %>     
-    <%= render 'layouts/shim' %>    
+    <%= render 'layouts/shim' %>
+    <%= html_import_tag "application", 'data-turbolinks-track' => true %>    
   </head>
-  <body touch-action="auto" unresolved> 
-    <!-- <div hidden>
-    
-    </div> -->
+  <body touch-action="auto" unresolved>
+
     <main-layout>
 
           <ml-header>            
@@ -48,8 +47,7 @@
 
     </main-layout>
         <!-- custom js import -->
-        <%= javascript_include_tag 'custom', 'data-turbolinks-track' => true %>
-        <%= html_import_tag "application", 'data-turbolinks-track' => true %>
+        <%= javascript_include_tag 'custom', 'data-turbolinks-track' => true %>      
 
   </body>
 </html>

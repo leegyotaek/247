@@ -9,7 +9,8 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>  
     <%= csrf_meta_tags %>    
-    <%= render 'layouts/shim' %>    
+    <%= render 'layouts/shim' %>
+    <%= html_import_tag "application", 'data-turbolinks-track' => true %>    
   </head>
 
   <body touch-action="auto" unresolved> 
@@ -27,7 +28,6 @@
     
     <!-- custom js import -->
     <%= javascript_include_tag 'custom', 'data-turbolinks-track' => true %>
-    <%= html_import_tag "application", 'data-turbolinks-track' => true %>
 
   </body>
 </html>
