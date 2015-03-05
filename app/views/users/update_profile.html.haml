@@ -19,14 +19,10 @@
         %paper-button{id:"nextclick0"} 다음
 
     %ml-signup-firstconfig-form1
-      .first_config_form1
-        %h3 전체공개 사진 설정
-        #pictures
-          = f.simple_fields_for :pictures , html: { multipart: true } do |picture|
-            = render 'picture_fields', :f => picture
-          .links
-            = link_to_add_association 'add pic', f, :pictures
-        =f.input :interests , label: "관심사"
+      #pictures
+        = f.simple_fields_for :pictures , html: { multipart: true } do |picture|
+          = picture.input :name , label:  "프로필 사진"
+      =f.input :interests , label: "관심사"
       .button-form
         %paper-button{id:"beforeclick0"} 이전
         %paper-button{id:"nextclick1"} 다음      
