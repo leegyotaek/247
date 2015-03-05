@@ -2,7 +2,6 @@
 <html>
   <head>
     <title>LanguageApp|<%= yield(:title) %></title>
-    <%= csrf_meta_tags %>    
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">   
@@ -11,9 +10,8 @@
     <!--   
    파라미터로 마지막 인자가 해쉬일경우 중괄호 생략가능, "-"가(data-turbolinks-track) 있을경우 new syntex(data-turbolinks-track: true) 사용못함, hashrocket형으로 표현
   -->
-  
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>      
-    <%= html_import_tag "application", 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %> 
+    <%= csrf_meta_tags %>     
     <%= render 'layouts/shim' %>    
   </head>
   <body touch-action="auto"> 
@@ -51,6 +49,8 @@
     </main-layout>
         <!-- custom js import -->
         <%= javascript_include_tag 'custom', 'data-turbolinks-track' => true %>
+        <%= html_import_tag "application", 'data-turbolinks-track' => true %>
+
   </body>
 </html>
 <%= debug(params) if Rails.env.development? %>
