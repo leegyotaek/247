@@ -54,7 +54,6 @@ end
 
 
 
-
 # #micropost
 # # users = User.order(:created_at).take(6)
 # # 50.times do

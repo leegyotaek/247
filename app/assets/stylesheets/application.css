@@ -1,4 +1,5 @@
 /*
- *= require_self
- *= require rounded-shadow
+	*= require rounded-shadow
+	*= require jasny-bootstrap.min
+	*= require_self	
  */

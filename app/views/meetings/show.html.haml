@@ -1,0 +1,19 @@
+.image_wraper
+	=image_tag @meeting.intro_img.url
+
+.meeting_info
+%p 
+	%h2 
+		개설자:
+		=@meeting.user.name
+
+	%p 
+		개설일자 :
+		= time_ago_in_words @meeting.created_at
+	\.
+	\.
+	\.
+
+		
+		
+

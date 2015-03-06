@@ -1,0 +1,19 @@
+= link_to("모임개설", new_meeting_path)
+
+%h1 내가 참여중인 모임들
+.my_meetings
+	=render @my_meetings
+
+
+
+
+
+%h1 개설된 모임들
+- @meetings.each_slice(3) do |meetings|
+	.row
+		=render meetings
+
+
+
+
+

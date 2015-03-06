@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'meetings/index'
+
   get 'profiles/new'
 
   get 'password_resets/new'
@@ -36,6 +38,7 @@ resources :users do
  end
 end
 
+resources :meetings
 resources :account_activations, only: [:edit]
 resources :password_resets, only: [:create, :new, :edit, :update]
 resources :microposts, only:[:create, :destroy]

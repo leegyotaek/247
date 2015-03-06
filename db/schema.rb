@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150206063639) do
+ActiveRecord::Schema.define(version: 20150302045659) do
 
   create_table "friendships", force: :cascade do |t|
     t.integer  "user_id"
@@ -27,6 +27,17 @@ ActiveRecord::Schema.define(version: 20150206063639) do
   add_index "friendships", ["user_id", "friend_id"], name: "index_friendships_on_user_id_and_friend_id", unique: true
   add_index "friendships", ["user_id"], name: "index_friendships_on_user_id"
 
+  create_table "groups", force: :cascade do |t|
+    t.integer  "meeting_id"
+    t.integer  "member_id"
+    t.string   "status"
+    t.string   "permission", default: "pending"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "groups", ["meeting_id"], name: "index_groups_on_meeting_id"
+
   create_table "languages", force: :cascade do |t|
     t.string   "language"
     t.integer  "level"
@@ -39,6 +50,22 @@ ActiveRecord::Schema.define(version: 20150206063639) do
   add_index "languages", ["language"], name: "index_languages_on_language"
   add_index "languages", ["sort"], name: "index_languages_on_sort"
   add_index "languages", ["user_id"], name: "index_languages_on_user_id"
+
+  create_table "meetings", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.integer  "members_count"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "max_member"
+    t.text     "introduce"
+    t.string   "intro_img"
+    t.string   "language"
+    t.string   "country"
+    t.string   "city"
+  end
+
+  add_index "meetings", ["user_id"], name: "index_meetings_on_user_id"
 
   create_table "microposts", force: :cascade do |t|
     t.text     "content"
