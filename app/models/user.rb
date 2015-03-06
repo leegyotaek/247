@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   before_save :downcase_email
   before_create :create_activation_digest
+  after_create :create_default_image
   
   has_many :pictures, as: :imageable , dependent: :destroy
   accepts_nested_attributes_for :pictures, reject_if: proc { |attributes| attributes['name'].blank? } , :allow_destroy => true
@@ -60,6 +61,11 @@ class User < ActiveRecord::Base
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                      uniqueness: { case_sensitive: false }
+  
+  #meetings
+  has_many :groups , foreign_key: "member_id" , dependent: :destroy
+  has_many :meetings , through: :groups 
+
   has_secure_password
 
   validates :password, length: {minimum: 6}, allow_blank: true
@@ -340,6 +346,13 @@ class User < ActiveRecord::Base
     end
   end
 
+
+  #모임
+
+  def my_meetings
+    Meeting.where(id: groups.map(&:meeting_id))
+  end
+
  
 
   
@@ -354,6 +367,11 @@ class User < ActiveRecord::Base
   def create_activation_digest
     self.activation_token = User.new_token
     self.activation_digest = User.digest(activation_token)
+    
+  end
+
+  def create_default_image
+    pictures.build(name: "").save
     
   end
 

@@ -1,6 +1,7 @@
 class MeetingsController < ApplicationController
   def index
   	@meetings = Meeting.all
+  @my_meetings = current_user.meetings
   end
 
 
@@ -17,6 +18,13 @@ class MeetingsController < ApplicationController
   	else
   		render 'new'
   	end
+  end
+
+
+  def show
+    @meeting = Meeting.find(params[:id])
+
+
   end
 
 
