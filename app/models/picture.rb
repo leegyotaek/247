@@ -7,8 +7,8 @@ class Picture < ActiveRecord::Base
 
 
  mount_uploader :name, PictureUploader 
- attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
-
+ crop_uploaded :name
+ 
  private
 
   def picture_size

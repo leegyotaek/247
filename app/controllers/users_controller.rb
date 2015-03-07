@@ -48,9 +48,13 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(user_params)
-     @user.update_attributes(newbie: false)
-     flash[:success] = "업데이트 완료"
-     redirect_to @user
+      if params[:user][:gender].present?
+        render :crop
+      else
+        @user.update_attributes(newbie: false)
+        flash[:success] = "업데이트 완료"
+        redirect_to @user
+      end     
     else
      render 'edit'
     end
@@ -140,7 +144,7 @@ private
 
   def user_params
    params.require(:user).permit(:name,:email, :birthday, :password, :password_confirmation, :introduce, 
-    :interests, :status, :gender, :country, :region, :city, :matching_lan, :matching_age_to, :matching_age_from, :matching_interest,  pictures_attributes: [:id, :name, :imageable_id, :imageable_type, :is_public, :_destroy] , 
+    :interests, :status, :gender, :country, :region, :city, :matching_lan, :matching_age_to, :matching_age_from, :matching_interest,  pictures_attributes: [:id, :name, :imageable_id, :imageable_type, :is_public, :_destroy, :name_crop_x, :name_crop_y, :name_crop_w, :name_crop_h] , 
     languages_attributes: [:id, :language , :level , :user_id , :sort, :_destroy], 
     wish_languages_attributes: [:id, :language , :level , :user_id , :sort, :_destroy])
   end

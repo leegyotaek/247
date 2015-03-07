@@ -54,6 +54,10 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
+    carrierwave-crop (0.1.2)
+      carrierwave (>= 0.8.0, < 0.11.0)
+      jquery-rails
+      rails (>= 3.2)
     celluloid (0.16.0)
       timers (~> 4.0.0)
     cocoon (1.2.6)
@@ -280,6 +284,7 @@ DEPENDENCIES
   bower-rails
   byebug (= 3.4.0)
   carrierwave (= 0.10.0)
+  carrierwave-crop
   cocoon (~> 1.2.6)
   coffee-rails (= 4.1.0)
   country_select (~> 2.1.0)

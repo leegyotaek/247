@@ -1,0 +1,5 @@
+= form_for @user do |f| 
+ = f.fields_for :pictures do |ff|
+  = ff.cropbox :name
+  = ff.previewbox :name
+ = f.submit 'Crop' 
