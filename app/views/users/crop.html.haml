@@ -1,5 +1,7 @@
-= form_for @user do |f| 
- = f.fields_for :pictures do |ff|
-  = ff.cropbox :name
-  = ff.previewbox :name
- = f.submit 'Crop' 
+=image_tag @pic.name.url(:jumbo),id:'picture_cropbox' if @pic = @user.pictures.first
+
+= form_for @user do |f|
+ =f.fields_for :picture do |ff|
+  - %w[x y w h].each do |attribute|
+   = ff.hidden_field "crop_#{attribute}"
+  =f.submit "Save chages"

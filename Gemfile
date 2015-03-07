@@ -29,7 +29,8 @@ gem 'country_select', '~> 2.1.0'
 gem 'bower-rails'
 gem 'emcee'
 gem 'webshims-rails'
-gem 'carrierwave-crop'
+gem 'jcrop-rails-v2'
+#gem 'carrierwave-crop'
 
 group :development, :test do
   gem 'sqlite3',     '1.3.9'

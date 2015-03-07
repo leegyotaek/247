@@ -1,6 +1,6 @@
 //= require webcomponentsjs/webcomponents.min
 //= require jquery.min
 //= require jquery_ujs
-//= require jquery.jcrop
+//= require jquery.Jcrop
 //= require pictures
 //= require turbolinks
