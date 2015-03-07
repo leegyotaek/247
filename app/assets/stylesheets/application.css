@@ -1,4 +1,6 @@
 /*
- *= require_self
- *= require rounded-shadow
+	*= require rounded-shadow
+	*= require jasny-bootstrap.min
+	*= require Jcrop/css/jquery.Jcrop.min
+	*= require_self	
  */

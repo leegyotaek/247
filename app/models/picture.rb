@@ -1,4 +1,4 @@
-class Picture < ActiveRecord::Base
+class Picture < ActiveRecord::Base 
  belongs_to :imageable, polymorphic: true
  validates :name, presence:true
  validates :imageable_id, presence:true
@@ -6,8 +6,8 @@ class Picture < ActiveRecord::Base
  validate :picture_size
 
 
- mount_uploader :name, PictureUploader
-
+ mount_uploader :name, PictureUploader 
+ attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
 
  private
 

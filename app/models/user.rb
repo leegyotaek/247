@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessor :remember_token, :activation_token, :reset_token, :age
+  attr_accessor :remember_token, :activation_token, :reset_token, :age  
 
   before_save :downcase_email
   before_create :create_activation_digest
@@ -7,6 +7,12 @@ class User < ActiveRecord::Base
   
   has_many :pictures, as: :imageable , dependent: :destroy
   accepts_nested_attributes_for :pictures, reject_if: proc { |attributes| attributes['name'].blank? } , :allow_destroy => true
+  
+  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
+  after_update :crop_picture
+  def crop_picture
+    Picture.name.recreate_versions! if crop_x.present?
+  end
 
   has_many :microposts , dependent: :destroy
   has_many :meetings , dependent: :destroy
