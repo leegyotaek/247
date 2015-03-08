@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'pictures/update'
+
   get 'meetings/index'
 
   get 'profiles/new'
@@ -44,6 +46,7 @@ resources :password_resets, only: [:create, :new, :edit, :update]
 resources :microposts, only:[:create, :destroy]
 resources :relationships, only:[:create, :destroy]
 
+resources :pictures, only:[:update]
 
 
 resources :friendships, only:[:create, :destroy] 

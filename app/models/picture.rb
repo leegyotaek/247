@@ -4,12 +4,19 @@ class Picture < ActiveRecord::Base
  validates :imageable_id, presence:true
  validates :imageable_type, presence:true
  validate :picture_size
-
+ after_update :crop_picture
+  
 
  mount_uploader :name, PictureUploader 
  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
 
  private
+
+
+ def crop_picture
+    name.recreate_versions! if crop_x.present?
+  end
+
 
   def picture_size
   	if name.size > 5.megabytes
