@@ -3,6 +3,12 @@
 class PictureUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
+   include Sprockets::Rails::Helper
+  
+
+  include CarrierWave::MimeTypes
+  process :set_content_type
+
   if Rails.env.production?
     storage :fog
   else
@@ -34,28 +40,34 @@ class PictureUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  version :thumb do
-   
-    resize_to_limit(100,100)
-  end
-
   version :jumbo do
     process :crop
+    
+  end
+
+
+  version :thumb do
+    
     resize_to_limit(600,600)
   end
+
+  
 
   def crop
     if model.crop_x.present?
-    resize_to_limit(600,600)
-      manipulate! do |img|
-        x = model.crop_x.to_i
-        y = model.crop_y.to_i
-        w = model.crop_w.to_i
-        h = model.crop_h.to_i
-        img.crop("#{w}x#{h}+#{x}+#{y}")
-        img
+     resize_to_limit(600, 600)
+     manipulate! do |img|
+      x = model.crop_x.to_i
+      y = model.crop_y.to_i
+      w = model.crop_w.to_i
+      h = model.crop_h.to_i
+       z = "#{w}x#{h}+#{x}+#{y}"
+            img.resize "600x600"
+            img.crop(z)
+            img
       end
     end
+    resize_to_fill(100,100)
   end
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

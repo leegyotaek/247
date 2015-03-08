@@ -17,7 +17,7 @@ class PicturesController < ApplicationController
 
   def pictures_params
 
-	params.require(:picture).permit(:name, :imageable_id, :imageable_type, :is_public)
+	params.require(:picture).permit(:name, :imageable_id, :imageable_type, :is_public, :crop_x , :crop_y, :crop_w , :crop_h )
 	
   end
 

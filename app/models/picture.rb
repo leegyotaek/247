@@ -16,7 +16,7 @@ class Picture < ActiveRecord::Base
 
 
  def crop_picture
-    name.recreate_versions! if crop_x.present?
+    name.recreate_versions! 
   end
 
 

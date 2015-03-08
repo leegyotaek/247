@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   before_save :downcase_email
   before_create :create_activation_digest
   after_create :create_default_image
-  
+
   has_many :pictures, as: :imageable , dependent: :destroy
   accepts_nested_attributes_for :pictures, reject_if: proc { |attributes| attributes['name'].blank? } , :allow_destroy => true
   
@@ -128,7 +128,6 @@ class User < ActiveRecord::Base
     reset_sent_at < 2.hours.ago
     
   end
-
 
 
 
