@@ -8,11 +8,7 @@ class User < ActiveRecord::Base
   has_many :pictures, as: :imageable , dependent: :destroy
   accepts_nested_attributes_for :pictures, reject_if: proc { |attributes| attributes['name'].blank? } , :allow_destroy => true
   
-  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
-  
   has_many :microposts , dependent: :destroy
-  has_many :meetings , dependent: :destroy
-
 
   
   #matchings

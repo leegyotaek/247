@@ -8,13 +8,15 @@ class Picture < ActiveRecord::Base
   
 
  mount_uploader :name, PictureUploader 
- attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
+ #crop_uploaded :picture
+ attr_accessor :picture_crop_x, :picture_crop_y, :picture_crop_w, :picture_crop_h
+
 
  private
 
 
  def crop_picture
-    name.recreate_versions! if crop_x.present?
+    name.recreate_versions! if picture_crop_x.present?
   end
 
 
