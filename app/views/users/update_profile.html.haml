@@ -38,7 +38,7 @@
     %ml-signup-firstconfig-form2{:class=>"length"}
       #interests
         =f.hidden_field :interests , label: "관심사"
-        =[:1,:2,:3,:4,:5].each do |r|
+        =(1..5).each do |r|
           %h2 r
       .button-form
         %paper-button{id:"beforeclick1"} 이전
@@ -66,13 +66,12 @@
               eventQuery.selected = index+1;
           };
       }(i)), false);
-
     document.querySelector('#beforeclick'+i).addEventListener("click", (function (index) {   
           return function () {
               eventQuery.selected = index;
           };
       }(i)), false);
    }
-   
 
+   
 

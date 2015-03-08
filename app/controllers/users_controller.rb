@@ -60,13 +60,14 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(user_params)
-      if params[:user][:gender].present?
+     @user.update_attributes(newbie: false)
+      if params[:user][:pictures_attributes].present?
         render :crop
-      else
-        @user.update_attributes(newbie: false)
-        flash[:success] = "업데이트 완료"
-        redirect_to @user
-      end     
+      else  
+     flash[:success] = "업데이트 완료"
+     redirect_to @user
+     end
+
     else
      render 'edit'
     end

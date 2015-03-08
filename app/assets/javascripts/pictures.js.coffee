@@ -10,10 +10,10 @@ class CarrierWaveCropper
       onChange: @update
 
   update: (coords) =>
-    $('#user_picture_crop_x').val(coords.x)
-    $('#user_picture_crop_y').val(coords.y)
-    $('#user_picture_crop_w').val(coords.w)
-    $('#user_picture_crop_h').val(coords.h)
+    $('#picture_crop_x').val(coords.x)
+    $('#picture_crop_y').val(coords.y)
+    $('#picture_crop_w').val(coords.w)
+    $('#picture_crop_h').val(coords.h)
     @updatePreview(coords)
 
   updatePreview: (coords) =>
