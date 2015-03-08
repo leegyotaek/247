@@ -46,12 +46,12 @@ class PictureUploader < CarrierWave::Uploader::Base
   def crop
     if model.picture_crop_x.present?
       manipulate! do |img|
-      x = model.picture_crop_x.to_i
-      y = model.picture_crop_y.to_i
-      w = model.picture_crop_w.to_i
-      h = model.picture_crop_h.to_i
-      img.crop("#{w}x#{h}+#{x}+#{y}")
-      img
+        x = model.picture_crop_x.to_i
+        y = model.picture_crop_y.to_i
+        w = model.picture_crop_w.to_i
+        h = model.picture_crop_h.to_i
+        img.crop("#{w}x#{h}+#{x}+#{y}")
+        img
       end
     end
   end

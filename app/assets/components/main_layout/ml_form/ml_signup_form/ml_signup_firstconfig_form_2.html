@@ -2,24 +2,51 @@
 	<template>
 		<style shim-shadowdom>
 	    .inner_from {
-	    	padding: 1rem 1rem 0.5rem 1rem;
+	    	width: 91.66666667%;
+	    	padding: 0 1rem 0.5rem 1rem;
 	    	border-radius: 0.5rem;
 	    	background-color: #fff;
+	    }
+	    @media (min-width: 768px) {
+	      .inner_from {
+	    	width: 50%;
+		    }
+	    }
+	    @media (min-width: 992px) {
+	      .inner_from {
+	    	width: 41.66666667%;
+		    }
 	    }
 	    section{
 	    	padding: 2rem;
 	    	background: inherit;
 	    }
 
-	    ::content .button-form{
-	    	margin-top: 0.3rem;
+	    hr{
+			border-width: 0.07rem;
+			border-color: rgba(0,0,0,0.1);
+			margin: 1.4rem 0 1.4rem 0;
+		}
+
+		h2{
+	    	font-weight: 700;
+	    	color: #111;
+	    	padding-bottom: 1rem;
+	    }
+
+	    ::content .button-form paper-button{
+	    	font-weight: 700;
+	    	color: #434;
 	    }
 		</style>
 
 			<section>
 				<div layout horizontal center-justified>
 					<div class="inner_from">
-						<content select=".first_config_form2"></content>
+						<div layout horizontal center center-justified>
+							<h2>관심분야 설정</h2>
+						</div>
+						<content select="#interests"></content>
 						<div horizontal end-justified layout>
 							<content select=".button-form"></content>	
 						</div>

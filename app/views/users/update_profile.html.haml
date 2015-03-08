@@ -2,7 +2,7 @@
   =render 'shared/error_messages' , object: f.object
 
   %core-animated-pages{:transitions=>"cross-fade-all"}
-    %ml-signup-firstconfig-form0
+    %ml-signup-firstconfig-form0{:class=>"length"}
       =f.input :gender, label: "성별" , collection: ["여자", "남자"], prompt: "성별을 선택하세요"
       %paper-button{:id=>"languages_add",:raised=>""}
         = link_to_add_association(f, :languages, :'data-association-insertion-method'=>"after") do
@@ -18,7 +18,7 @@
       .button-form
         %paper-button{id:"nextclick0"} 다음
 
-    %ml-signup-firstconfig-form1
+    %ml-signup-firstconfig-form1{:class=>"length"}
       #pictures
         = f.fields_for :pictures , html: { multipart: true } do |picture|
           %div{:class=>'fileinput fileinput-new',:'data-provides' => 'fileinput'}
@@ -31,13 +31,21 @@
                 %span{:class=>'fileinput-exists'} change
                 = picture.file_field :name , label:  "프로필 사진"
               %a{:class=>'btn btn-default fileinput-exists',:'data-dismiss'=>'fileinput'} remove
-      =f.input :interests , label: "관심사"
       .button-form
         %paper-button{id:"beforeclick0"} 이전
-        %paper-button{id:"nextclick1"} 다음      
+        %paper-button{id:"nextclick1"} 다음  
 
-    %ml-signup-firstconfig-form2
-      .first_config_form2
+    %ml-signup-firstconfig-form2{:class=>"length"}
+      #interests
+        =f.hidden_field :interests , label: "관심사"
+        =[:1,:2,:3,:4,:5].each do |r|
+          %h2 r
+      .button-form
+        %paper-button{id:"beforeclick1"} 이전
+        %paper-button{id:"nextclick2"} 다음
+
+    %ml-signup-firstconfig-form3{:class=>"length"}
+      .first_config_form3
         %h3 1:1 매칭 설정
         =f.input :matching_lan , label: "배우고 싶은 언어"  , collection: ["English", "Korean", "Japanese", "Chinese"]
         / =f.input :matching_interest , label: "관심사" , collection: current_user.interests.split(",")
@@ -46,17 +54,18 @@
         =f.input :matching_age_from  , collection: 14..60 
         =f.input :matching_age_to  , collection: 14..60 
       .button-form
-        %paper-button{id:"beforeclick1"} 이전
+        %paper-button{id:"beforeclick2"} 이전
         =f.submit "Save chages"
 
 :javascript
    var eventQuery = document.querySelector('core-animated-pages');
-   for(var i=0; i<2; i++){
-     document.querySelector('#nextclick'+i).addEventListener("click", (function (index) {   
-            return function () {
-                eventQuery.selected = index+1;
-            };
-        }(i)), false);
+   var length = document.querySelectorAll('.length').length;
+   for(var i=0; i<length-1; i++){
+    document.querySelector('#nextclick'+i).addEventListener("click", (function (index) {   
+          return function () {
+              eventQuery.selected = index+1;
+          };
+      }(i)), false);
 
     document.querySelector('#beforeclick'+i).addEventListener("click", (function (index) {   
           return function () {
