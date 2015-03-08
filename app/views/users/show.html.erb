@@ -1,5 +1,5 @@
 <% provide(:title, @user.name) %>
-<%=image_tag @pic.name.url(:thumb) if @pic = @user.pictures.first  %>
+<%=image_tag @pic.name.url(:jumbo) if @pic = @user.pictures.first  %>
 <%= @user.name %>
 <% if current_user?@user %>
 <%= link_to friends_user_path(@user) , clas: "btn btn-default btn-sm" do %>
