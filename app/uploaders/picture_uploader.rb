@@ -2,10 +2,7 @@
 
 class PictureUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
-
-   include Sprockets::Rails::Helper
-  
-
+  include Sprockets::Rails::Helper
   include CarrierWave::MimeTypes
   process :set_content_type
 
@@ -56,14 +53,13 @@ class PictureUploader < CarrierWave::Uploader::Base
   
 
   def crop
-    if model.crop_x.present?
-     
+    if model.crop_x.present?     
      manipulate! do |img|
       x = model.crop_x.to_i
       y = model.crop_y.to_i
       w = model.crop_w.to_i
       h = model.crop_h.to_i
-       z = "#{w}x#{h}+#{x}+#{y}"
+      z = "#{w}x#{h}+#{x}+#{y}"
             img.resize "600x600"
             img.crop(z)
             img

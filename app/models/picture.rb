@@ -12,20 +12,18 @@ class Picture < ActiveRecord::Base
  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
 
 
- private
+private
 
 
  def crop_picture
     name.recreate_versions! 
-  end
+ end
 
 
-  def picture_size
+ def picture_size
   	if name.size > 5.megabytes
   		errors.add(:name, "5MB를 초과할 수 없습니다.")
-  	end
-  	
-  end
-
-
+  	end  	
+ end
+ 
 end

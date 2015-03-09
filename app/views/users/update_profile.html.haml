@@ -37,10 +37,13 @@
 
     %ml-signup-firstconfig-form2{:class=>"length"}
       #interests
+        %ml-highlight
+          %h4 5개 까지만 선택해 주세요.
         =f.hidden_field :interests , label: "관심사"
-        =(1..5).each do |r|
-          %h2 r
-      .button-form
+        %div{:id=>"buttons_field"}
+          -['언어교환','술','공부','연애','등산','친목','여행','봉사활동','클럽','비즈니스','게임','독서','영화','공연','음악','맛집'].each do |r|          
+            %paper-button{:class=>'interests_buttons',:raised=>"false"} #{r}
+      #button-form
         %paper-button{id:"beforeclick1"} 이전
         %paper-button{id:"nextclick2"} 다음
 
@@ -58,9 +61,68 @@
         =f.submit "Save chages"
 
 :javascript
-   var eventQuery = document.querySelector('core-animated-pages');
-   var length = document.querySelectorAll('.length').length;
-   for(var i=0; i<length-1; i++){
+  var ib_arry = [];  
+  var ib_arry_index = 0;
+  
+  $(function id_set(){
+    var buttons_length = $(".interests_buttons").length;
+    for(var i=0; i<buttons_length; i++){
+      $(".interests_buttons").eq(i).attr("id","ib_"+i);
+    }
+  });
+
+  $(".interests_buttons").on("click",function(e){
+    var current_id = $(this).index();
+    var current_text = $("#ib_"+current_id).text();
+    var current_target = $(e.currentTarget);
+    ib_arry_refresh(current_text,current_target);
+  });
+
+  function ib_arry_refresh(ct,ctarget){
+    var split = $("#user_interests").val().split(",");
+    if(ib_arry.length===0){
+      ctarget.attr("raised","true")
+      ib_arry[ib_arry_index] = ct;
+      ib_arry_index++;
+      text_val_input();    
+    }
+    else{
+      if(($.inArray(ct,ib_arry))===-1){        
+        if(split.length <=4){
+          ctarget.attr("raised","true");
+          ib_arry[ib_arry_index] = ct;
+          ib_arry_index++;
+          text_val_input();          
+        }else{
+          ctarget.attr("raised","false");
+        }
+      }else{
+        ctarget.attr("raised","false");
+        ib_arry.splice($.inArray(ct,ib_arry),1);
+        ib_arry_index--;
+        text_val_input();
+      }
+    }       
+  }
+
+  function text_val_input(){
+    var interests_length = ib_arry.length;
+    $("#user_interests").val("");
+    for(var i=0; i<interests_length;i++){
+      if(i===0){
+          $("#user_interests").val($("#user_interests").val()+ib_arry[i]);
+        }else{
+          $("#user_interests").val($("#user_interests").val()+","+ib_arry[i]);
+        }
+    }
+  }
+
+
+  //javascript traning(closure ex)
+  //next,before button
+  var eventQuery = document.querySelector('core-animated-pages');
+  var length = document.querySelectorAll('.length').length;
+  for(var i=0; i<length-1; i++){
     document.querySelector('#nextclick'+i).addEventListener("click", (function (index) {   
           return function () {
               eventQuery.selected = index+1;

@@ -34,9 +34,14 @@
 	    	padding-bottom: 1rem;
 	    }
 
-	    ::content .button-form paper-button{
+	    ::content #button-form paper-button{
 	    	font-weight: 700;
 	    	color: #434;
+	    }
+
+	    ::content #interests paper-button{
+	    	/*width: 32%;*/
+	    	border-radius: 50%;
 	    }
 		</style>
 
@@ -48,7 +53,7 @@
 						</div>
 						<content select="#interests"></content>
 						<div horizontal end-justified layout>
-							<content select=".button-form"></content>	
+							<content select="#button-form"></content>	
 						</div>
 					</div>
 				</div>
