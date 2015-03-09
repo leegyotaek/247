@@ -10,6 +10,7 @@ class Meeting < ActiveRecord::Base
   mount_uploader :intro_img, PictureUploader
   validate :picture_size
 
+  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
 
 
 
