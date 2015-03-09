@@ -2,7 +2,9 @@
 
 class PictureUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
+  process resize_to_limit: [600, 600]
   include Sprockets::Rails::Helper
+
   include CarrierWave::MimeTypes
   process :set_content_type
 
@@ -18,6 +20,21 @@ class PictureUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
+#갤러리딴 이미지 업로드
+  #업로드한 이미지를 삭제하면 해당 폴더가 남아 있게 된다.
+  #아래와 같이 하면 자동으로 빈 디렉토리를 삭제해준다.
+  after :remove, :delete_empty_upstream_dirs
+  
+  def delete_empty_upstream_dirs
+    path = ::File.expand_path(store_dir, root)
+    Dir.delete(path) # fails if path not empty dir
+  
+    path = ::File.expand_path(base_store_dir, root)
+    Dir.delete(path) # fails if path not empty dir
+  rescue SystemCallError
+    true # nothing, the dir is not empty
+  end
+  #여기까지
 
   
 
