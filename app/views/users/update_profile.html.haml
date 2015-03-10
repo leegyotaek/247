@@ -20,8 +20,9 @@
         %paper-button{id:"nextclick0"} 다음
 
     %ml-signup-firstconfig-form1{:class=>"length"}
+      %h4{:class=>"error"}
       #interests
-        %ml-highlight
+        %ml-highlight          
           %h4 5개 까지만 선택해 주세요.
         =f.hidden_field :interests , label: "관심사"
         %div{:id=>"buttons_field"}
@@ -32,6 +33,7 @@
         %paper-button{id:"nextclick1"} 다음  
 
     %ml-signup-firstconfig-form2{:class=>"length"}
+      %h4{:class=>"error"}
       =f.input :matching_lan , label: "배우고 싶은 언어"  , collection: ["English", "Korean", "Japanese", "Chinese"], prompt: "언어 선택"
       =f.input :matching_age_from  , collection: 14..60, label: false, prompt: "최소 나이", wrapper: false
       =f.input :matching_age_to  , collection: 14..60 , label: false, prompt: "최대 나이", wrapper: false      
@@ -53,7 +55,7 @@
                 = picture.file_field :name , label:  "프로필 사진"
       .button-form
         %paper-button{id:"beforeclick2"} 이전
-        %ml-submit-button
+        %ml-submit-button{:id=>"firstconfig_msb"}
           =f.submit "설정 완료", is:"core-input"
 
 :javascript
@@ -122,6 +124,12 @@
               eventQuery.selected = index+1;
               if(eventQuery.selected===1){
                 ff_prevent0();
+              }else if(eventQuery.selected===2){
+                $(".error").text("");
+                ff_prevent1();
+              }else if(eventQuery.selected===3){
+                $(".error").text("");
+                ff_prevent2();
               }              
           };
       }(i)), false);
@@ -153,4 +161,32 @@
         }
       }      
    }
+
+   function ff_prevent1(){
+    if(ib_arry.length===0){
+      eventQuery.selected = 1;
+      $(".error").text("한 개 이상은 선택해 주세요.");
+    }
+   }
+
+   function ff_prevent2(){
+    var lang = $("#user_matching_lan option:selected").val();
+    var from = $("#user_matching_age_from").val();
+    var to = $("#user_matching_age_to").val();
+    if(lang===""){
+      eventQuery.selected = 2;
+      $(".error").text("언어를 선택하세요.");
+    }else if(from==="" || to===""){
+      eventQuery.selected = 2;
+      $(".error").text("원하는 연령을 선택하세요.");
+    }else if(from >= to){
+      eventQuery.selected = 2;
+      $(".error").text("연령 범위를 다시 설정해 주세요.");
+    }
+   }
+
+   function ff_prevent3(){
+   }
+
+
 
