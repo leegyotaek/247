@@ -38,15 +38,20 @@
 	    	font-weight: 700;
 	    	color: #434;
 	    }
+
+	    ::content #interests paper-button{
+	    	/*width: 32%;*/
+	    	border-radius: 50%;
+	    }
 		</style>
 
 			<section>
 				<div layout horizontal center-justified>
 					<div class="inner_from">
 						<div layout horizontal center center-justified>
-							<h2>사진 설정</h2>
+							<h2>관심분야 설정</h2>
 						</div>
-						<content select="#pictures"></content>
+						<content select="#interests"></content>
 						<div horizontal end-justified layout>
 							<content select=".button-form"></content>	
 						</div>

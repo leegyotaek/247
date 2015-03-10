@@ -34,14 +34,19 @@
 	    	padding-bottom: 1rem;
 	    }
 
-	    ::content #button-form paper-button{
+	    ::content .button-form paper-button{
 	    	font-weight: 700;
 	    	color: #434;
 	    }
 
-	    ::content #interests paper-button{
-	    	/*width: 32%;*/
-	    	border-radius: 50%;
+	    ::content div label, .label{
+	    	position: relative;
+	    	float: left;
+	    	display: inline-block;
+	    	font-weight: 700;
+	    	width: 25%;
+	    	text-align: right;
+	    	padding-right: 0.65rem;
 	    }
 		</style>
 
@@ -49,11 +54,16 @@
 				<div layout horizontal center-justified>
 					<div class="inner_from">
 						<div layout horizontal center center-justified>
-							<h2>관심분야 설정</h2>
+							<h2>1:1 매칭 설정</h2>
 						</div>
-						<content select="#interests"></content>
+							<content select=".user_matching_lan"></content>
+							<hr>
+							<span class="label">사용 언어</span>							
+							<content select="#user_matching_age_from"></content>
+							<span>~</span>
+							<content select="#user_matching_age_to"></content>
 						<div horizontal end-justified layout>
-							<content select="#button-form"></content>	
+							<content select=".button-form"></content>	
 						</div>
 					</div>
 				</div>

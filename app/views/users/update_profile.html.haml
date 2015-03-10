@@ -19,46 +19,41 @@
         %paper-button{id:"nextclick0"} 다음
 
     %ml-signup-firstconfig-form1{:class=>"length"}
-      #pictures
-        = f.fields_for :pictures , html: { multipart: true } do |picture|
-          %div{:class=>'fileinput fileinput-new',:'data-provides' => 'fileinput'}
-            %div{:class=>'fileinput-new thumbnail', :style => 'width: 100%; height: 100%;'}
-              %img{:'data-src'=>'holder.js/100%x100%'}
-            %div{:class=>'fileinput-preview fileinput-exists thumbnail', :style=>'width: 100%; height: 100%;'}
-            %div
-              %span{:class=>'btn btn-default btn-file'}
-                %span{:class=>'fileinput-new'} select
-                %span{:class=>'fileinput-exists'} change
-                = picture.file_field :name , label:  "프로필 사진"
-              %a{:class=>'btn btn-default fileinput-exists',:'data-dismiss'=>'fileinput'} remove
-      .button-form
-        %paper-button{id:"beforeclick0"} 이전
-        %paper-button{id:"nextclick1"} 다음  
-
-    %ml-signup-firstconfig-form2{:class=>"length"}
       #interests
         %ml-highlight
           %h4 5개 까지만 선택해 주세요.
         =f.hidden_field :interests , label: "관심사"
         %div{:id=>"buttons_field"}
           -['언어교환','술','공부','연애','등산','친목','여행','봉사활동','클럽','비즈니스','게임','독서','영화','공연','음악','맛집'].each do |r|          
-            %paper-button{:class=>'interests_buttons',:raised=>"false"} #{r}
-      #button-form
+            %paper-button{:class=>'interests_buttons',:raised=>"false"} #{r}      
+      .button-form
+        %paper-button{id:"beforeclick0"} 이전
+        %paper-button{id:"nextclick1"} 다음  
+
+    %ml-signup-firstconfig-form2{:class=>"length"}
+      =f.input :matching_lan , label: "배우고 싶은 언어"  , collection: ["English", "Korean", "Japanese", "Chinese"], prompt: "언어 선택"
+      =f.input :matching_age_from  , collection: 14..60, label: false, prompt: "최소 나이", wrapper: false
+      =f.input :matching_age_to  , collection: 14..60 , label: false, prompt: "최대 나이", wrapper: false      
+      .button-form
         %paper-button{id:"beforeclick1"} 이전
         %paper-button{id:"nextclick2"} 다음
 
     %ml-signup-firstconfig-form3{:class=>"length"}
-      .first_config_form3
-        %h3 1:1 매칭 설정
-        =f.input :matching_lan , label: "배우고 싶은 언어"  , collection: ["English", "Korean", "Japanese", "Chinese"]
-        / =f.input :matching_interest , label: "관심사" , collection: current_user.interests.split(",")
-
-        %h4 나이
-        =f.input :matching_age_from  , collection: 14..60 
-        =f.input :matching_age_to  , collection: 14..60 
+      #pictures
+        = f.fields_for :pictures , html: { multipart: true } do |picture|
+          %div{:class=>'fileinput fileinput-new',:'data-provides' => 'fileinput'}
+            %div{:class=>'fileinput-new thumbnail', :style => 'width: 150px; height: 150px;'}
+              %img{:'data-src'=>'holder.js/100%x100%'}
+            %div{:class=>'fileinput-preview fileinput-exists thumbnail'}
+            %div
+              %span{:class=>'btn btn-default btn-file'}
+                %span{:class=>'fileinput-new'} 이미지 선택
+                %span{:class=>'fileinput-exists'} 이미지 변경
+                = picture.file_field :name , label:  "프로필 사진"
       .button-form
         %paper-button{id:"beforeclick2"} 이전
-        =f.submit "Save chages"
+        %ml-submit-button
+          =f.submit "설정 완료", is:"core-input"
 
 :javascript
   var ib_arry = [];  
