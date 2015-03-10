@@ -34,6 +34,10 @@
 	    	padding-bottom: 1rem;
 	    }
 
+	    ::content .error{
+	    	color: #d61d00;
+	    }
+
 	    ::content .button-form{
 	    	margin-top: 0.3rem;
 	    }
@@ -94,8 +98,9 @@
 		<section>
 			<div layout horizontal center-justified>
 				<div class="inner_from">
-					<div layout horizontal center center-justified>
+					<div layout vertical center center-justified>
 						<h2>프로필 필수 옵션 설정</h2>
+						<content select=".error"><content>
 					</div>
 					<content select=".select"></content>
 					<hr>

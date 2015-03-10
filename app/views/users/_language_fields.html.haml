@@ -1,5 +1,5 @@
 .nested-fields
-	= f.input :language 
+	= f.input :language, collection: ["러시아어", "스페인어","영어(영국)", "영어(미국)", "일본어", "중국어(북경어)", "중국어(광동어)","한국어"], prompt:"언어 선택", class:"user_language"
 	
 	= f.input :level, collection: [['Beginner', 1 ] ,['intermediate', 2],['advanced', 3],['fluent', 4],['native', 5]], :include_blank => false
 	
