@@ -1,5 +1,15 @@
+- unless current_user? @meeting.user
+
+	- if current_user.joined_meetings.include? @meeting
+		.disjoin_button
+			=link_to "Retire" , meeting_disjoin_path(@meeting), method: :post
+	- else
+		.join_button
+			=link_to "Join" , meeting_join_path(@meeting), method: :post
+
+
 .image_wraper
-	=image_tag @meeting.intro_img.url
+	=image_tag @meeting.intro_img.url(:jumbo)
 
 .meeting_info
 %p 
@@ -10,10 +20,14 @@
 	%p 
 		개설일자 :
 		= time_ago_in_words @meeting.created_at
-	\.
-	\.
-	\.
+	
+		
+%h2 	모임 회원 목록	
+.leader_infor
+	leader -
+	= render @meeting.user
 
-		
-		
+.member_info
+	member -
+	= render @meeting.members
 

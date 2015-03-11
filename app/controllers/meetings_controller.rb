@@ -28,12 +28,38 @@ class MeetingsController < ApplicationController
   end
 
 
+  def join
+
+    @meeting = Meeting.find(params[:meeting_id])
+    @meeting.groups.build(member_id: current_user.id).save
+
+    flash[:info] = "successfully joined"
+    redirect_to @meeting
+
+  end
+
+    def disjoin
+
+    @meeting = Meeting.find(params[:meeting_id])
+    
+    @group = @meeting.groups.where(member_id: current_user.id)
+    Group.destroy @group  
+
+
+    flash[:info] = "successfully disjoined"
+    redirect_to @meeting || :back
+
+  end
+
+
+
+
 
   private
 
   def meeting_params
 
-  	params.require(:meeting).permit(:intro_img, :name, :user_id, :introduce)
+  	params.require(:meeting).permit(:intro_img, :name, :member_id, :introduce)
   	
   end
 
