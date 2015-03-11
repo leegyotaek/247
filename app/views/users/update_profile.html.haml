@@ -122,14 +122,15 @@
     document.querySelector('#nextclick'+i).addEventListener("click", (function (index) {   
           return function () {              
               eventQuery.selected = index+1;
+              $(".error").eq(0).text("");
               if(eventQuery.selected===1){
                 ff_prevent0();
+                $(".error").eq(1).text("");
               }else if(eventQuery.selected===2){
-                $(".error").text("");
                 ff_prevent1();
+                $(".error").eq(2).text("");
               }else if(eventQuery.selected===3){
-                $(".error").text("");
-                ff_prevent2();
+                ff_prevent2();                
               }              
           };
       }(i)), false);
