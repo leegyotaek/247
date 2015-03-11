@@ -40,7 +40,12 @@ resources :users do
  end
 end
 
-resources :meetings
+resources :meetings do
+  post :join
+  post :disjoin
+
+
+end
 resources :account_activations, only: [:edit]
 resources :password_resets, only: [:create, :new, :edit, :update]
 resources :microposts, only:[:create, :destroy]
