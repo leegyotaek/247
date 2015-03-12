@@ -48,7 +48,24 @@
             </core-menu>
         </core-header-panel>
 
-        <div header><%= render 'layouts/header' %></div>
+        <div header>
+            <%= link_to(root_path) do %>
+                <home-link>
+                LOGO
+                </home-link>
+            <% end %>              
+            <ml-scaffold-toolbar>
+                <%= link_to(users_path,class:"mo-tb-right") do%>
+                    <core-icon icon="face"></core-icon>
+                    <span>친구</span>
+                <% end %>
+
+                <%= link_to("",class:"mo-tb-right") do%>
+                    <core-icon icon="alarm"></core-icon>
+                    <span>알람</span>
+                <% end %>
+            </ml-scaffold-toolbar>
+        </div>
 
         <div body>
             <% flash.each do |message_type, message| %>  

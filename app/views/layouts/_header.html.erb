@@ -2,21 +2,33 @@
 <!-- <%= link_to "sample app", '#', id: "logo" %> -->
 <% if logged_in? %>
 
-<ml-toolbar isPhone="767px" isTablet="991px">
+<ml-toolbar isTablet="991px">
 
 <%= link_to "1:1언어교환", matching_path ,class:"mo-tb-left" %>
 
 <%= link_to "자유모임", meetings_path ,class:"mo-tb-left" %>
 
-<%= link_to "Users", users_path,class:"mo-tb-right" %>
+<%= link_to(users_path,class:"mo-tb-right") do%>
+	<core-icon icon="face"></core-icon>
+	<span>친구</span>
+<% end %>
+
+<%= link_to("",class:"mo-tb-right") do%>
+	<core-icon icon="alarm"></core-icon>
+	<span>알람</span>
+<% end %>
 
 <%=current_user.name %>
 
-<%= link_to "Profile", current_user,class:"mo-tb-fixed" %>
+<%= link_to "대시보드", "#",class:"mo-tb-fixed" %>
 
-<%= link_to "Settings", edit_user_path(current_user),class:"mo-tb-fixed" %>
+<%= link_to "프로필", current_user,class:"mo-tb-fixed" %>
 
-<%= link_to "Log out", logout_path, method: "delete",class:"mo-tb-fixed" %>
+<%= link_to "프로필 수정", edit_user_path(current_user),class:"mo-tb-fixed" %>
+
+<%= link_to "개인 사진첩", "#",class:"mo-tb-fixed" %>
+
+<%= link_to "로그아웃", logout_path, method: "delete",class:"mo-tb-fixed" %>
 
 </ml-toolbar>                          
 
@@ -28,6 +40,6 @@
 
 <%= link_to "로그인", login_path,class:"mo-tb-fixed" %>
 
-</ml-toolbar>                          
+</ml-toolbar-beforelogin>                          
 
 <% end %>

@@ -1,0 +1,37 @@
+<polymer-element name="ml-scaffold-toolbar" noscript>
+	<template>
+		<style shim-shadodom>
+			.mo-tb-rightToolbar > ::content a.mo-tb-right {
+                font-weight: 700;
+                float: left;
+                display: inline-block;
+                text-transform: uppercase;
+                text-decoration: none; 
+                color: #2d2d2d;
+                position: relative;
+            }
+
+            .mo-tb-rightToolbar > ::content a.mo-tb-right{
+                margin-top: 5px;
+                margin-bottom: 1px;
+                padding: 0.825rem 0.825rem;
+            }
+
+            .mo-tb-rightToolbar > ::content a.mo-tb-right[active],            
+            .mo-tb-rightToolbar > ::content a.mo-tb-right:hover,            
+            .mo-tb-rightToolbar > ::content a.mo-tb-right:active,            
+            .mo-tb-rightToolbar > ::content a.mo-tb-right:focus {
+                color: #f4511e;
+                text-decoration: none;
+            }
+		</style>
+
+        <div layout horizontal center>
+            <div flex></div>
+            <div class="mo-tb-rightToolbar">
+                <content select=".mo-tb-right"></content>
+            </div>
+        </div>
+
+	<template>
+</polymer-element>

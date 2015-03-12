@@ -1,0 +1,26 @@
+<polymer-element name="ml-profile" noscript attributes="isPhone">
+	<template>
+		<style></style>
+		<template if="{{isPhoneQuery}}">
+			<bs-container>
+				<bs-row>
+					<bs-col md="12">
+						<content></content>
+					</bs-col>
+				</bs-row>
+			</bs-container>
+		</template>
+
+		<template if="{{!isPhoneQuery}}">
+			<bs-container>
+				<bs-row>
+					<bs-col md="12">
+						<content></content>
+					</bs-col>
+				</bs-row>
+			</bs-container>
+		</template>
+
+		<core-media-query query="max-width: {{isPhone}}" queryMatches="{{isPhoneQuery}}"></core-media-query>
+	</template>
+</polymer-element>

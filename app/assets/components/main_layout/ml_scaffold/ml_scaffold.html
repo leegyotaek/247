@@ -24,19 +24,20 @@
 
   <core-drawer-panel id="drawerPanel" narrow="{{narrow}}" drawerWidth="{{drawerWidth}}" rightDrawer="{{rightDrawer}}" responsiveWidth="{{responsiveWidth}}" disableSwipe="{{disableSwipe}}">
 
-    <div vertical layout drawer>
+    <div layout vertical drawer>
       <content select="[navigation], nav"></content>
     </div>
     
     <core-header-panel id="headerPanel" main mode="{{mode}}">
-      <ml-header>
-        <template if="{{!rightDrawer}}">
-          <core-icon-button id="menuButton" icon="menu" on-tap="{{togglePanel}}"></core-icon-button>
-        </template>
-        <content select="[header]"></content>
-        <template if="{{rightDrawer}}">
-          <core-icon-button id="menuButton" icon="menu" on-tap="{{togglePanel}}"></core-icon-button>
-        </template>
+      <ml-header> 
+        <content select="#logo"></content>
+          <content select="[header]"></content>
+          <template if="{{!rightDrawer}}">
+            <core-icon-button id="menuButton" icon="menu" on-tap="{{togglePanel}}"></core-icon-button>
+          </template>        
+          <template if="{{rightDrawer}}">
+            <core-icon-button id="menuButton" icon="menu" on-tap="{{togglePanel}}"></core-icon-button>
+          </template>
       </ml-header>
       
       <ml-body>
@@ -103,7 +104,7 @@
        * @type boolean
        * @default false
        */
-      rightDrawer: false,
+      rightDrawer: true,
 
       /**
        * If true, swipe to open/close the drawer is disabled.

@@ -1,12 +1,13 @@
-<% provide(:title, @user.name) %>
-<%=image_tag @pic.name_url(:thumb) if @pic = @user.pictures.first  %>
-<%= @user.name %>
-<% if current_user?@user %>
-<%= link_to friends_user_path(@user) , clas: "btn btn-default btn-sm" do %>
-<span class="glyphicon glyphicon-user">friends : <%=  @user.friends.count %> 명</span>
-<% end %>
-<% end %>
-<br>
+<ml-profile isPhone="767px">
+	<% provide(:title, @user.name) %>
+	<%=image_tag @pic.name_url(:thumb) if @pic = @user.pictures.first  %>
+	<%= @user.name %>
+	<% if current_user?@user %>
+	<%= link_to friends_user_path(@user) , clas: "btn btn-default btn-sm" do %>
+	<span class="glyphicon glyphicon-user">friends : <%=  @user.friends.count %> 명</span>
+	<% end %>
+	<% end %>
+</ml-profile>
 <%= render 'shared/stats' %>
 <%= render 'friend_form' if logged_in? %>
 
