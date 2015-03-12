@@ -48,24 +48,27 @@
             </core-menu>
         </core-header-panel>
 
-        <div header>
-            <%= link_to(root_path) do %>
+        
+            <%= link_to(root_path,:id=>"logo") do %>
                 <home-link>
                 LOGO
                 </home-link>
             <% end %>              
-            <ml-scaffold-toolbar>
-                <%= link_to(users_path,class:"mo-tb-right") do%>
-                    <core-icon icon="face"></core-icon>
-                    <span>친구</span>
-                <% end %>
+            
+            <%= link_to "1:1언어교환", matching_path ,class:"mo-tb-left" %>
 
-                <%= link_to("",class:"mo-tb-right") do%>
-                    <core-icon icon="alarm"></core-icon>
-                    <span>알람</span>
-                <% end %>
-            </ml-scaffold-toolbar>
-        </div>
+            <%= link_to "자유모임", meetings_path ,class:"mo-tb-left" %>
+
+            <%= link_to(users_path,class:"mo-tb-right") do%>
+                <core-icon icon="face"></core-icon>
+                <span>친구</span>
+            <% end %>
+
+            <%= link_to("",class:"mo-tb-right") do%>
+                <core-icon icon="alarm"></core-icon>
+                <span>알람</span>
+            <% end %>
+        
 
         <div body>
             <% flash.each do |message_type, message| %>  

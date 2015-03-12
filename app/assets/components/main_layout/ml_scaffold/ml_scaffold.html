@@ -19,6 +19,10 @@
     #drawerPanel:not([narrow]) #menuButton {
       display: none;
     }
+
+    ml-header{
+      z-index: 0;
+    }
     
   </style>
 
@@ -31,13 +35,16 @@
     <core-header-panel id="headerPanel" main mode="{{mode}}">
       <ml-header> 
         <content select="#logo"></content>
-          <content select="[header]"></content>
+        <ml-scaffold-toolbar> 
+          <content select=".mo-tb-left"></content>
+          <content select=".mo-tb-right"></content>
           <template if="{{!rightDrawer}}">
             <core-icon-button id="menuButton" icon="menu" on-tap="{{togglePanel}}"></core-icon-button>
           </template>        
           <template if="{{rightDrawer}}">
             <core-icon-button id="menuButton" icon="menu" on-tap="{{togglePanel}}"></core-icon-button>
           </template>
+        </ml-scaffold-toolbar>
       </ml-header>
       
       <ml-body>

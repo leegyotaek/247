@@ -1,0 +1,6 @@
+<polymer-element name="ml-response-form" noscript>
+	<template>
+		<core-media-query query="max-width: {{isPhone}}" queryMatches="{{isPhoneQuery}}"></core-media-query>
+	<template>
+</polymer-element>
+
