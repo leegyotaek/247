@@ -8,15 +8,25 @@
 
 <%= link_to "자유모임", meetings_path ,class:"mo-tb-left" %>
 
-<%= link_to(users_path,class:"mo-tb-right") do%>
-	<core-icon icon="face"></core-icon>
-	<span>친구</span>
-<% end %>
+<ml-response-form isPhone="767px">
+	<%= link_to(users_path,class:"mo-tb-right desktop_form") do%>
+		<core-icon icon="face"></core-icon>
+		<span>친구</span>
+	<% end %>
 
-<%= link_to("",class:"mo-tb-right") do%>
-	<core-icon icon="alarm"></core-icon>
-	<span>알람</span>
-<% end %>
+	<%= link_to("",class:"mo-tb-right desktop_form") do%>
+		<core-icon icon="alarm"></core-icon>
+		<span>알람</span>
+	<% end %>
+
+	<%= link_to(users_path,class:"mo-tb-right mobile_form") do%>
+		<core-icon icon="face"></core-icon>
+	<% end %>
+
+	<%= link_to("",class:"mo-tb-right mobile_form") do%>
+		<core-icon icon="alarm"></core-icon>
+	<% end %>
+</ml-response-form>
 
 <%=current_user.name %>
 

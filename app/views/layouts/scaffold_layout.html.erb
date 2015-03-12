@@ -27,24 +27,12 @@
             </core-toolbar>
             <% end %>
             <core-menu theme="core-light-theme">
-              <core-item>설정과</core-item>
-                <core-item>네비게이션 아이템을</core-item>
-                <core-item>여기에</core-item>
-                <core-item>여기에</core-item>
-                <core-item>여기에</core-item>
-                <core-item>여기에</core-item>
-                <core-item>여기에</core-item>
-                <core-item>여기에</core-item>
-                <core-item>여기에</core-item>
-                <core-item>여기에</core-item>
-                <core-item>여기에</core-item>
-                <core-item>여기에</core-item>
-                <core-item>여기에</core-item>
-                <core-item>여기에</core-item>
-                <core-item>여기에</core-item>
-                <core-item>여기에</core-item>
-                <core-item>여기에</core-item>
-                <core-item>여기에</core-item>
+                <core-item>요기에 설정</core-item>
+                <core-item><%= link_to "대시보드", "#",class:"mo-tb-fixed" %></core-item>
+                <core-item><%= link_to "프로필", current_user,class:"mo-tb-fixed" %></core-item>
+                <core-item><%= link_to "프로필 수정", edit_user_path(current_user),class:"mo-tb-fixed" %></core-item>
+                <core-item><%= link_to "개인 사진첩", "#",class:"mo-tb-fixed" %></core-item>
+                <core-item><%= link_to "로그아웃", logout_path, method: "delete",class:"mo-tb-fixed" %></core-item>
             </core-menu>
         </core-header-panel>
 
