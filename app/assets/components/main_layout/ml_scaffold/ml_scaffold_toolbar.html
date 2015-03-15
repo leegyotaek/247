@@ -7,8 +7,8 @@
                 display: inline-block;
                 text-transform: uppercase;
                 text-decoration: none;
-                padding: 1rem 1rem;
-                margin-top: 6px;
+                padding: 0.85rem 0.85rem;
+                margin-top: 5px;
                 border-bottom: 1px solid #fff;
                 color: #2d2d2d;
                 position: relative;
@@ -45,7 +45,7 @@
                 margin-left: -3px;
             }
 
-			.mo-tb-rightToolbar > ::content a.mo-tb-right,::content core-icon-button {
+			.mo-tb-rightToolbar > ::content ml-response-form a.mo-tb-right,::content core-icon-button {
                 font-weight: 700;
                 float: left;
                 display: inline-block;
@@ -53,18 +53,21 @@
                 text-decoration: none; 
                 color: #2d2d2d;
                 position: relative;
+            }            
+
+            .mo-tb-rightToolbar > ::content ml-response-form a.mo-tb-right {
+                margin-top: 5px;                
+                padding: 0.685rem 0.45rem 0.59rem 0.45rem;
             }
 
-            .mo-tb-rightToolbar > ::content a.mo-tb-right,::content core-icon-button{
-                margin-top: 5px;
-                margin-bottom: 1px;
-                padding: 0.825rem 0.825rem;
+            ::content core-icon-button{
+                margin-top: 0.6rem;
             }
 
-            .mo-tb-rightToolbar > ::content a.mo-tb-right[active],            
-            .mo-tb-rightToolbar > ::content a.mo-tb-right:hover,            
-            .mo-tb-rightToolbar > ::content a.mo-tb-right:active,            
-            .mo-tb-rightToolbar > ::content a.mo-tb-right:focus {
+            .mo-tb-rightToolbar > ::content ml-response-form a.mo-tb-right[active],            
+            .mo-tb-rightToolbar > ::content ml-response-form a.mo-tb-right:hover,            
+            .mo-tb-rightToolbar > ::content ml-response-form a.mo-tb-right:active,            
+            .mo-tb-rightToolbar > ::content ml-response-form a.mo-tb-right:focus {
                 color: #f4511e;
                 text-decoration: none;
             }
@@ -76,7 +79,7 @@
             </div>
             <div flex></div>
             <div class="mo-tb-rightToolbar">
-                <content select=".mo-tb-right"></content>
+                <content select="ml-response-form"></content>
                 <content select="core-icon-button"></content>
             </div>
         </div>

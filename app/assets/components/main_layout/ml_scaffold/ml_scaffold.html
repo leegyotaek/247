@@ -26,7 +26,7 @@
 
     ::content [navigation] core-toolbar{
       background-color: #fff;
-      height: 56px;
+      height: 50px;
     }
     
   </style>
@@ -42,7 +42,7 @@
         <content select="#logo"></content>
         <ml-scaffold-toolbar> 
           <content select=".mo-tb-left"></content>
-          <content select=".mo-tb-right"></content>
+          <content select="ml-response-form"></content>
           <template if="{{!rightDrawer}}">
             <core-icon-button id="menuButton" icon="menu" on-tap="{{togglePanel}}"></core-icon-button>
           </template>        
