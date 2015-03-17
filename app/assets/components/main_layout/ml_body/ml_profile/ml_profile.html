@@ -1,25 +1,100 @@
 <polymer-element name="ml-profile" noscript attributes="isPhone">
 	<template>
-		<style></style>
-		<template if="{{isPhoneQuery}}">
-			<bs-container>
-				<bs-row>
-					<bs-col md="12">
-						<content></content>
-					</bs-col>
-				</bs-row>
-			</bs-container>
-		</template>
+		<style>
+		:host{
+			display: block;
+			margin: 0.5rem 0.5rem 0.5rem; 
+		}
 
-		<template if="{{!isPhoneQuery}}">
-			<bs-container>
-				<bs-row>
-					<bs-col md="12">
-						<content></content>
-					</bs-col>
-				</bs-row>
-			</bs-container>
-		</template>
+		bs-container{
+			padding: 0.5rem 0.5rem 0.5rem; 	
+		}
+
+		.not_mobile ::content > #ml_p_img > img{
+			width: 230px;
+			border-radius: 0.5rem;
+		}
+		</style>
+
+		<paper-shadow z="2">
+			<template if="{{isPhoneQuery}}">
+				<bs-container>
+					<bs-row>
+						<bs-col xs="12">
+							<content select="#ml_p_img"></content>
+							<content select="#ml_p_date"></content>
+							<content select="#ml_p_freinds"></content>
+							<content select="#ml_p_name"></content>
+							<content select="#ml_p_using_lan"></content>
+							<content select="#ml_p_learning_lan"></content>
+							<content select="#ml_p_gender"></content>
+							<content select="#ml_p_country"></content>
+							<content select="#ml_p_region"></content>
+							<content select="#ml_p_city"></content>
+							<content select="#ml_p_interests"></content>
+							<content select="#ml_p_introduce"></content>
+						</bs-col>
+					</bs-row>
+				</bs-container>
+			</template>
+		</paper-shadow>
+
+		<paper-shadow z="2">
+			<template if="{{!isPhoneQuery}}">
+				<bs-container>
+					<div horizontal layout>
+					    <div flex><h2>프로필</h2></div>
+					    <div flex self-center><content select="#ml_p_profile_edit"></content></div>
+					    <div flex four></div>
+					</div>
+					<bs-row>
+						<bs-col xs="3">							
+							<div class="not_mobile">
+								<content select="#ml_p_img"></content>
+							</div>
+							<div class="not_mobile">
+								<content select="#ml_p_date"></content>
+							</div>
+							<div class="not_mobile">
+								<content select="#ml_p_freinds"></content>
+							</div>					
+						</bs-col>
+						<bs-col xs="7">
+							<div class="not_mobile">
+								<content select="#ml_p_ment"></content>
+							</div>
+							<div class="not_mobile">
+								<content select="#ml_p_name"></content>
+							</div>
+							<div class="not_mobile">
+								<content select="#ml_p_using_lan"></content>
+							</div>
+							<div class="not_mobile">
+								<content select="#ml_p_learning_lan"></content>
+							</div>
+							<div class="not_mobile">
+								<content select="#ml_p_gender"></content>
+							</div>
+							<div class="not_mobile">
+								<content select="#ml_p_country"></content>
+							</div>
+							<div class="not_mobile">
+								<content select="#ml_p_region"></content>
+							</div>
+							<div class="not_mobile">
+								<content select="#ml_p_city"></content>
+							</div>
+							<div class="not_mobile">
+								<content select="#ml_p_interests"></content>
+							</div>
+							<div class="not_mobile">
+								<content select="#ml_p_introduce"></content>
+							</div>
+						</bs-col>
+					</bs-row>
+				</bs-container>
+			</template>
+		</paper-shadow>
 
 		<core-media-query query="max-width: {{isPhone}}" queryMatches="{{isPhoneQuery}}"></core-media-query>
 	</template>

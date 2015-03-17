@@ -26,7 +26,7 @@
             <core-menu theme="core-light-theme">
                 <core-item>요기에 설정</core-item>
                 <core-item><%= link_to "대시보드", "#"%></core-item>
-                <core-item><%= link_to "친구", users_path%></core-item>
+                <core-item><%= link_to "친구", friends_user_path(@user)%></core-item>
                 <core-item><%= link_to "프로필", current_user%></core-item>
                 <core-item><%= link_to "프로필 수정", edit_user_path(current_user)%></core-item>
                 <core-item><%= link_to "개인 사진첩", "#"%></core-item>
@@ -39,7 +39,7 @@
                 <home-link>
                 LOGO
                 </home-link>
-            <% end %>              
+            <% end %>
             
             <%= link_to "1:1언어교환", matching_path ,class:"mo-tb-left" %>
 

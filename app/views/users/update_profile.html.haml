@@ -10,7 +10,7 @@
           %core-icon{:icon=>"add"}
       = f.simple_fields_for :languages  do |language|
         = render 'language_fields', :f => language         
-      .text
+      #introduce
         = f.label :introduce,"자기소개"
         %paper-input-decorator{:label=>"쓰든지 말든지",:floatingLabel=>""}
           %paper-autogrow-textarea             

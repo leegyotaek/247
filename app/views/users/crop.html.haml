@@ -1,12 +1,13 @@
 %ml-picture-crop
  %div{:id=>"cropbox_form"}
   =image_tag @pic.name.url(:jumbo),id:'picture_cropbox' if @pic = @user.pictures.first  
- %div{:style=>"width:100px; height:100px; overflow:hidden;",:id=>"previewbox_from"}
-  =image_tag @pic.name.url(:jumbo),id:'picture_previewbox' if @pic = @user.pictures.first
   = form_for @pic do |f| 
    - %w[x y w h].each do |attribute|
     = f.hidden_field "crop_#{attribute}"
    %div{:layout=>"", :vertical=>"", :center=>""}
     %ml-submit-button
      =f.submit "수정하기", is:"core-input"
+ %div{:style=>"width:100px; height:100px; overflow:hidden;",:id=>"previewbox_from"}
+  =image_tag @pic.name.url(:jumbo),id:'picture_previewbox' if @pic = @user.pictures.first
+  
   

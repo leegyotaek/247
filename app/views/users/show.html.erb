@@ -1,13 +1,55 @@
+<%= render 'shared/stats' %>
 <ml-profile isPhone="767px">
 	<% provide(:title, @user.name) %>
-	<%=image_tag @pic.name_url(:thumb) if @pic = @user.pictures.first  %>
-	<%= @user.name %>
-	<% if current_user?@user %>
-	<%= link_to friends_user_path(@user) , clas: "btn btn-default btn-sm" do %>
-	<span class="glyphicon glyphicon-user">friends : <%=  @user.friends.count %> 명</span>
-	<% end %>
-	<% end %>
+	<div id="ml_p_profile_edit">
+		<%= link_to(edit_user_path(current_user)) do%>
+			프로필 수정
+		<% end %>
+	</div>
+	<div id="ml_p_img">
+		<%=image_tag @pic.name_url(:thumb) if @pic = @user.pictures.first  %>	
+	</div>
+	<div id="ml_p_date">
+		<%= @user.created_at %>
+	</div>
+	<div id="ml_p_freinds">
+		<% if current_user?@user %>
+			<%= link_to friends_user_path(@user) do %>
+				friends : <%=  @user.friends.count %> 명
+			<% end %>
+		<% end %>	
+		<%= render 'friend_form' if logged_in? %>
+	</div>
+	<div id="ml_p_ment">
+		남긴말
+	</div>
+	<div id="ml_p_name">
+		<%= @user.name %>
+	</div>
+	<div id="ml_p_using_lan">
+		<%= @lan.language if @lan = @user.languages.first%>
+	</div>
+	<div id="ml_p_learning_lan">
+		<%= @user.matching_lan %>
+	</div>
+	<div id="ml_p_gender">
+		<%= @user.gender %>	
+	</div>
+	<div id="ml_p_country">
+		<%= @user.country %>
+	</div>
+	<div id="ml_p_region">
+		<%= @user.region %>
+	</div>
+	<div id="ml_p_city">
+		<%= @user.city %>
+	</div>
+	<div id="ml_p_interests">
+		<%= @user.interests %>
+	</div>
+	<div id="ml_p_introduce">
+		<%= @user.introduce %>	
+	</div>
 </ml-profile>
-<%= render 'shared/stats' %>
-<%= render 'friend_form' if logged_in? %>
+
 

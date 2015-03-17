@@ -61,18 +61,19 @@ class PictureUploader < CarrierWave::Uploader::Base
 
   version :thumb do
     process :crop        
-    resize_to_limit(100,100)
+    resize_to_limit(3800,3800)
   end  
 
   def crop
-    if model.crop_x.present?     
-     manipulate! do |img|
-      x = model.crop_x.to_i
-      y = model.crop_y.to_i
-      w = model.crop_w.to_i
-      h = model.crop_h.to_i
-      img.crop("#{w}x#{h}+#{x}+#{y}")
-      img
+    if model.crop_x.present?
+      manipulate! do |img|
+        x = model.crop_x.to_i
+        y = model.crop_y.to_i
+        w = model.crop_w.to_i
+        h = model.crop_h.to_i
+        img.resize "380x380"
+        img.crop("#{w}x#{h}+#{x}+#{y}")
+        img
       end
     end
     
