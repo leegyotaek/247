@@ -55,7 +55,7 @@ class PictureUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :jumbo do    
-    resize_to_limit(380,380)
+    resize_to_limit(380,1140)
   end
 
 
@@ -71,7 +71,7 @@ class PictureUploader < CarrierWave::Uploader::Base
         y = model.crop_y.to_i
         w = model.crop_w.to_i
         h = model.crop_h.to_i
-        img.resize "380x380"
+        img.resize "380x1140"
         img.crop("#{w}x#{h}+#{x}+#{y}")
         img
       end

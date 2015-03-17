@@ -65,17 +65,16 @@
 			display: inline-block;
 			float: left;
 			padding: 0.3rem;
-			font-size: 0.75rem;
+			font-size: 0.85rem;
 		}
 
 		.mobile ::content > #ml_p_img > img{
 			width: 55px;
 			border-radius: 0.5rem;
-			margin: -0.75rem 0 -0.75rem 0;
+			margin: -0.75rem 0.4rem -0.75rem 0;
 		}
 		</style>
 
-		<paper-shadow z="2">
 			<template if="{{isPhoneQuery}}">
 				<bs-container>
 					<bs-row>
@@ -96,11 +95,11 @@
 								</div>
 								<div>
 									<div class="ml_p_m_header_right">
-										<content select="#ml_p_profile_edit"></content>
-									</div>
-									<div class="ml_p_m_header_right">
 										<span>가입날짜 - </span>
 										<content select="#ml_p_date"></content>										
+									</div>
+									<div class="ml_p_m_header_right">
+										<content select="#ml_p_profile_edit"></content>
 									</div>																	
 								</div>
 							</div>
@@ -136,9 +135,7 @@
 					</bs-row>
 				</bs-container>
 			</template>
-		</paper-shadow>
 
-		<paper-shadow z="2">
 			<template if="{{!isPhoneQuery}}">
 				<bs-container>
 					<div horizontal layout>
@@ -200,7 +197,6 @@
 					</bs-row>
 				</bs-container>
 			</template>
-		</paper-shadow>
 
 		<core-media-query query="max-width: {{isPhone}}" queryMatches="{{isPhoneQuery}}"></core-media-query>
 	</template>
