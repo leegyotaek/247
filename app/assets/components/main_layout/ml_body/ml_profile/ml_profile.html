@@ -1,6 +1,6 @@
 <polymer-element name="ml-profile" noscript attributes="isPhone">
 	<template>
-		<style>
+		<style shim-shadowdom>
 		:host{
 			display: block;
 			margin: 0.5rem 0.5rem 0.5rem; 
@@ -10,9 +10,68 @@
 			padding: 0.5rem 0.5rem 0.5rem; 	
 		}
 
+		
+		.not_mobile,
+		.mobile{
+			margin: 0.75rem 0 0.75rem 0;
+		}
+
+		.mobile > span:nth-child(1),
+		.not_mobile > span:nth-child(1) {
+			font-weight: 700;
+		}
+
 		.not_mobile ::content > #ml_p_img > img{
-			width: 230px;
+			width: 175px;
 			border-radius: 0.5rem;
+		}
+
+		@media (min-width: 992px) {
+			.not_mobile ::content > #ml_p_img > img{
+				width: 230px;
+			}
+		}
+
+		.mobile ::content > #ml_p_ment, 
+		.mobile ::content > div #ml_p_introduce,
+		.not_mobile ::content > #ml_p_ment, 
+		.not_mobile ::content > div #ml_p_introduce{
+			display: inline-block;			
+			width: 90%;
+			border: 0.1rem solid #d3d3d3;
+			border-radius: 0.5rem;
+			padding: 0.6rem;
+			margin: 0.2rem;
+		}
+
+		@media (min-width: 992px) {
+			.not_mobile ::content > #ml_p_ment, 
+			.not_mobile ::content > #ml_p_introduce{
+				width: 77.5%;
+			}
+		}
+
+		.mobile ::content > #ml_p_ment,
+		.not_mobile ::content > #ml_p_ment{
+			background-color: #f3f3f3
+		}
+
+		#ml_p_m_header{
+			border-bottom: 0.1rem solid #d3d3d3;
+		}
+
+		.ml_p_m_header_left,
+		.ml_p_m_header_right{
+			display: inline-block;
+			float: left;
+			padding: 0.3rem;
+			font-size: 0.75rem;
+		}
+
+		.mobile ::content > #ml_p_img > img{
+			width: 55px;
+			border-radius: 0.5rem;
+			margin: -0.75rem 0 -0.75rem 0;
 		}
 		</style>
 
@@ -21,18 +80,58 @@
 				<bs-container>
 					<bs-row>
 						<bs-col xs="12">
-							<content select="#ml_p_img"></content>
-							<content select="#ml_p_date"></content>
-							<content select="#ml_p_freinds"></content>
-							<content select="#ml_p_name"></content>
-							<content select="#ml_p_using_lan"></content>
-							<content select="#ml_p_learning_lan"></content>
-							<content select="#ml_p_gender"></content>
-							<content select="#ml_p_country"></content>
-							<content select="#ml_p_region"></content>
-							<content select="#ml_p_city"></content>
-							<content select="#ml_p_interests"></content>
-							<content select="#ml_p_introduce"></content>
+							<div id="ml_p_m_header" layout horizontal>
+								<div class="mobile">
+									<content select="#ml_p_img"></content>
+								</div>
+								<div>
+									<div class="ml_p_m_header_left">
+										<span>친구 - </span>
+										<content select="#ml_p_freinds"></content>
+									</div>
+									<div class="ml_p_m_header_left">
+										<span>경고횟수 - </span>
+										<content select="#ml_p_warning"></content>
+									</div>
+								</div>
+								<div>
+									<div class="ml_p_m_header_right">
+										<content select="#ml_p_profile_edit"></content>
+									</div>
+									<div class="ml_p_m_header_right">
+										<span>가입날짜 - </span>
+										<content select="#ml_p_date"></content>										
+									</div>																	
+								</div>
+							</div>
+							<div class="mobile">
+								<content select="#ml_p_ment"></content>
+							</div>
+							<div class="mobile">
+								<content select="#ml_p_name"></content>
+							</div>
+							<div class="mobile">
+								<span>사용 중인 언어 - </span>
+								<content select="#ml_p_using_lan"></content>
+							</div>
+							<div class="mobile">
+								<span>배우고 싶은 언어 - </span>
+								<content select="#ml_p_learning_lan"></content>
+							</div>
+							<div class="mobile">
+								<span>거주지 - </span>
+								<content select="#ml_p_country"></content>
+							</div>
+							<div class="mobile">
+								<span>관심사 - </span>
+								<content select="#ml_p_interests"></content>
+							</div>
+							<div class="mobile">
+								<span>자기소개</span>
+								<div>
+									<content select="#ml_p_introduce"></content>
+								</div>
+							</div>
 						</bs-col>
 					</bs-row>
 				</bs-container>
@@ -53,9 +152,18 @@
 								<content select="#ml_p_img"></content>
 							</div>
 							<div class="not_mobile">
+								<content select="#ml_p_gallery"></content>
+							</div>
+							<div class="not_mobile">
+								<span>가입일자 - </span>
 								<content select="#ml_p_date"></content>
 							</div>
 							<div class="not_mobile">
+								<span>경고횟수 - </span>
+								<content select="#ml_p_warning"></content>
+							</div>
+							<div class="not_mobile">
+								<span>친구 - </span>
 								<content select="#ml_p_freinds"></content>
 							</div>					
 						</bs-col>
@@ -67,28 +175,26 @@
 								<content select="#ml_p_name"></content>
 							</div>
 							<div class="not_mobile">
+								<span>사용 중인 언어 - </span>
 								<content select="#ml_p_using_lan"></content>
 							</div>
 							<div class="not_mobile">
+								<span>배우고 싶은 언어 - </span>
 								<content select="#ml_p_learning_lan"></content>
 							</div>
 							<div class="not_mobile">
-								<content select="#ml_p_gender"></content>
-							</div>
-							<div class="not_mobile">
+								<span>거주지 - </span>
 								<content select="#ml_p_country"></content>
 							</div>
 							<div class="not_mobile">
-								<content select="#ml_p_region"></content>
-							</div>
-							<div class="not_mobile">
-								<content select="#ml_p_city"></content>
-							</div>
-							<div class="not_mobile">
+								<span>관심사 - </span>
 								<content select="#ml_p_interests"></content>
 							</div>
 							<div class="not_mobile">
-								<content select="#ml_p_introduce"></content>
+								<span>자기소개</span>
+								<div>
+									<content select="#ml_p_introduce"></content>
+								</div>
 							</div>
 						</bs-col>
 					</bs-row>

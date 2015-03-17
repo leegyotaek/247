@@ -9,44 +9,41 @@
 	<div id="ml_p_img">
 		<%=image_tag @pic.name_url(:thumb) if @pic = @user.pictures.first  %>	
 	</div>
-	<div id="ml_p_date">
-		<%= @user.created_at %>
+	<div id="ml_p_gallery">
+		개인 갤러리 요기에
 	</div>
-	<div id="ml_p_freinds">
+	<span id="ml_p_date">
+		<%= @user.created_at.strftime("%Y/%m/%d") %>
+	</span>
+	<span id="ml_p_warning">
+		경고횟수당
+	</span>
+	<span id="ml_p_freinds">
 		<% if current_user?@user %>
 			<%= link_to friends_user_path(@user) do %>
-				friends : <%=  @user.friends.count %> 명
+				<%=  @user.friends.count %> 명
 			<% end %>
 		<% end %>	
 		<%= render 'friend_form' if logged_in? %>
-	</div>
+	</span>
 	<div id="ml_p_ment">
-		남긴말
+		ㄱ더해더ㅐ갸허ㅓㄱ더해더ㅐ갸dddddddddddddddddddddddddddddd100자 제한
 	</div>
 	<div id="ml_p_name">
-		<%= @user.name %>
+		<%= @user.name %>(<%= @user.gender %>)
 	</div>
-	<div id="ml_p_using_lan">
+	<span id="ml_p_using_lan">
 		<%= @lan.language if @lan = @user.languages.first%>
-	</div>
-	<div id="ml_p_learning_lan">
+	</span>
+	<span id="ml_p_learning_lan">
 		<%= @user.matching_lan %>
-	</div>
-	<div id="ml_p_gender">
-		<%= @user.gender %>	
-	</div>
-	<div id="ml_p_country">
-		<%= @user.country %>
-	</div>
-	<div id="ml_p_region">
-		<%= @user.region %>
-	</div>
-	<div id="ml_p_city">
-		<%= @user.city %>
-	</div>
-	<div id="ml_p_interests">
+	</span>
+	<span id="ml_p_country">
+		<%= @user.country %>/<%= @user.region %>/<%= @user.city %>
+	</span>
+	<span id="ml_p_interests">
 		<%= @user.interests %>
-	</div>
+	</span>
 	<div id="ml_p_introduce">
 		<%= @user.introduce %>	
 	</div>
