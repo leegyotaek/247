@@ -67,6 +67,17 @@
 			padding: 0.3rem;
 			font-size: 0.85rem;
 		}
+		
+		.edit_button ::content > #ml_p_profile_edit > a > paper-button,
+		.ml_p_m_header_right ::content > #ml_p_profile_edit > a > paper-button{
+			font-size: 0.5rem;
+			border-radius: 1rem;
+			
+		}
+
+		.edit_button ::content > #ml_p_profile_edit{
+			margin-top:0.4rem; 
+		}
 
 		.mobile ::content > #ml_p_img > img{
 			width: 55px;
@@ -140,7 +151,7 @@
 				<bs-container>
 					<div horizontal layout>
 					    <div flex><h2>프로필</h2></div>
-					    <div flex self-center><content select="#ml_p_profile_edit"></content></div>
+					    <div flex self-center class="edit_button"><content select="#ml_p_profile_edit"></content></div>
 					    <div flex four></div>
 					</div>
 					<bs-row>
