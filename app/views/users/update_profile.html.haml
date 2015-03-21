@@ -57,6 +57,9 @@
         %paper-button{id:"beforeclick2"} 이전
         %ml-submit-button{:id=>"firstconfig_msb"}
           =f.submit "설정 완료", is:"core-input"
+= content_for :javascript do
+  = javascript_include_tag "user_edit", 'data-turbolinks-track' => true
+
 
 :javascript  
   
