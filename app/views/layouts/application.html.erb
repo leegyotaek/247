@@ -1,19 +1,37 @@
 <!DOCTYPE html>
 <html>
   <head>
+
     <title>LanguageApp|<%= yield(:title) %></title>
+
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">   
+
     <%= stylesheet_link_tag    'my_theme', media: 'all', 'data-turbolinks-track' => true,'shim-shadowdom' => 'nil' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <!--   
    파라미터로 마지막 인자가 해쉬일경우 중괄호 생략가능, "-"가(data-turbolinks-track) 있을경우 new syntex(data-turbolinks-track: true) 사용못함, hashrocket형으로 표현
   -->
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %> 
+
     <%= csrf_meta_tags %>     
+
     <%= render 'layouts/shim' %>
-    <%= html_import_tag "application", 'data-turbolinks-track' => true %>    
+
+    <%= html_import_tag "application", 'data-turbolinks-track' => true %>
+
+
+    <%= html_import_tag "main_layout/ml_option/ml_highlight", 'data-turbolinks-track' => true%>
+    <%= html_import_tag "main_layout/ml_header/ml_home_link", 'data-turbolinks-track' => true%>
+    <%= html_import_tag "main_layout/ml_option/ml_response_form", 'data-turbolinks-track' => true%>
+    <%= html_import_tag "main_layout/ml_footer/ml_footer_links", 'data-turbolinks-track' => true%>
+    <%= html_import_tag "main_layout/ml_header/ml_toolbar", 'data-turbolinks-track' => true%>
+    <%= html_import_tag "main_layout/ml_header/ml_toolbar_beforelogin", 'data-turbolinks-track' => true%>
+    <%= html_import_tag "main_layout/ml_header/ml_header", 'data-turbolinks-track' => true%>
+    <%= html_import_tag "main_layout/ml_body/ml_body", 'data-turbolinks-track' => true%>
+    <%= html_import_tag "main_layout/ml_footer/ml_footer", 'data-turbolinks-track' => true%>    
+    <%= html_import_tag "main_layout/main_layout", 'data-turbolinks-track' => true%>
   </head>
   
   <body touch-action="auto" >

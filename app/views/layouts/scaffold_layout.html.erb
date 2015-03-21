@@ -1,20 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
+    
     <title>LanguageApp|<%= yield(:title) %></title>    
+
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
+
     <%= stylesheet_link_tag    'my_theme', media: 'all', 'data-turbolinks-track' => true,'shim-shadowdom' => "" %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+
     <%= javascript_include_tag 'application', params[:controller],'data-turbolinks-track' => true %>
+
     <%= csrf_meta_tags %>
+
     <%= render 'layouts/shim' %> 
+
     <%= html_import_tag "application", 'data-turbolinks-track' => true%>
+
+    <%= html_import_tag "main_layout/ml_header/ml_home_link", 'data-turbolinks-track' => true%>
+    <%= html_import_tag "main_layout/ml_option/ml_response_form", 'data-turbolinks-track' => true%>
+    <%= html_import_tag "main_layout/ml_footer/ml_footer_links", 'data-turbolinks-track' => true%>
+    <%= html_import_tag "main_layout/ml_scaffold/ml_scaffold", 'data-turbolinks-track' => true%>
   </head>
 
   <body touch-action="auto" >
-
+      
       <ml-scaffold>
 
         <core-header-panel navigation flex mode="seamed">

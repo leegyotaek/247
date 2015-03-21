@@ -1,4 +1,4 @@
-<%= render 'shared/stats' %>
+<%= html_import_tag "main_layout/ml_body/ml_profile/ml_profile", 'data-turbolinks-track' => true%>
 <ml-profile isPhone="767px">
 	<% provide(:title, @user.name) %>
 	<div id="ml_p_profile_edit">

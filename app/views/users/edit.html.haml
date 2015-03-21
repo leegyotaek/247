@@ -1,5 +1,7 @@
 - provide(:title, "Edit user")
+= html_import_tag "main_layout/ml_option/ml_submit_button", 'data-turbolinks-track' => true
 = html_import_tag "main_layout/ml_body/ml_profile/ml_profile_edit", 'data-turbolinks-track' => true
+
 =simple_form_for @user  do |f|  
   %ml-profile-edit
     %h4{:class=>"error"}
