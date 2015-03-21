@@ -16,8 +16,48 @@
 				font-weight: 700;
 			}
 
-			/*name namginmal*/
+			.picture_form{
+		    	display: inline-block;
+		    	width: 100%;
+		    }
 
+		    ::content img{
+		    	margin-top: 1rem;
+		    	max-width: 150px;
+		    	max-height: 150px;
+		    	border-radius: 1rem;
+		    }
+
+		    .picture_inner_form{
+		    	padding: 0.5rem;
+		    }
+
+		    @media (min-width: 768px) {
+		        .pif_0 {
+			    	width: 55%;
+			    }
+			    .pif_1 {
+			    	width: 35%;
+			    }
+			    .picture_inner_form{
+		    		display: inline-block;
+		    		float: left;	    		
+			    }
+		    }
+
+		    @media (min-width: 992px) {
+		        .pif_0 {
+			    	width: 66%;
+			    }
+			    .pif_1 {
+			    	width: 26%;
+			    }
+			    .picture_inner_form{
+		    		display: inline-block;
+		    		float: left;
+			    }
+		    }
+			/*name namginmal*/
 			::content #namginmal paper-input-decorator,
 			::content #name paper-input-decorator,
 			::content #introduce paper-input-decorator{
@@ -69,6 +109,18 @@
 		    ::content #interests #buttons_field paper-button{
 		    	border-radius: 50%;
 		    }
+
+		    ::content #country select{
+		    	width: 8.5rem;
+		    }
+
+		    ::content #name_error,
+		    ::content #using_lan_error,
+		    ::content #interests_error,
+		    ::content #age_error{
+		    	color: #d61d00;
+		    }
+
 		    @media (min-width: 992px){
 		    	::content #using_languages,
 		    	::content #wish_languages{
@@ -90,7 +142,19 @@
 					사진
 				</bs-col>
 				<bs-col sm="9">
-					<content select="#pictures"></content>
+					<div class="picture_form">
+						<div class="picture_inner_form pif_0">
+							<h3 style="text-align: left;">메인 사진</h3>
+							<br>
+							<span>전체 공개가 될 사진입니다.</span>
+							<br>
+							<span>자기 자신을 어필할 수 있는 사진을
+올려보는 것은 어떨까요?</span>
+						</div>
+						<div class="picture_inner_form pif_1">
+							<content select="#pictures"></content>
+						</div>
+					</div>
 				</bs-col>
 			</bs-row>
 			<hr>
@@ -109,6 +173,7 @@
 				</bs-col>
 				<bs-col sm="9">
 					<content select="#name"></content>
+					<content select="#name_error"></content>
 				</bs-col>
 			</bs-row>
 			<hr>
@@ -118,6 +183,7 @@
 				</bs-col>
 				<bs-col sm="9">
 					<content select="#using_languages"></content>
+					<content select="#using_lan_error"></content>
 				</bs-col>
 			</bs-row>
 			<hr>
@@ -154,6 +220,7 @@
 				</bs-col>
 				<bs-col sm="9">
 					<content select="#interests"></content>
+					<content select="#interests_error"></content>
 				</bs-col>
 			</bs-row>
 			<hr>	
@@ -172,6 +239,7 @@
 				</bs-col>
 				<bs-col sm="9">
 					<content select="#wish_age"></content>
+					<content select="#age_error"></content>
 				</bs-col>
 			</bs-row>
 			<hr>
