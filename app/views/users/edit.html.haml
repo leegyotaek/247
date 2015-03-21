@@ -76,8 +76,8 @@
     #submit
       %ml-submit-button{:id=>"button"}
         =f.submit "수정하기", :is=>"core-input"
-= content_for :javascript do 
-  <script src="../../assets/test.js"></script>
+= content_for :javascript do
+  = javascript_include_tag "../../assets/user_edit"
 
 :javascript
   //prevent
