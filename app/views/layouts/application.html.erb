@@ -47,6 +47,9 @@
           </ml-footer>
 
     </main-layout>
+        
+        <%= yield(:javascript) %>
+        
         <!-- custom js import -->
         <%= javascript_include_tag 'custom', 'data-turbolinks-track' => true %>      
 

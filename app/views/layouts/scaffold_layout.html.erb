@@ -81,10 +81,12 @@
             <%= render 'layouts/footer' %>        
             <%= debug(params) if Rails.env.development? %>
         </div> 
-        <!-- custom js import -->
-        <%= javascript_include_tag 'custom', 'data-turbolinks-track' => true %>
+        
+        <%= yield(:javascript) %>  
 
       </ml-scaffold>
-        <%= yield(:javascript) %>
+
+        <!-- custom js import -->
+        <%= javascript_include_tag 'custom', 'data-turbolinks-track' => true %>
   </body>
 </html>

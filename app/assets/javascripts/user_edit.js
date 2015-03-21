@@ -1,20 +1,22 @@
-var ib_arry = [];  
+  var ib_arry = [];  
   var ib_arry_index = 0;
   var buttons_length = $(".interests_buttons").length;
   
   $(function id_set(){
     var hidden_val = $("#user_interests").val().split(",");
-    ib_arry = hidden_val;
-    ib_arry_index = ib_arry.length;
-    for(var j=0; j<ib_arry.length; j++){
-      var confirm_val = ib_arry[j];
-      for(var k=0; k<buttons_length; k++){
-        var option_text = $(".interests_buttons").eq(k).text();
-        if(confirm_val===option_text){
-          $(".interests_buttons").eq(k).attr("raised","true");
+    if(hidden_val.length !== 1){
+      ib_arry = hidden_val;
+      ib_arry_index = ib_arry.length;
+      for(var j=0; j<ib_arry.length; j++){
+        var confirm_val = ib_arry[j];
+        for(var k=0; k<buttons_length; k++){
+          var option_text = $(".interests_buttons").eq(k).text();
+          if(confirm_val===option_text){
+            $(".interests_buttons").eq(k).attr("raised","true");
+          }
         }
-      }
-    }    
+      }    
+    }
     for(var i=0; i<buttons_length; i++){
       $(".interests_buttons").eq(i).attr("id","ib_"+i);
     }
