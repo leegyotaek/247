@@ -76,6 +76,8 @@
     #submit
       %ml-submit-button{:id=>"button"}
         =f.submit "수정하기", :is=>"core-input"
+= content_for :javascript do
+  = javascript_include_tag "user_edit", 'data-turbolinks-track' => true
 
 :javascript
   //prevent
