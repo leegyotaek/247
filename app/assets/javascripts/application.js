@@ -5,9 +5,9 @@
 //= require pictures
 //= require turbolinks
 
-$(function() {
+/*$(function() {
   var faye = new Faye.Client('/faye');
   faye.subscribe('/matching', function (data) {
     alert(data);
   });
-});
+});*/
