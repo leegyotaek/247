@@ -1,26 +1,12 @@
 class UsersController < ApplicationController
   before_action :set_user , only: [:show , :edit , :update, :edstroy, :following, :followers, 
-    :correct_user, :update_profile, :friends]
-    before_action :logged_in_user, only: [ :index, :edit,:update, :following, :followers]
-    before_action :correct_user, only: [:edit, :update]
-    before_action :admin_user, only: :destroy
-    
-
-
-    #layout 'scaffold_layout', :only => [:index, :show, :edit]
-    layout :layout_method, :only => [:index, :show, :edit, :friends]
-
-    def layout_method
-      if current_user.newbie 
-      'newbie'
-      else
-      'scaffold_layout'
-      end
-    end
-    
-
+  :correct_user, :update_profile, :friends]
+  before_action :logged_in_user, only: [ :index, :edit,:update, :following, :followers]
+  before_action :correct_user, only: [:edit, :update]
+  before_action :admin_user, only: :destroy
+  
   #layout 'scaffold_layout', :only => [:index, :show, :edit]
-  layout :layout_method, :only => [:index, :show, :edit]
+  layout :layout_method, :only => [:index, :show, :edit, :friends]
 
   def layout_method
     if current_user.newbie 
