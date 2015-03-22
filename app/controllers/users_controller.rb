@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
 
     #layout 'scaffold_layout', :only => [:index, :show, :edit]
-    layout :layout_method, :only => [:index, :show, :edit]
+    layout :layout_method, :only => [:index, :show, :edit, :friends]
 
     def layout_method
       if current_user.newbie 
