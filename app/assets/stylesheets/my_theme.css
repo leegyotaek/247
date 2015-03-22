@@ -122,22 +122,18 @@ a:active {
   text-decoration: none;
   outline: 0 none;
 }
-html p,
-html /deep/ p {
+p {
   font-size: 16px;
   line-height: 22px;
 }
-html b,
-html /deep/ b {
+b {
   font-weight: 400;
 }
-html section,
-html /deep/ section {
+section {
   padding: 20px;
   background-color: #fff;
 }
-html section[hero],
-html /deep/ section[hero] {
+section[hero] {
   background-color: #f3f3f3;
 }
 /* BEGIN: From core-drawer-panel */

@@ -3,6 +3,7 @@
 //= require jquery_ujs
 //= require jquery.Jcrop
 //= require pictures
+//= require webshims/polyfiller
 //= require turbolinks
 
 /*$(function() {
