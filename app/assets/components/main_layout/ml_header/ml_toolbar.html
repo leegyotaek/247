@@ -1,6 +1,6 @@
 <polymer-element name="ml-toolbar" noscript attributes="isPhone isTablet">
     <template>
-        <style>       
+        <style shim-shadowdom>       
             /**************************************************************/
             /* 
                 스타일링 툴바
@@ -12,7 +12,7 @@
                 display: inline-block;
                 text-transform: uppercase;
                 text-decoration: none;
-                padding: 20px 20px;
+                padding: 0.85rem 0.85rem;
                 margin-top: 5px;
                 border-bottom: 1px solid #fff;
                 color: #2d2d2d;
@@ -54,27 +54,45 @@
                 none스타일링 툴바
              */
             /**************************************************************/
+            .mo-tb-fixedToolbar{
+                border-radius: 2rem 0 0 2rem;
+                background: rgba(0,0,0,0.1);
+                margin-top: 7px;
+                margin-bottom: 2px;
+            }
+
+            core-icon-button,
             .mo-tb-fixedToolbar > ::content a.mo-tb-fixed, 
-            .mo-tb-rightToolbar > ::content a.mo-tb-right {
+            .mo-tb-rightToolbar > ::content ml-response-form a.mo-tb-right {
                 font-weight: 700;
                 float: left;
                 display: inline-block;
                 text-transform: uppercase;
-                text-decoration: none;
-                padding: 20px 20px;
-                margin-top: 5px;
-                margin-bottom: 1px;
+                text-decoration: none; 
                 color: #2d2d2d;
                 position: relative;
             }
+
+            .mo-tb-rightToolbar > ::content ml-response-form a.mo-tb-right{
+                margin-top: 5px;                
+                padding: 0.685rem 0.45rem 0.59rem 0.45rem;
+            }
+
+            core-icon-button{
+                margin-top: 0.6rem;
+            }
+            .mo-tb-fixedToolbar > ::content a.mo-tb-fixed{
+                padding: 0.7rem 0.7rem;                 
+            } 
+
             .mo-tb-fixedToolbar > ::content a.mo-tb-fixed[active], 
-            .mo-tb-rightToolbar > ::content a.mo-tb-right[active],
+            .mo-tb-rightToolbar > ::content ml-response-form a.mo-tb-right[active],
             .mo-tb-fixedToolbar > ::content a.mo-tb-fixed:hover, 
-            .mo-tb-rightToolbar > ::content a.mo-tb-right:hover,
+            .mo-tb-rightToolbar > ::content ml-response-form a.mo-tb-right:hover,
             .mo-tb-fixedToolbar > ::content a.mo-tb-fixed:active, 
-            .mo-tb-rightToolbar > ::content a.mo-tb-right:active,
+            .mo-tb-rightToolbar > ::content ml-response-form a.mo-tb-right:active,
             .mo-tb-fixedToolbar > ::content a.mo-tb-fixed:focus, 
-            .mo-tb-rightToolbar > ::content a.mo-tb-right:focus {
+            .mo-tb-rightToolbar > ::content ml-response-form a.mo-tb-right:focus {
                 color: #f4511e;
                 text-decoration: none;
             }
@@ -84,10 +102,11 @@
                 사용되는 엘리먼트 스타일링
             */
             /****************************************************************/
-            core-menu-button {
-                margin: 6px 4px 6px;
+            core-dropdown{
+                top : 52px;
             }
-            core-menu-button core-menu {
+
+            core-menu-button core-menu {                
                 margin: 0px;
                 border: 1px solid #f3f3f3;
             }
@@ -121,7 +140,7 @@
         </style>
 
         <!-- Phone -->
-        <template if="{{isPhoneQuery}}">
+        <!-- <template if="{{isPhoneQuery}}">
             <div horizontal layout>
                 <div class="mo-tb-leftToolbar">
                     <content select=".mo-tb-left"></content>
@@ -138,17 +157,17 @@
                     </core-dropdown>
                 </core-menu-button>
             </div>
-        </template>
+        </template> -->
 
         <!-- Tablet -->
-        <template if="{{isTabletQuery && !isPhoneQuery}}">
+        <template if="{{isTabletQuery}}">
             <div horizontal layout>
                 <div class="mo-tb-leftToolbar">
                     <content select=".mo-tb-left"></content>
                 </div>
                 <div flex></div>
                 <div class="mo-tb-rightToolbar">
-                    <content select=".mo-tb-right"></content>
+                    <content select="ml-response-form"></content>
                 </div>                
                 <core-menu-button>
                     <core-icon-button icon="menu"></core-icon-button>
@@ -162,14 +181,14 @@
         </template>
 
         <!-- Desktop -->
-        <template if="{{!isTabletQuery && !isPhoneQuery}}">
+        <template if="{{!isTabletQuery}}">
             <div horizontal layout>
                 <div class="mo-tb-leftToolbar">
                     <content select=".mo-tb-left"></content>
                 </div>
                 <div flex></div>
                 <div class="mo-tb-rightToolbar">
-                    <content select=".mo-tb-right"></content>
+                    <content select="ml-response-form"></content>
                 </div>
                 <div class="mo-tb-fixedToolbar">
                     <content select=".mo-tb-fixed"></content>
@@ -177,7 +196,7 @@
             </div>
         </template>
 
-        <core-media-query query="max-width: {{isPhone}}" queryMatches="{{isPhoneQuery}}"></core-media-query>
+        <!-- <core-media-query query="max-width: {{isPhone}}" queryMatches="{{isPhoneQuery}}"></core-media-query> -->
         <core-media-query query="max-width: {{isTablet}}" queryMatches="{{isTabletQuery}}"></core-media-query>        
 
     </template>

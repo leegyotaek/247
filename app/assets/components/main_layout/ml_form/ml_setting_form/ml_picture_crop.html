@@ -1,0 +1,45 @@
+<polymer-element name="ml-picture-crop" noscript>
+ <template>
+ 	<style>
+ 	:host{
+ 	}
+ 	hr{
+		border-width: 0.07rem;
+		border-color: rgba(0,0,0,0.1);
+		margin: 1.4rem 0 1.4rem 0;
+	}
+
+	::content #previewbox_from{
+		margin: 1rem;
+		border-radius: 1rem;
+	}
+
+	::content #previewbox_from #picture_cropbox{
+		width: 200px;
+	}
+
+	::content #cropbox_form ml-submit-button{
+		margin-top: 0.5rem;
+	}
+
+ 	</style>
+ 	<div layout vertical center>
+	 	<h2>프로필 사진 수정</h2> 	
+	 	<bs-container>
+		 	<bs-rwo>
+			 	<bs-col md="5">
+			 		<div layout horizontal end-justified>
+				 		<h3>실제 적용될 이미지</h3>
+						<content select="#previewbox_from"></content>
+				 	</div>
+			 	</bs-col>
+			 	<bs-col md="7">
+			 		<div layout horizontal start-justified>
+					    <content select="#cropbox_form"></content>
+				 	</div>
+			 	</bs-col>
+		 	</bs-rwo>
+	 	</bs-container>
+ 	</div>
+ </template>
+</polymer-element>

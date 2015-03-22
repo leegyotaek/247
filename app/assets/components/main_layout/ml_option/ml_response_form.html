@@ -1,0 +1,12 @@
+<polymer-element name="ml-response-form" noscript attributes="isPhone">
+	<template>
+		<template if="{{isPhoneQuery}}">
+			<content select=".mobile_form"></content>
+		</template>
+		<template if="{{!isPhoneQuery}}">
+			<content select=".desktop_form"></content>
+		</template>
+		<core-media-query query="max-width: {{isPhone}}" queryMatches="{{isPhoneQuery}}"></core-media-query>
+	<template>
+</polymer-element>
+

@@ -16,6 +16,7 @@
     <%= render 'layouts/shim' %>
     <%= html_import_tag "application", 'data-turbolinks-track' => true %>    
   </head>
+  
   <body touch-action="auto" >
 
     <main-layout>
@@ -47,6 +48,9 @@
           </ml-footer>
 
     </main-layout>
+        
+        <%= yield(:javascript) %>
+        
         <!-- custom js import -->
         <%= javascript_include_tag 'custom', 'data-turbolinks-track' => true %>      
 

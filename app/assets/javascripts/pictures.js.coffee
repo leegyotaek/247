@@ -17,8 +17,8 @@ class CarrierWaveCropper
     @updatePreview(coords)
 
   updatePreview: (coords) =>
-    $('#picture_name_previewbox').css
-      width: Math.round(100/coords.w * $('#picture_name_cropbox').width()) + 'px'
-      height: Math.round(100/coords.h * $('#picture_name_cropbox').height()) + 'px'
+    $('#picture_previewbox').css
+      width: Math.round(100/coords.w * $('#picture_cropbox').width()) + 'px'
+      height: Math.round(100/coords.h * $('#picture_cropbox').height()) + 'px'
       marginLeft: '-' + Math.round(100/coords.w * coords.x) + 'px'
       marginTop: '-' + Math.round(100/coords.h * coords.y) + 'px'

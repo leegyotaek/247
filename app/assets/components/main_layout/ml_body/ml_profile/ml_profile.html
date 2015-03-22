@@ -1,0 +1,214 @@
+<polymer-element name="ml-profile" noscript attributes="isPhone">
+	<template>
+		<style shim-shadowdom>
+		:host{
+			display: block;
+			margin: 0.5rem 0.5rem 0.5rem; 
+		}
+
+		bs-container{
+			padding: 0.5rem 0.5rem 0.5rem; 	
+		}
+
+		
+		.not_mobile,
+		.mobile{
+			margin: 0.75rem 0 0.75rem 0;
+		}
+
+		.mobile > span:nth-child(1),
+		.not_mobile > span:nth-child(1) {
+			font-weight: 700;
+		}
+
+		.not_mobile ::content > #ml_p_img > img{
+			width: 175px;
+			border-radius: 0.5rem;
+		}
+
+		@media (min-width: 992px) {
+			.not_mobile ::content > #ml_p_img > img{
+				width: 230px;
+			}
+		}
+
+		.mobile ::content #ml_p_ment, 
+		.mobile ::content #ml_p_introduce,
+		.not_mobile ::content #ml_p_ment, 
+		.not_mobile ::content #ml_p_introduce{
+			display: inline-block;			
+			width: 90%;
+			border: 0.1rem solid #d3d3d3;
+			border-radius: 0.5rem;
+			padding: 0.6rem;
+			margin: 0.2rem;
+		}
+
+		@media (min-width: 992px) {
+			.not_mobile ::content > #ml_p_ment, 
+			.not_mobile ::content > #ml_p_introduce{
+				width: 77.5%;
+			}
+		}
+
+		.mobile ::content > #ml_p_ment,
+		.not_mobile ::content > #ml_p_ment{
+			background-color: #f3f3f3
+		}
+
+		#ml_p_m_header{
+			border-bottom: 0.1rem solid #d3d3d3;
+		}
+
+		.ml_p_m_header_left,
+		.ml_p_m_header_right{
+			display: inline-block;
+			float: left;
+			padding: 0.3rem;
+			font-size: 0.85rem;
+		}
+		
+		.edit_button ::content > #ml_p_profile_edit > a > paper-button,
+		.ml_p_m_header_right ::content > #ml_p_profile_edit > a > paper-button{
+			font-size: 0.5rem;
+			border-radius: 1rem;
+			
+		}
+
+		.edit_button ::content > #ml_p_profile_edit{
+			margin-top:0.4rem; 
+		}
+
+		.mobile ::content > #ml_p_img > img{
+			width: 55px;
+			border-radius: 0.5rem;
+			margin: -0.75rem 0.8rem -0.75rem 0;
+		}
+		</style>
+
+			<template if="{{isPhoneQuery}}">
+				<bs-container>
+					<bs-row>
+						<bs-col xs="12">
+							<div id="ml_p_m_header" layout horizontal>
+								<div class="mobile">
+									<content select="#ml_p_img"></content>
+								</div>
+								<div>
+									<div class="ml_p_m_header_left">
+										<span>친구 - </span>
+										<content select="#ml_p_freinds"></content>
+									</div>
+									<div class="ml_p_m_header_left">
+										<span>경고 - </span>
+										<content select="#ml_p_warning"></content>
+									</div>
+								</div>
+								<div>
+									<div class="ml_p_m_header_right">
+										<span>가입 - </span>
+										<content select="#ml_p_date"></content>										
+									</div>
+									<div class="ml_p_m_header_right">
+										<content select="#ml_p_profile_edit"></content>
+									</div>																	
+								</div>
+							</div>
+							<div class="mobile">
+								<content select="#ml_p_ment"></content>
+							</div>
+							<div class="mobile">
+								<content select="#ml_p_name"></content>
+							</div>
+							<div class="mobile">
+								<span>사용 중인 언어 - </span>
+								<content select="#ml_p_using_lan"></content>
+							</div>
+							<div class="mobile">
+								<span>배우고 싶은 언어 - </span>
+								<content select="#ml_p_learning_lan"></content>
+							</div>
+							<div class="mobile">
+								<span>거주지 - </span>
+								<content select="#ml_p_country"></content>
+							</div>
+							<div class="mobile">
+								<span>관심사 - </span>
+								<content select="#ml_p_interests"></content>
+							</div>
+							<div class="mobile">
+								<span>자기소개</span>
+								<div>
+									<content select="#ml_p_introduce"></content>
+								</div>
+							</div>
+						</bs-col>
+					</bs-row>
+				</bs-container>
+			</template>
+
+			<template if="{{!isPhoneQuery}}">
+				<bs-container>
+					<div horizontal layout>
+					    <div flex><h2>프로필</h2></div>
+					    <div flex self-center class="edit_button"><content select="#ml_p_profile_edit"></content></div>
+					    <div flex four></div>
+					</div>
+					<bs-row>
+						<bs-col xs="3">							
+							<div class="not_mobile">
+								<content select="#ml_p_img"></content>
+							</div>
+							<div class="not_mobile">
+								<content select="#ml_p_gallery"></content>
+							</div>
+							<div class="not_mobile">
+								<span>가입 - </span>
+								<content select="#ml_p_date"></content>
+							</div>
+							<div class="not_mobile">
+								<span>경고 - </span>
+								<content select="#ml_p_warning"></content>
+							</div>
+							<div class="not_mobile">
+								<span>친구 - </span>
+								<content select="#ml_p_freinds"></content>
+							</div>					
+						</bs-col>
+						<bs-col xs="7">
+							<div class="not_mobile">
+								<content select="#ml_p_ment"></content>
+							</div>
+							<div class="not_mobile">
+								<content select="#ml_p_name"></content>
+							</div>
+							<div class="not_mobile">
+								<span>사용 중인 언어 - </span>
+								<content select="#ml_p_using_lan"></content>
+							</div>
+							<div class="not_mobile">
+								<span>배우고 싶은 언어 - </span>
+								<content select="#ml_p_learning_lan"></content>
+							</div>
+							<div class="not_mobile">
+								<span>거주지 - </span>
+								<content select="#ml_p_country"></content>
+							</div>
+							<div class="not_mobile">
+								<span>관심사 - </span>
+								<content select="#ml_p_interests"></content>
+							</div>
+							<div class="not_mobile">
+								<span>자기소개</span>
+								<div>
+									<content select="#ml_p_introduce"></content>
+								</div>
+							</div>
+						</bs-col>
+					</bs-row>
+				</bs-container>
+			</template>
+
+		<core-media-query query="max-width: {{isPhone}}" queryMatches="{{isPhoneQuery}}"></core-media-query>
+	</template>
+</polymer-element>

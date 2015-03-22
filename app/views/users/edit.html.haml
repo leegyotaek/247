@@ -1,66 +1,124 @@
 - provide(:title, "Edit user")
 
-%h1 Update your profile
+=simple_form_for @user  do |f|  
+  %ml-profile-edit
+    %h4{:class=>"error"}
+    #pictures
+      = f.fields_for :pictures , html: { multipart: true } do |picture|
+        %div{:class=>'fileinput fileinput-new',:'data-provides' => 'fileinput'}
+          %div{:class=>'fileinput-new thumbnail', :style => 'width: 150px; height: 150px;'}
+            %img{:'data-src'=>'holder.js/100%x100%'}
+          %div{:class=>'fileinput-preview fileinput-exists thumbnail'}
+          %div
+            %span{:class=>'btn btn-default btn-file'}
+              %span{:class=>'fileinput-new'} 이미지 선택
+              %span{:class=>'fileinput-exists'} 이미지 변경
+              = picture.file_field :name , label:  "프로필 사진"
 
-.row
-  .col-md-6.col-md-offset-3
-    =simple_form_for @user  do |f| 
+    #namginmal      
+      %paper-input-decorator{:label=>"한 문장 끄적여봐요",:floatingLabel=>""}
+        =f.input :status , label: false, wrapper: false,:maxlength=>"40"
+        %paper-char-counter{:class=>"counter", :target=>"user_status"}
 
-      =render 'shared/error_messages' , object: f.object
-      
-      %h3 Pictures
-      #pictures
+    #name
+      %paper-input-decorator{:label=>"이름을 적으시오",:floatingLabel=>""}
+        =f.input :name , label: false, wrapper: false
+    %span{:id=>"name_error"}
 
-        = f.simple_fields_for :pictures , html: { multipart: true } do |picture|
-          = render 'picture_fields', :f => picture
-        .links
-          = link_to_add_association 'add pic', f, :pictures
+    #using_languages      
+      %paper-button{:id=>"using_languages_add",:raised=>""}
+        = link_to_add_association(f, :languages, :'data-association-insertion-method'=>"after") do
+          %core-icon{:icon=>"add"}
+      = f.simple_fields_for :languages  do |language|
+        = render 'language_fields', :f => language
+    %span{:id=>"using_lan_error"}
 
-      =f.input :status , label: "남긴말"
+    #wish_languages      
+      %paper-button{:id=>"wish_languages_add",:raised=>""}
+        = link_to_add_association(f, :wish_languages, :'data-association-insertion-method'=>"after") do
+          %core-icon{:icon=>"add"}
+      = f.simple_fields_for :wish_languages  do |wish_language|
+        = render 'wish_language_fields', :f => wish_language
+    %span{:id=>"wish_lan_error"}
 
-      %h3 I can speak...
-      #languages
-        = f.simple_fields_for :languages  do |language|
-          = render 'language_fields', :f => language
-        .links
-          = link_to_add_association 'add languages', f, :languages
+    #gender
+      =f.input :gender, label: "성별" , collection: ["여자", "남자"], prompt: "성별을 선택하세요", label: false
 
+    #country
+      =f.input :country , priority: ["KR"], label: false, wrapper: false
+      =f.input :region, label: false, wrapper: false
+      =f.input :city, label: false, wrapper: false
 
-      %h3 I want to learn..
-      #languages
-        = f.simple_fields_for :wish_languages  do |wish_language|
-          = render 'wish_language_fields', :f => wish_language
-        .links
-          = link_to_add_association 'add languages', f, :wish_languages
+    #interests
+      =f.hidden_field :interests, label: false
+      %div{:id=>"buttons_field"}
+        -['언어교환','술','공부','연애','등산','친목','여행','봉사활동','클럽','비즈니스','게임','독서','영화','공연','음악','맛집'].each do |r|          
+          %paper-button{:class=>'interests_buttons',:raised=>"false"} #{r}
+    %span{:id=>"interests_error"}
 
-      =f.input :gender, label: "성별" , collection: ["여자", "남자"], prompt: "성별을 선택하세요"
+    #learn_languages
+      =f.input :matching_lan, collection: ["English", "Korean", "Japanese", "Chinese"], prompt: "언어 선택", label: false
 
-      =f.input :country , priority: ["KR"]
-      =f.input :region
-      =f.input :city
+    / =f.input :matching_interest , label: "관심사" , collection: current_user.interests.split(",")
 
-      =f.input :interests
+    #wish_age
+      =f.input :matching_age_from, collection: 14..60, label: false, prompt: "최소 나이", wrapper: false
+      %span ~
+      =f.input :matching_age_to, collection: 14..60, label: false, prompt: "최대 나이", wrapper: false 
+    %span{:id=>"age_error"}
 
+    #introduce      
+      %paper-input-decorator{:label=>"쓰든지 말든지",:floatingLabel=>""}
+        %paper-autogrow-textarea             
+          =f.input :introduce, label: false, wrapper: false,:maxlength=>"100"
+        %paper-char-counter{:class=>"counter", :target=>"user_introduce"}      
 
+    #submit
+      %ml-submit-button{:id=>"button"}
+        =f.submit "수정하기", :is=>"core-input"
+= content_for :javascript do
+  = javascript_include_tag "user_edit", 'data-turbolinks-track' => true
 
-      %h3 1:1 매칭 설정
-
-      =f.input :matching_lan , label: "배우고 싶은 언어"  , collection: ["English", "Korean", "Japanese", "Chinese"]
-
-      / =f.input :matching_interest , label: "관심사" , collection: current_user.interests.split(",")
-
-      %h4 나이
-
-
-      =f.input :matching_age_from  , collection: 14..60 
-
-      =f.input :matching_age_to  , collection: 14..60 
-
-
-      =f.submit "Save chages" , class: "btn btn-primary"
-
-
-
-
-
-
+:javascript
+  //prevent
+  $("#button").on("click",function(){
+    var name = $("#user_name").val();
+    if(name===""){
+      $("#name_error").text("이름을 입력하세요.");
+      location.href = "#name";
+      return false;
+    }
+    var using_languages = $("#using_languages .nested-fields");
+    if(using_languages.length === 0){
+      $("#using_lan_error").text("언어를 추가하세요.");
+      location.href = "#using_languages";
+      return false;
+    }else if(using_languages.length !== 0){
+      var lang_text =  $(".user_languages_language select option:selected").val();
+      var optin_length = using_languages.length;
+      for(var i = 0; i<optin_length; i++){
+        if(lang_text===""){
+          $("#using_lan_error").text("언어를 선택하세요.");
+          location.href = "#using_languages";
+          return false;
+        }
+      }
+    }
+    var hidden_val = $("#user_interests").val();
+    if(hidden_val === ""){
+      $("#interests_error").text("한 개 이상은 선택해 주세요.");
+      location.href = "#interests";
+      return false;
+    }
+    var from = $("#user_matching_age_from").val();
+    var to = $("#user_matching_age_to").val();
+    if(from==="" || to===""){
+      $("#age_error").text("원하는 연령을 선택하세요.");
+      location.href = "#wish_age";
+      return false;
+    }else if(from >= to){
+      $("#age_error").text("연령 범위를 다시 설정해 주세요.");
+      location.href = "#wish_age";
+      return false;
+    }
+  });

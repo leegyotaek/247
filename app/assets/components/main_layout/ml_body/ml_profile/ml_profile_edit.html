@@ -1,0 +1,269 @@
+<polymer-element name="ml-profile-edit" noscript>
+	<template>
+		<style shim-shadowdom>
+			bs-row{
+				margin: 1rem 0 1rem 0;
+			}
+			bs-col{
+				margin: 0.4rem 0 0.4rem 0;
+			}
+			hr{
+				border-width: 0.07rem;
+				border-color: rgba(0,0,0,0.1);
+				margin: 1.4rem 0 1.4rem 0;
+			}
+			[sm="3"]{
+				font-weight: 700;
+			}
+
+			.picture_form{
+		    	display: inline-block;
+		    	width: 100%;
+		    }
+
+		    ::content img{
+		    	margin-top: 1rem;
+		    	max-width: 150px;
+		    	max-height: 150px;
+		    	border-radius: 1rem;
+		    }
+
+		    ::content #pictures .thumbnail{
+		    	border-radius: 1rem;
+		    	background-color: rgba(0,0,0,0.3);	
+		    }
+
+		    .picture_inner_form{
+		    	padding: 0.5rem;
+		    }
+
+		    @media (min-width: 768px) {
+		        .pif_0 {
+			    	width: 55%;
+			    }
+			    .pif_1 {
+			    	width: 35%;
+			    }
+			    .picture_inner_form{
+		    		display: inline-block;
+		    		float: left;	    		
+			    }
+		    }
+
+		    @media (min-width: 992px) {
+		        .pif_0 {
+			    	width: 66%;
+			    }
+			    .pif_1 {
+			    	width: 26%;
+			    }
+			    .picture_inner_form{
+		    		display: inline-block;
+		    		float: left;
+			    }
+		    }
+			/*name namginmal*/
+			::content #namginmal paper-input-decorator,
+			::content #name paper-input-decorator,
+			::content #introduce paper-input-decorator{
+				width: 80%;
+			}
+
+			/*languages*/
+			::content #using_languages,
+			::content #wish_languages{
+				display: block;
+		    	position: relative;
+		    	width: 100%;
+		    }		    
+			::content #using_languages .nested-fields,
+			::content #wish_languages .nested-fields{
+		    	display: block;
+		    	position: relative;
+		    	width: 80%;
+		    	padding-bottom: 1rem;
+		    }		    		    
+		    ::content #using_languages .nested-fields label,
+		    ::content #wish_languages .nested-fields label{
+		    	padding-right: 1.5rem;
+		    }
+		    ::content #using_languages .nested-fields paper-button,
+		    ::content #wish_languages .nested-fields paper-button{
+		    	width: 3.5rem;
+		    	height: 2.65rem;
+		    	position: absolute;
+		    	right: 0;
+		    	top: 0;
+		    	border-radius: 2rem 0 0 2rem;
+		    }
+		    ::content #using_languages .nested-fields .input,
+		    ::content #wish_languages .nested-fields .input{
+		    	padding-bottom: 0.2rem;
+		    }		    
+		    ::content #using_languages > #using_languages_add,
+		    ::content #wish_languages > #wish_languages_add{
+		    	float: right;
+		    	background: rgba(0,0,0,0.3);
+		    	font-weight: 600;
+		    	border-radius: 50%;
+		    }
+
+		    ::content #interests{
+		    	width: 100%;
+		    }
+		    ::content #interests #buttons_field paper-button{
+		    	border-radius: 50%;
+		    }
+
+		    ::content #country select{
+		    	width: 8.5rem;
+		    }
+
+		    ::content #name_error,
+		    ::content #using_lan_error,
+		    ::content #interests_error,
+		    ::content #age_error{
+		    	color: #d61d00;
+		    }
+
+		    @media (min-width: 992px){
+		    	::content #using_languages,
+		    	::content #wish_languages{
+		    		width: 70%;		
+		    	}
+		    	::content #using_languages .nested-fields,
+		    	::content #wish_languages .nested-fields{
+		    		width: 47.5%;			
+		    	}
+		    	::content #interests{
+					width: 80%;
+				}
+		    }
+
+		</style>
+		<bs-container>
+			<bs-row>
+				<bs-col sm="3">
+					사진
+				</bs-col>
+				<bs-col sm="9">
+					<div class="picture_form">
+						<div class="picture_inner_form pif_0">
+							<h3 style="text-align: left;">메인 사진</h3>
+							<br>
+							<span>전체 공개가 될 사진입니다.</span>
+							<br>
+							<span>자기 자신을 어필할 수 있는 사진을
+올려보는 것은 어떨까요?</span>
+						</div>
+						<div class="picture_inner_form pif_1">
+							<content select="#pictures"></content>
+						</div>
+					</div>
+				</bs-col>
+			</bs-row>
+			<hr>
+			<bs-row>
+				<bs-col sm="3">
+					내 남긴말
+				</bs-col>
+				<bs-col sm="9">
+					<content select="#namginmal"></content>
+				</bs-col>
+			</bs-row>
+			<hr>
+			<bs-row>
+				<bs-col sm="3">
+					이름
+				</bs-col>
+				<bs-col sm="9">
+					<content select="#name"></content>
+					<content select="#name_error"></content>
+				</bs-col>
+			</bs-row>
+			<hr>
+			<bs-row>
+				<bs-col sm="3">
+					사용 중인 언어
+				</bs-col>
+				<bs-col sm="9">
+					<content select="#using_languages"></content>
+					<content select="#using_lan_error"></content>
+				</bs-col>
+			</bs-row>
+			<hr>
+			<bs-row>
+				<bs-col sm="3">
+					희망하는 언어
+				</bs-col>
+				<bs-col sm="9">
+					<content select="#wish_languages"></content>
+				</bs-col>
+			</bs-row>
+			<hr>
+			<bs-row>
+				<bs-col sm="3">
+					성별
+				</bs-col>
+				<bs-col sm="9">
+					<content select="#gender"></content>
+				</bs-col>
+			</bs-row>
+			<hr>
+			<bs-row>
+				<bs-col sm="3">
+					거주지
+				</bs-col>
+				<bs-col sm="9">
+					<content select="#country"></content>
+				</bs-col>
+			</bs-row>
+			<hr>
+			<bs-row>
+				<bs-col sm="3">
+					관심사
+				</bs-col>
+				<bs-col sm="9">
+					<content select="#interests"></content>
+					<content select="#interests_error"></content>
+				</bs-col>
+			</bs-row>
+			<hr>	
+			<bs-row>
+				<bs-col sm="3">
+					배우고 싶은 언어
+				</bs-col>
+				<bs-col sm="9">
+					<content select="#learn_languages"></content>
+				</bs-col>
+			</bs-row>
+			<hr>
+			<bs-row>
+				<bs-col sm="3">
+					희망하는 나이
+				</bs-col>
+				<bs-col sm="9">
+					<content select="#wish_age"></content>
+					<content select="#age_error"></content>
+				</bs-col>
+			</bs-row>
+			<hr>
+			<bs-row>
+				<bs-col sm="3">
+					자기소개
+				</bs-col>
+				<bs-col sm="9">
+					<content select="#introduce"></content>
+				</bs-col>
+			</bs-row>
+			<hr>
+			<bs-row>
+				<bs-col sm="12">
+					<div layout vertical center>
+						<content select="#submit"></content>
+					</div>
+				</bs-col>
+			</bs-row>
+		</bs-container>
+	</template>
+</polymer-element>

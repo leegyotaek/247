@@ -7,11 +7,10 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= stylesheet_link_tag    'my_theme', media: 'all', 'data-turbolinks-track' => true,'shim-shadowdom' => "" %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', params[:controller],'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %> 
-    <%= html_import_tag "application", 'data-turbolinks-track' => true%>   
-    
+    <%= html_import_tag "application", 'data-turbolinks-track' => true%>
   </head>
 
   <body touch-action="auto" >
@@ -19,36 +18,52 @@
       <ml-scaffold>
 
         <core-header-panel navigation flex mode="seamed">
-            <%= link_to(root_path) do %>
             <core-toolbar layout vertical center>            
                 <ml-highlight >
-                LOGO
+                    요기 사진이랑 이름
                 </ml-highlight>            
             </core-toolbar>
-            <% end %>
             <core-menu theme="core-light-theme">
-              <core-item>설정과</core-item>
-                <core-item>네비게이션 아이템을</core-item>
-                <core-item>여기에</core-item>
-                <core-item>여기에</core-item>
-                <core-item>여기에</core-item>
-                <core-item>여기에</core-item>
-                <core-item>여기에</core-item>
-                <core-item>여기에</core-item>
-                <core-item>여기에</core-item>
-                <core-item>여기에</core-item>
-                <core-item>여기에</core-item>
-                <core-item>여기에</core-item>
-                <core-item>여기에</core-item>
-                <core-item>여기에</core-item>
-                <core-item>여기에</core-item>
-                <core-item>여기에</core-item>
-                <core-item>여기에</core-item>
-                <core-item>여기에</core-item>
+                <core-item>요기에 설정</core-item>
+                <core-item><%= link_to "대시보드", "#"%></core-item>
+                <core-item><%= link_to "친구", friends_user_path(@user)%></core-item>
+                <core-item><%= link_to "프로필", current_user%></core-item>
+                <core-item><%= link_to "프로필 수정", edit_user_path(current_user)%></core-item>
+                <core-item><%= link_to "개인 사진첩", "#"%></core-item>
+                <core-item><%= link_to "로그아웃", logout_path, method: "delete"%></core-item>
             </core-menu>
         </core-header-panel>
 
-        <div header><%= render 'layouts/header' %></div>
+        
+            <%= link_to(root_path,:id=>"logo") do %>
+                <home-link>
+                LOGO
+                </home-link>
+            <% end %>
+            
+            <%= link_to "1:1언어교환", matching_path ,class:"mo-tb-left" %>
+
+            <%= link_to "자유모임", meetings_path ,class:"mo-tb-left" %>
+
+            <ml-response-form isPhone="767px">
+            <%= link_to("#",class:"mo-tb-right desktop_form") do%>
+                <core-icon icon="mail"></core-icon>
+                <span>편지</span>
+            <% end %>
+
+            <%= link_to("",class:"mo-tb-right desktop_form") do%>
+                <core-icon icon="alarm"></core-icon>
+                <span>알람</span>
+            <% end %>
+
+            <%= link_to(users_path,class:"mo-tb-right mobile_form") do%>
+                <core-icon icon="face"></core-icon>
+            <% end %>
+
+            <%= link_to("",class:"mo-tb-right mobile_form") do%>
+                <core-icon icon="alarm"></core-icon>
+            <% end %>
+            </ml-response-form>
 
         <div body>
             <% flash.each do |message_type, message| %>  
@@ -66,10 +81,12 @@
             <%= render 'layouts/footer' %>        
             <%= debug(params) if Rails.env.development? %>
         </div> 
-        <!-- custom js import -->
-        <%= javascript_include_tag 'custom', 'data-turbolinks-track' => true %>
+        
+        <%= yield(:javascript) %>  
 
       </ml-scaffold>
 
+        <!-- custom js import -->
+        <%= javascript_include_tag 'custom', 'data-turbolinks-track' => true %>
   </body>
 </html>

@@ -1,12 +1,52 @@
-<% provide(:title, @user.name) %>
-<%=image_tag @pic.name_url(:jumbo) if @pic = @user.pictures.first  %>
-<%= @user.name %>
-<% if current_user?@user %>
-<%= link_to friends_user_path(@user) , clas: "btn btn-default btn-sm" do %>
-<span class="glyphicon glyphicon-user">friends : <%=  @user.friends.count %> 명</span>
-<% end %>
-<% end %>
-<br>
 <%= render 'shared/stats' %>
-<%= render 'friend_form' if logged_in? %>
+<ml-profile isPhone="767px">
+	<% provide(:title, @user.name) %>
+	<div id="ml_p_profile_edit">
+		<%= link_to(edit_user_path(current_user)) do%>
+			<paper-button raised>수정</paper-button>
+		<% end %>
+	</div>
+	<div id="ml_p_img">
+		<%=image_tag @pic.name_url(:thumb) if @pic = @user.pictures.first  %>	
+	</div>
+	<div id="ml_p_gallery">
+		개인 갤러리 요기에
+	</div>
+	<span id="ml_p_date">
+		<%= @user.created_at.strftime("%Y/%m/%d") %>
+	</span>
+	<span id="ml_p_warning">
+		경고횟수당
+	</span>
+	<span id="ml_p_freinds">
+		<% if current_user?@user %>
+			<%= link_to friends_user_path(@user) do %>
+				<%=  @user.friends.count %> 명
+			<% end %>
+		<% end %>	
+		<%= render 'friend_form' if logged_in? %>
+	</span>
+	<div id="ml_p_ment">
+		<%= @user.status %>
+	</div>
+	<div id="ml_p_name">
+		<%= @user.name %>(<%= @user.gender %>)
+	</div>
+	<span id="ml_p_using_lan">
+		<%= @lan.language if @lan = @user.languages.first%>
+	</span>
+	<span id="ml_p_learning_lan">
+		<%= @user.matching_lan %>
+	</span>
+	<span id="ml_p_country">
+		<%= @user.country %>/<%= @user.region %>/<%= @user.city %>
+	</span>
+	<span id="ml_p_interests">
+		<%= @user.interests %>
+	</span>
+	<div id="ml_p_introduce">
+		<%= simple_format(@user.introduce) %>	
+	</div>
+</ml-profile>
+
 

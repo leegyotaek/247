@@ -1,4 +1,4 @@
-<polymer-element name="ml-header">
+<polymer-element name="ml-header" noscript>
 	<template>
 		<style>			
            :host {
@@ -9,7 +9,6 @@
                 border-bottom: 1px solid #d3d3d3;
                 padding: 0px;
                 white-space: nowrap;
-                /*header를 relative해줌으로써 드로어가 헤더의 밑으로 등장한다.*/
                 position: relative;
                 z-index: 1;
             }
@@ -32,7 +31,4 @@
         </div>
         <div style="clear: both;"></div>
 	</template>
-	<script>
-		Polymer({});
-	</script>
 </polymer-element>

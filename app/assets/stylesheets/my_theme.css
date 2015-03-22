@@ -10,78 +10,103 @@ body {
   margin: 0px;
   padding: 0px;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+html h1,
+html /deep/ h1,
+html h2,
+html /deep/ h2,
+html h3,
+html /deep/ h3,
+html h4,
+html /deep/ h4,
+html h5,
+html /deep/ h5,
+html h6,
+html /deep/ h6 {
   font-family: 'Oxygen', sans-serif;
   font-weight: 300;
   text-align: center;
 }
-h1 {
+html h1,
+html /deep/ h1 {
   font-family: 'Open Sans', sans-serif;
   font-size: 50px;
 }
-h2 {
+html h2,
+html /deep/ h2 {
   font-size: 30px;
 }
-h3 {
+html h3,
+html /deep/ h3 {
   font-size: 23px;
   color: #f4511e;
 }
-h4 {
+html h4,
+html /deep/ h4 {
   font-size: 18px;
   text-transform: uppercase;
 }
-h5 {
+html h5,
+html /deep/ h5 {
   font-size: 12px;
 }
-h6 {
+html h6,
+html /deep/ h6 {
   font-size: 10px;
 }
 @media (min-width: 768px) and (max-width: 991px) {
-  h1 {
+  html h1,
+  html /deep/ h1 {
     font-size: 40px;
   }
-  h2 {
+  html h2,
+  html /deep/ h2 {
     font-size: 26px;
   }
-  h3 {
+  html h3,
+  html /deep/ h3 {
     font-size: 18px;
   }
-  h4 {
+  html h4,
+  html /deep/ h4 {
     font-size: 12px;
   }
-  h5 {
+  html h5,
+  html /deep/ h5 {
     font-size: 10px;
   }
-  h6 {
+  html h6,
+  html /deep/ h6 {
     font-size: 10px;
   }
 }
 @media (max-width: 767px) {
-  h1 {
+  html h1,
+  html /deep/ h1 {
     font-size: 30px;
   }
-  h2 {
+  html h2,
+  html /deep/ h2 {
     font-size: 22px;
   }
-  h3 {
+  html h3,
+  html /deep/ h3 {
     font-size: 16px;
   }
-  h4 {
+  html h4,
+  html /deep/ h4 {
     font-size: 10px;
   }
-  h5 {
+  html h5,
+  html /deep/ h5 {
     font-size: 10px;
   }
-  h6 {
+  html h6,
+  html /deep/ h6 {
     font-size: 10px;
   }
 }
-a {
+html a,
+html /deep/ a {
   color: #f4511e;
   text-decoration: none;
   outline: 0 none;
@@ -91,52 +116,64 @@ a {
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
-a:focus,
-a:hover,
-a:active {
+html a:focus,
+html /deep/ a:focus,
+html a:hover,
+html /deep/ a:hover,
+html a:active,
+html /deep/ a:active {
   color: #f4511e;
   text-decoration: none;
   outline: 0 none;
 }
-p {
+html p,
+html /deep/ p {
   font-size: 16px;
   line-height: 22px;
 }
-b {
+html b,
+html /deep/ b {
   font-weight: 400;
 }
-section {
+html section,
+html /deep/ section {
   padding: 20px;
   background-color: #fff;
 }
-section[hero] {
+html section[hero],
+html /deep/ section[hero] {
   background-color: #f3f3f3;
 }
 /* BEGIN: From core-drawer-panel */
 /* @see https://www.polymer-project.org/components/core-drawer-panel/demo.html */
-[drawer] {
+html [drawer],
+html /deep/ [drawer] {
   background-color: #f3f3f3;
   border-right: 1px solid #d3d3d3;
   color: #f4511e;
 }
-[main] {
+html [main],
+html /deep/ [main] {
   height: 100%;
   background-color: #fff;
 }
-button {
+html button,
+html /deep/ button {
   display: none;
   width: 160px;
   height: 40px;
   font-size: 16px;
   margin: 8px;
 }
-core-drawer-panel[narrow] button {
+html core-drawer-panel[narrow] button,
+html /deep/ button core-drawer-panel[narrow] button {
   display: inline-block;
 }
 /* END: From core-drawer-panel */
 /* BEGIN: From core-scroll-header-panel */
 /* @see https://www.polymer-project.org/components/core-scroll-header-panel/demo.html */
-core-scroll-header-panel {
+html core-scroll-header-panel,
+html /deep/ core-scroll-header-panel {
   position: absolute;
   top: 0;
   right: 0;
@@ -144,19 +181,23 @@ core-scroll-header-panel {
   left: 0;
 }
 /* background for toolbar when it is at its full size */
-core-scroll-header-panel::shadow #headerBg {
+html core-scroll-header-panel::shadow #headerBg,
+html /deep/ core-scroll-header-panel::shadow #headerBg {
   background-image: url("//unsplash.it/1280/767?random");
 }
 /* background for toolbar when it is condensed */
-core-scroll-header-panel::shadow #condensedHeaderBg {
+html core-scroll-header-panel::shadow #condensedHeaderBg,
+html /deep/ core-scroll-header-panel::shadow #condensedHeaderBg {
   background-color: #f4b400;
 }
-core-toolbar {
+html core-toolbar,
+html /deep/ core-toolbar {
   color: #f1f1f1;
   fill: #f1f1f1;
   background-color: transparent;
 }
-.title {
+html .title,
+html /deep/ .title {
   -webkit-transform-origin: 0;
   -webkit-transform-origin: 0;
   -moz-transform-origin: 0;
@@ -165,19 +206,20 @@ core-toolbar {
   transform-origin: 0;
   font-size: 40px;
 }
-.content {
+html .content,
+html /deep/ .content {
   padding: 8px;
   background-color: #eee;
 }
 /* END: From core-scroll-header-panel */
-core-scaffold::shadow core-header-panel {
+/*core-scaffold::shadow core-header-panel {
   background-color: #fff;
   color: #2d2d2d;
 }
 core-scaffold::shadow core-toolbar {
   background-color: #fff;
   color: #2d2d2d;
-}
+}*/
 vitamin-c-scaffold::shadow header,
 vitamin-c-scaffold::shadow core-header-panel::shadow #outerContainer {
   background-color: #2d2d2d;

@@ -1,0 +1,88 @@
+<polymer-element name="ml-scaffold-toolbar" noscript>
+	<template>
+		<style shim-shadodom>
+			.mo-tb-leftToolbar > ::content a.mo-tb-left {
+                font-weight: 700;
+                float: left;
+                display: inline-block;
+                text-transform: uppercase;
+                text-decoration: none;
+                padding: 0.85rem 0.85rem;
+                margin-top: 5px;
+                border-bottom: 1px solid #fff;
+                color: #2d2d2d;
+                position: relative;
+            }
+
+            .mo-tb-leftToolbar > ::content a.mo-tb-left[active] {
+                margin-top: 0px;
+                border-top: 5px solid #f4511e;
+                border-bottom-color: #f4511e;
+                background-color: #f3f3f3;
+                color: #f4511e;
+            }
+            .mo-tb-leftToolbar > ::content a.mo-tb-left:hover {
+                background-color: #f3f3f3;
+                border-bottom-color: #f4511e;
+            }
+            .mo-tb-leftToolbar > ::content a.mo-tb-left:hover,
+            .mo-tb-leftToolbar > ::content a.mo-tb-left:active,
+            .mo-tb-leftToolbar > ::content a.mo-tb-left:focus{
+                color: #f4511e;
+                text-decoration: none;
+            }
+            .mo-tb-leftToolbar > ::content a.mo-tb-left[active]:after {
+                content: '';
+                display: inline-block;
+                position: absolute;
+                bottom: -6px;
+                left: 50%;
+                width: 0;
+                height: 0;
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-top: 5px solid #f4511e;
+                margin-left: -3px;
+            }
+
+			.mo-tb-rightToolbar > ::content ml-response-form a.mo-tb-right,::content core-icon-button {
+                font-weight: 700;
+                float: left;
+                display: inline-block;
+                text-transform: uppercase;
+                text-decoration: none; 
+                color: #2d2d2d;
+                position: relative;
+            }            
+
+            .mo-tb-rightToolbar > ::content ml-response-form a.mo-tb-right {
+                margin-top: 5px;                
+                padding: 0.685rem 0.45rem 0.59rem 0.45rem;
+            }
+
+            ::content core-icon-button{
+                margin-top: 0.6rem;
+            }
+
+            .mo-tb-rightToolbar > ::content ml-response-form a.mo-tb-right[active],            
+            .mo-tb-rightToolbar > ::content ml-response-form a.mo-tb-right:hover,            
+            .mo-tb-rightToolbar > ::content ml-response-form a.mo-tb-right:active,            
+            .mo-tb-rightToolbar > ::content ml-response-form a.mo-tb-right:focus {
+                color: #f4511e;
+                text-decoration: none;
+            }
+		</style>
+
+        <div layout horizontal center>
+        	<div class="mo-tb-leftToolbar">
+                <content select=".mo-tb-left"></content>
+            </div>
+            <div flex></div>
+            <div class="mo-tb-rightToolbar">
+                <content select="ml-response-form"></content>
+                <content select="core-icon-button"></content>
+            </div>
+        </div>
+
+	<template>
+</polymer-element>
