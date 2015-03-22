@@ -39,15 +39,17 @@ class UsersController < ApplicationController
 
     render 'update_profile' if current_user.newbie 
     @microposts = @user.microposts.paginate(page: params[:page])
-    redirect_to root_url and return unless @user.activated?
-  end
+    
+      end
 
   def create
     @user = User.new(user_params)
     if @user.save
-     @user.send_activation_email
-     flash[:info] = "Please check your email to activate your account."
-     redirect_to root_url
+     #@user.send_activation_email
+     #flash[:info] = "Please check your email to activate your account."
+     flash[:info] = "Welcome #{@user.name}"
+     log_in @user
+     redirect_to @user
     else
        render 'new'
     end

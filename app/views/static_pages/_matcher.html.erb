@@ -1,0 +1,25 @@
+
+<li class="matcher_list_item">
+	
+<%= matcher.name %>
+<button id="reply" style="display:block;">reply</button>
+<div id="msg_form", style="display:none">
+	
+<%= render 'conversations/form' %>
+<button id="hide" style="display:block;">hide</button>
+
+</div>
+
+
+</li>
+
+<script>
+$( "#reply" ).click(function() {
+  $("#msg_form").show();
+});
+
+$( "#hide" ).click(function() {
+  $("#msg_form").hide();
+});
+
+</script>

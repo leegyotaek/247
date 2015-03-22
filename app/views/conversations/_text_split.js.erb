@@ -1,0 +1,15 @@
+<%= javascript_tag do %>
+var text_split = function(){		
+	var text_count = $(".text_split").length;
+	for(var i = 0 ; i<=text_count;i++){
+		var each_text = $(".text_split:eq("+i+")").text();
+		var each_text_length = each_text.length;
+		if(each_text_length>=20){
+			var text_substr = each_text.substr(0,19)+'...';
+			$(".text_split:eq("+i+")").text(text_substr);
+		}
+
+	}
+};
+$(text_split);
+<% end %>

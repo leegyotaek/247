@@ -57,8 +57,20 @@ resources :pictures, only:[:update]
 resources :friendships, only:[:create, :destroy] 
 
 
+ resources :conversations, only: [:index, :show, :new, :create] do
+    
 
+    member do
+      post :reply
+      post :trash
+      post :untrash
 
+    end
+  end
+
+  post 'mark_read'  => 'conversations#mark_read'
+  post 'readable_off' => 'conversations#readable_off'
+post 'search' => 'conversations#search'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

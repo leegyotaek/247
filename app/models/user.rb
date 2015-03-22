@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   before_save :downcase_email
   before_create :create_activation_digest
   after_create :create_default_image
-
+  acts_as_messageable
  
 
   has_many :pictures, as: :imageable , dependent: :destroy
@@ -70,6 +70,21 @@ class User < ActiveRecord::Base
   has_secure_password
 
   validates :password, length: {minimum: 6}, allow_blank: true
+
+
+
+   def display_name
+      email
+    end
+
+  def notifications_email(object)
+  #Check if an email should be sent for that object
+  #if true
+  email
+  #if false
+  #return nil
+    end
+
 
 
   def language_name

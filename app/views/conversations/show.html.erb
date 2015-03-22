@@ -1,0 +1,153 @@
+<!-- conversation_show -->
+<div class="row">
+	<div class="col-lg-6">
+		<div class="chat-panel">
+			<div class="panel-body" id="message-scroll-div" style="padding:0 !important;">
+				<div class="message_list">
+					<ul class="message_list_ul" id ="message_list-<%=conversation.id %>">
+						<% conversation.receipts_for(current_user).order('created_at ASC').each do |receipt| %>
+						<% message = receipt.message %>
+						<%= render "message/message" , message: message %>
+
+							<div class="divider">
+
+							</div>
+					<% end %>
+						</ul>
+					</div>	
+				</div>
+			</div>
+			<%= render 'message/form' , conversation: conversation %>
+		</div>
+		<div class="col-lg-6">
+			<div class="panel">
+				<div  class="horizon_array_menu_h btn_mail">
+					<ul>
+						<li class="active">	<h2><a href="#btn_inbox" data-toggle="tab"><strong>대화 중인 유저</strong></a></h2></li>
+						<li>	<h2><a href="#btn_sentbox" data-toggle="tab"><strong>대화목록</strong></a></h2></li>
+					</ul>
+				</div>	
+				<div class="tab-content" style="padding:0 !important;margin-top:54px;">
+					<!-- 대화 중인 유저 -->
+					<div class="tab-pane fade active in" id="btn_inbox">
+						<ul>
+							<% conversation.participants.each do |member| %>
+							
+							<li>
+								<%=link_to gravatar_for_circle2(member) %>
+								<%=link_to member.name %>
+							</li>
+							<li class="divider"></li>
+							
+							<% end %> <!-- do end -->
+						</ul>
+					</div>
+					<!-- 대화 중인 유저 end-->
+
+					<div class="tab-pane fade" id="btn_sentbox">
+						<!-- 대화 목록 -->
+						<div class="conversation_list">
+							<ul class="conversation_list_ul">
+								<%@mailbox.conversations.each do |conversation| %>
+
+								<% receipts = conversation.receipts_for current_user %>
+								<% last_message = receipts.last.message %>
+								<% unless conversation.is_trashed?(current_user) %>
+								<% participants = conversation.participants %> <!-- 대화 참여자 -->
+								<% is_group = true %>	
+
+								<% if read_counts(last_message) > 1 %>
+								<li class="conversation_list_item">
+									<% else %>
+									<li class="conversation_list_item" style="background: rgb(238,238,238); /* Old browsers */
+									background: -moz-radial-gradient(center, ellipse cover,  rgba(238,238,238,1) 0%, rgba(204,204,204,1) 100%); /* FF3.6+ */
+									background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(238,238,238,1)), color-stop(100%,rgba(204,204,204,1))); /* Chrome,Safari4+ */
+									background: -webkit-radial-gradient(center, ellipse cover,  rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* Chrome10+,Safari5.1+ */
+									background: -o-radial-gradient(center, ellipse cover,  rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* Opera 12+ */
+									background: -ms-radial-gradient(center, ellipse cover,  rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* IE10+ */
+									background: radial-gradient(ellipse at center,  rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* W3C */
+									filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */">
+									<% end %>
+									<ul class="conversation_list_item_left">
+										<li>	
+											<% participants.each do |participant| %>
+											<%unless current_user?(participant) %>
+											<% if participants.size  <= 2 %>
+											<%=link_to gravatar_for_circle2(participant,size: 50), participant%>
+											<% elsif participants.size  <=5 %>
+											<%=link_to gravatar_for_circle2(participant,size: 25), participant,style:"height:25px !important;"%>
+											<% elsif participants.size  > 5 %>
+											<% unless participant.id  > 5 %>
+											<a href="#user_view_<%= conversation.id%>"data-toggle="collapse" data-parent="#accordion" class="accordion-toggle" style="height:25px !important;"><%= gravatar_for_circle2(participant,size: 25) %></a>
+											<% end %>
+											<% end %>
+											<% end %>
+											<% end %>
+										</li>
+									</ul>
+									<div>
+										<span>								
+											<a href="/conversations/<%=conversation.id  %>">
+												<span class="text_split"><%= conversation.last_message.body  %></span>
+												<span><% if current_user?(conversation.last_message.sender) %>
+													<%=gravatar_for_circle2(current_user, size: 25) %>
+													<% elsif is_group  %>
+													<%=gravatar_for_circle(conversation.last_sender, size: 25) %>
+													<%end%></span>
+												</a>
+												<!-- <%= link_to conversation.last_message.body, conversation_path(conversation),class:"text_split"%> -->
+											</span>
+											<span class="index_message_info vertical_array_menu">
+												<ul>
+													<li>
+														<strong>
+															<%=time_ago_in_words(conversation.last_message.created_at)%> ago	
+														</strong>
+													</li>
+													<li>
+														<span style="float:right;margin:5px;">
+															<% if read_counts(last_message) > 1 %>
+															읽음
+															<% end %>
+															<i class="label label-warning"><%=count_unread_message_in conversation %></i>
+														</span>
+													</li>
+												</ul>
+											</span>
+										</div>
+										<ol>	
+											<li>
+												<%= link_to "", trash_conversation_path(conversation),data: { confirm: "휴지통으로 버리시겠습니까?" } ,method: :post,class:'fa fa-trash trash_btn' %>
+											</li>
+										</ol>
+									</li>
+									<li>
+										<% if participants.size  > 5 %>
+										<div class="panel-collapse collapse" id="user_view_<%= conversation.id%>">
+											<% participants.each do |participant| %>
+											<%unless current_user?(participant) %>
+											<%=link_to gravatar_for_circle2(participant,size: 50), participant%>
+											<% end %>
+											<% end %>
+										</div>
+										<% end %>
+									</li>
+									<% end %>					
+									<% end %>
+								</ul>
+							</div>
+							<!-- 대화 목록 end-->							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- conversation_show end-->
+		<%= javascript_tag do %>
+		var message_croll = function(){
+			$('#message-scroll-div').animate({
+				scrollTop:$(".message_content_info:last").offset().top}, 10);
+		};
+		$(message_croll);
+		<% end %>
+		
