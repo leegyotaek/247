@@ -11,5 +11,9 @@ module ApplicationHelper
     end
 
 
+    def html_exists?(html)
+	  html = "#{Rails.root}/app/assets/components/#{[params[:controller], params[:action]].join('/')}.html"
+	  File.exists?(html) || File.exists?("#{html}.html") 
+	end
 
 end
