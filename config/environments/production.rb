@@ -22,25 +22,50 @@ Rails.application.configure do
 
   # Disable Rails's static asset server (Apache or NGINX will already do this).
   config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
-
-
-  # Compress JavaScripts and CSS.
-  config.assets.compress = true
-  config.assets.js_compressor = :uglifier
-  config.assets.css_compressor = :sass
-
-  # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
-
-  # Asset digests allow you to set far-future HTTP expiration dates on all assets,
-  # yet still be able to expire them through the digest params.
+  
   config.assets.digest = true
 
-  # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
+  break unless ENV['ENABLE_COMPRESSION'] == '1'
+  
+  # Strip all comments from JavaScript files, even copyright notices.
+  # By doing so, you are legally required to acknowledge
+  # the use of the software somewhere in your Web site or app:
+  uglifier = Uglifier.new output: { comments: :none }
 
-  # Specifies the header that your server uses for sending files.
-  # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
-  # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
+  # To keep all comments instead or only keep copyright notices (the default):
+  # uglifier = Uglifier.new output: { comments: :all }
+  # uglifier = Uglifier.new output: { comments: :copyright }
+
+  config.assets.compile = true
+  config.assets.debug = false
+
+  config.assets.js_compressor = uglifier
+  config.assets.css_compressor = :sass
+
+  config.middleware.use Rack::Deflater
+  config.middleware.insert_before ActionDispatch::Static, Rack::Deflater
+
+  config.middleware.use HtmlCompressor::Rack,
+    compress_css: true,
+    compress_javascript: true,
+    css_compressor: Sass,
+    enabled: true,
+    javascript_compressor: uglifier,
+    preserve_line_breaks: false,
+    remove_comments: true,
+    remove_form_attributes: false,
+    remove_http_protocol: false,
+    remove_https_protocol: false,
+    remove_input_attributes: true,
+    remove_intertag_spaces: false,
+    remove_javascript_protocol: true,
+    remove_link_attributes: true,
+    remove_multi_spaces: true,
+    remove_quotes: true,
+    remove_script_attributes: true,
+    remove_style_attributes: true,
+    simple_boolean_attributes: true,
+    simple_doctype: false
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
