@@ -1,0 +1,24 @@
+<div class="container custom_container">
+  <div class="tab-content">
+    <div  class="tab-pane active">
+      <%= form_for(:conversation, url: :conversations, method: :post) do |f| %>
+      
+      
+      <%= f.hidden_field :recipients,class:"form-control" , value: @email %>
+
+      <%= f.label :subject,'제목' %>
+      <%= f.text_field :subject,class:"form-control" %>
+      
+      <%= f.label :body, class: "checkbox inline"  %>
+      <%= f.text_field :body,class:"form-control" %>         
+
+      <%= f.button '보내기', class: 'btn btn-default' %><!--입력되어진대로 제출한다.-->
+      <%= f.button '초기화', type: :reset, class: 'btn btn-danger' %><!--입력되어진대로 제출한다.-->
+      <%= link_to '뒤로', conversations_path,class:'btn btn-primary'%>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+

@@ -1,0 +1,16 @@
+<%@mailbox.trash.each do |conversation| %>
+<li>
+<%= link_to conversation.subject , conversation_path(conversation) %>
+
+<% if conversation.is_completely_trashed?(current_user) %>
+
+<%= link_to '복원하기',untrash_conversation_path(conversation), method: :post  %>
+
+<% else %>
+
+<%= link_to "휴지통으로버리기", trash_conversation_path(conversation), method: :post %>
+
+<% end %>
+
+<% end %>
+</li>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>새로운 답장</h1>
+    <p>
+      <%=@message.sender %> 님으로 부터 답장이 왔습니다
+    </p>
+    <blockquote>
+      <p>
+        <%= raw @message.body %>
+      </p>
+    </blockquote>
+    <p>
+     <%= link_to("확인하러가기", conversations_path ) %> 
+    </p>
+  </body>
+</html>

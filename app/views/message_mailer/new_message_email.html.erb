@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>새로운 메세지</h1>
+    <p>
+      새로운 메일이 도착했습니다
+    </p>
+    <blockquote>
+
+      <%= gravatar(@message.sender) %>
+      <p>
+        <%= raw @message.body %>
+      </p>
+    </blockquote>
+    <p>
+      <%= link_to("확인하러가기", conversations_path ) %> 
+
+    </p>
+  </body>
+</html>

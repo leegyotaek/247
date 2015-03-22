@@ -1,0 +1,6 @@
+$('<%= j render "message/message", message: @receipt.message %>').appendTo($("#message_list-<%=@receipt.conversation.id %>")).hide().fadeIn('fast')
+
+var message_id = <%=@receipt.message.id%>;
+var test = $("#mci_"+message_id).offset().top;
+
+$('#message-scroll-div').animate({scrollTop:99999999}, 10);

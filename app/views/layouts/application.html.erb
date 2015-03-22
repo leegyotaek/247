@@ -11,6 +11,7 @@
    파라미터로 마지막 인자가 해쉬일경우 중괄호 생략가능, "-"가(data-turbolinks-track) 있을경우 new syntex(data-turbolinks-track: true) 사용못함, hashrocket형으로 표현
   -->
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %> 
+    <%= javascript_include_tag :defaults, "http://localhost:9292/faye.js" %>
     <%= csrf_meta_tags %>     
     <%= render 'layouts/shim' %>
     <%= html_import_tag "application", 'data-turbolinks-track' => true %>    

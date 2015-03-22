@@ -1,0 +1,37 @@
+<div  class="form-group">
+ <%= simple_form_for(:message, url: {action: "reply"}, remote: true ) do |f| %>
+
+
+ <!--  <%= f.label :subject,'제목' %> -->
+ <%= f.hidden_field :subject, value: "blanked" %>
+
+ <span><%= f.label :body,'답장하기'%> </span>
+ <span id="message_warning" class="text-danger"style="display:none;">빈칸은 앙대영!!!</span>
+ <%= f.text_area :body,class:"form-control",id:"message_body"%>         
+
+
+ <%= f.hidden_field :type , value: "only_sender" %>
+
+ <!-- <%= f.submit '보내기', class: 'btn btn-default' %> --><!--입력되어진대로 제출한다.-->
+ <a class="btn btn-default" id="message_submit_btn">보내기</a>
+ <%= f.submit '초기화' , type: :reset, class: 'btn btn-danger' %><!--입력되어진대로 제출한다.-->
+ <%= link_to '뒤로', conversations_path,class:"btn btn-default"%>
+
+ <% end %>   
+</div>
+
+<%= javascript_tag do %>
+$("#message_submit_btn").on("click",function(){
+  var message_form = $(".message");
+  var text_area = $("#message_body").val();
+  if(text_area===""){
+    $("#message_warning").css( "display", "inline" ).fadeOut( 1250 );
+    return;
+  }    
+  message_form.submit();
+  $("#message_body").val("");
+});
+<% end %>
+
+
+
