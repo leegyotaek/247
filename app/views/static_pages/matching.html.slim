@@ -1,0 +1,93 @@
+ml-matching
+	#today_matching_form_left
+		- @today_matchers.each do |matcher|
+			=render 'pending_matcher' , matcher: matcher
+		.picture
+			=image_tag 'test.PNG'
+		.text
+			div
+				span 이름 - 
+				span 나디아(여자,23)
+			div
+				span 거주지 - 
+				span 어딜까요?
+			div
+				span 사용 중인 언어 - 
+				span 영어(미국)
+			div
+				span 배우고 싶은 언어 - 
+				span 한국어
+			div
+				span 관심사 - 
+				span 언어교환,언어교환,언어교환,언어교환,언어교환
+		.introduce
+			div 자기소개
+			div 자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개
+
+	#today_matching_form_right
+		.picture
+			=image_tag 'test.PNG'
+		.text
+			div
+				span 이름 - 
+				span 나디아(여자,23)
+			div
+				span 거주지 - 
+				span 어딜까요?
+			div
+				span 사용 중인 언어 - 
+				span 영어(미국)
+			div
+				span 배우고 싶은 언어 - 
+				span 한국어
+			div
+				span 관심사 - 
+				span 언어교환,언어교환,언어교환,언어교환,언어교환
+		.introduce
+			div 자기소개
+			div 자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개
+
+	
+	- if @req_matchers.any?
+		ul
+			- @req_matchers.each do |req_matcher| 
+				=render 'req_matcher' ,  matcher: req_matcher
+		/임시방편				
+		#no_waiting_matching 대기 중인 친구가 없습니다.
+	- else 
+		#waiting_matching_form
+			.picture
+				=image_tag 'test.PNG'
+			.text
+				div
+					span 이름 - 
+					span 나디아(여자,23)
+				div
+					span 거주지 - 
+					span 어딜까요?
+				div
+					span 사용 중인 언어 - 
+					span 영어(미국)
+				div
+					span 배우고 싶은 언어 - 
+					span 한국어
+				div
+					span 관심사 - 
+					span 언어교환,언어교환,언어교환,언어교환,언어교환
+			.introduce
+				div 자기소개
+				div 자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개자기소개
+				.button
+					paper-button*{:raised=>""} 수락하기
+		
+
+	
+	- if current_user.matchers.any?
+		ul
+			- current_user.matched_matchers.each do |matcher|
+				= render 'matcher' , matcher: matcher 
+		/임시방편
+		#no_completed_matching 성사된 친구가 없습니다.
+	- else 
+		#completed_matching_form
+		

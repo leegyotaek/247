@@ -34,7 +34,7 @@
 
     %ml-signup-firstconfig-form2{:class=>"length"}
       %h4{:class=>"error"}
-      =f.input :matching_lan , label: "배우고 싶은 언어"  , collection: ["English", "Korean", "Japanese", "Chinese"], prompt: "언어 선택"
+      = f.input :matching_lan, collection: ["러시아어", "스페인어","영어(영국)", "영어(미국)", "일본어", "중국어(북경어)", "중국어(광동어)","한국어"], prompt:"언어 선택", :label=>"배우고 싶은 언어"
       =f.input :matching_age_from  , collection: 14..60, label: false, prompt: "최소 나이", wrapper: false
       =f.input :matching_age_to  , collection: 14..60 , label: false, prompt: "최대 나이", wrapper: false      
       .button-form

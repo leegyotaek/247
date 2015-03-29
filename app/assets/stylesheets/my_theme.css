@@ -129,11 +129,11 @@ p {
 b {
   font-weight: 400;
 }
-section {
+html /deep/ section {
   padding: 20px;
   background-color: #fff;
 }
-section[hero] {
+html /deep/ section[hero] {
   background-color: #f3f3f3;
 }
 /* BEGIN: From core-drawer-panel */

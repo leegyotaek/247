@@ -1,0 +1,43 @@
+<polymer-element name="ml-matching" noscript>
+	<template>
+		<style shim-shadowdom>
+		</style>
+		<section>
+			<div layout vertical center>
+				<h3>오늘의 외국인 친구</h3>
+			</div>
+			<div layout vertical center>
+				<div layout horizontal>
+					<ml-td-mat-profile><content select="#today_matching_form_left"></content></ml-td-mat-profile>
+					<ml-td-mat-profile><content select="#today_matching_form_right"></content></ml-td-mat-profile>
+				</div>
+			</div>
+		</section>
+		<section>
+			<div layout vertical center>
+				<h3>1:1 언어 교환을 원하는 외국인 친구</h3>
+			</div>
+			<div layout vertical center>
+				<ml-mat-profile>
+					<content select="#waiting_matching_form"></content>
+				</ml-mat-profile>
+			</div>
+			<div layout vertical center>
+				<h4><content select="#no_waiting_matching"></content></h4>
+			</div>
+		</section>
+		<section>
+			<div layout vertical center>
+				<h3>성사된 외국인 매칭</h3>
+			</div>
+			<div layout vertical center>
+				<ml-mat-profile>
+					<content select="#completed_matching_form"></content>
+				</ml-mat-profile>
+			</div>
+			<div layout vertical center>
+				<h4><content select="#no_completed_matching"></content></h4>
+			</div>
+		</section>		
+	</template>
+</polymer-element>

@@ -3,7 +3,7 @@ class ConversationsController < ApplicationController
   before_action :set_user, :logged_in_user
   helper_method :mailbox, :conversation
 
-
+  layout 'scaffold_layout', :only => [:index]
 
 
 

@@ -1,0 +1,89 @@
+<polymer-element name="ml-mat-profile" noscript>	
+	<template>
+		<style shim-shadowdom>
+		:host{
+			display: block;
+			background: rgba(255, 150, 35, 0.2);
+			border-radius: 1rem;
+			padding: 0.3rem;
+			width: 100%;
+			font-size: 0.9rem;
+		}
+		::content img{
+	    	width: 100%;	
+	    	border-radius: 0.65rem;
+	    }
+	    ::content .picture,
+	    ::content .text,
+	    ::content .introduce {
+	    	display: inline-block;
+	    	float: left;
+	    }
+	    ::content .picture{
+	    	width: 40%;
+	    	padding: 0 0.25rem 0.25rem 0;
+	    }
+	    ::content .text{
+	    	width: 58%;
+	    }
+	    ::content .introduce{
+	    	position: relative;
+	    }
+	    ::content .introduce .button{
+	    	position: absolute;
+	    	top: 0;
+	    	right: 0;
+	    }
+	    ::content .introduce .button paper-button{
+	    	border-radius: 1rem;
+	    }
+	    ::content .introduce div:nth-child(1){
+	    	padding: 0.3rem 0 1.25rem 0;
+	    }
+	    ::content .text div{
+	    	margin: 0.3rem 0 0.3rem 0;
+	    }
+	    ::content .text div span:nth-child(1),
+	    ::content .introduce div:nth-child(1){
+	    	font-weight: 700;
+	    }
+		@media (min-width: 768px) {
+			:host{
+				width: 45.5rem;
+				padding: 0.35rem;
+				font-size: 0.95rem;
+			}
+		    ::content .picture{
+		    	width: 13.5%;
+		    	margin: 0 0.35rem 0.35rem 0;
+		    }
+		    ::content .text{
+		    	width: 35%;
+		    	margin-right: 0.5rem;
+		    }
+		    ::content .introduce{
+		    	width: 48.5%;
+		    }
+	    }
+	    @media (min-width: 992px) {
+	    	:host{
+	    		width: 60rem;
+	    		padding: 0.5rem;
+	    		font-size: 1rem;
+	    	}
+		    ::content .picture{
+		    	width: 17%;
+		    	padding: 0 0.5rem 0 0;
+		    }
+		    ::content .text{
+		    	width: 33%;
+		    	margin-right: 0.75rem;
+		    }
+		    ::content .introduce{
+		    	width: 47%;
+		    }
+	    }
+	</style>
+		<content select="*"></content>
+	</template>
+</polymer-element>

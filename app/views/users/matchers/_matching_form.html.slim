@@ -1,4 +1,4 @@
-#matching_form
+matching_form
   -if current_user.pending_matcher?(matcher)
     =link_to "매칭받기" , request_matching_user_path(matcher), method: :post
   -else

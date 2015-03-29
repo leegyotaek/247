@@ -6,8 +6,9 @@
     #pictures
       = f.fields_for :pictures , html: { multipart: true } do |picture|
         %div{:class=>'fileinput fileinput-new',:'data-provides' => 'fileinput'}
-          %div{:class=>'fileinput-new thumbnail', :style => 'width: 150px; height: 150px;'}
-            %img{:'data-src'=>'holder.js/100%x100%'}
+          %div{:class=>'fileinput-new thumbnail'}
+            / %img{:'data-src'=>'holder.js/100%x100%'}
+            =image_tag @pic.name_url if @pic = @user.pictures.first
           %div{:class=>'fileinput-preview fileinput-exists thumbnail'}
           %div
             %span{:class=>'btn btn-default btn-file'}
@@ -56,8 +57,8 @@
           %paper-button{:class=>'interests_buttons',:raised=>"false"} #{r}
     %span{:id=>"interests_error"}
 
-    #learn_languages
-      =f.input :matching_lan, collection: ["English", "Korean", "Japanese", "Chinese"], prompt: "언어 선택", label: false
+    #learn_languages      
+      = f.input :matching_lan, collection: ["러시아어", "스페인어","영어(영국)", "영어(미국)", "일본어", "중국어(북경어)", "중국어(광동어)","한국어"], prompt:"언어 선택", label:false
 
     / =f.input :matching_interest , label: "관심사" , collection: current_user.interests.split(",")
 
