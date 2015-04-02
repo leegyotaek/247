@@ -1,0 +1,39 @@
+ml-friends
+  span#user_name
+    = @user.name
+  #back_my_prof
+    paper-button raised=""
+      = link_to "내 프로필 보기", current_user unless current_user?@user
+  #friend_request
+    -@requester = @user.request_friends 
+      |친구요청
+      |(
+      =@requester.count
+      |)
+    -if @user.request_friends.any?
+      = render @requester
+    -else
+      |친구요청이 없습니다.
+
+  #all_friends
+    -if @users.count >= 1
+      #users_count
+        |총 
+        = @users.count
+        |명
+      -if @users.any?
+        -@users.each do |user| 
+          .friends_form
+            = link_to(user) do
+              .friends_form_picture
+                = image_tag @pic.name_url(:thumb) if @pic = @user.pictures.first
+              .friends_form_name layout="" vertical="" center=""
+                = user.name
+                |(
+                = user.gender
+                |,
+                = user.age
+                |)
+              
+    -else
+      |친구가 없습니다.

@@ -32,6 +32,7 @@ gem 'webshims-rails'
 gem 'jcrop-rails-v2'
 #gem 'carrierwave-crop'
 gem 'slim', '~> 3.0.3'
+gem 'haml2slim', '~> 0.4.7'
 
 #-------------------------------- 메세징 기능
 gem 'mailboxer'

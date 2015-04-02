@@ -1,0 +1,16 @@
+.friends_form
+    = link_to(user) do
+      .friends_form_picture
+        = image_tag @pic.name_url(:thumb) if @pic = @user.pictures.first
+      .friends_form_name layout="" vertical="" center=""
+        = user.name
+        |(
+        = user.gender
+        |,
+        = user.age
+        |)
+
+/ 현재 유저의 admin 값이 true이고 리스팅 될 유저가 현재 유저가 아닐경우
+-if current_user.admin? && !current_user?(user)
+	= link_to "delete", user, method: :delete,   data: { confirm: "삭제 하시겠습니까?" }  
+/메소드 delete는 http request DELETE 

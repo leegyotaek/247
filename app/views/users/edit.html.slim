@@ -1,46 +1,45 @@
 - provide(:title, "Edit user")
 
 =simple_form_for @user  do |f|  
-  %ml-profile-edit
-    %h4{:class=>"error"}
+  ml-profile-edit
+    h4*{:class=>"error"}
     #pictures
       = f.fields_for :pictures , html: { multipart: true } do |picture|
-        %div{:class=>'fileinput fileinput-new',:'data-provides' => 'fileinput'}
-          %div{:class=>'fileinput-new thumbnail'}
-            / %img{:'data-src'=>'holder.js/100%x100%'}
+        div*{:class=>'fileinput fileinput-new',:'data-provides' => 'fileinput'}
+          div*{:class=>'fileinput-new thumbnail'}
             =image_tag @pic.name_url if @pic = @user.pictures.first
-          %div{:class=>'fileinput-preview fileinput-exists thumbnail'}
-          %div
-            %span{:class=>'btn btn-default btn-file'}
-              %span{:class=>'fileinput-new'} 이미지 선택
-              %span{:class=>'fileinput-exists'} 이미지 변경
+          div*{:class=>'fileinput-preview fileinput-exists thumbnail'}
+          div
+            span*{:class=>'btn btn-default btn-file'}
+              span*{:class=>'fileinput-new'} 이미지 선택
+              span*{:class=>'fileinput-exists'} 이미지 변경
               = picture.file_field :name , label:  "프로필 사진"
 
     #namginmal      
-      %paper-input-decorator{:label=>"한 문장 끄적여봐요",:floatingLabel=>""}
+      paper-input-decorator*{:label=>"한 문장 끄적여봐요",:floatingLabel=>""}
         =f.input :status , label: false, wrapper: false,:maxlength=>"40"
-        %paper-char-counter{:class=>"counter", :target=>"user_status"}
+        paper-char-counter*{:class=>"counter", :target=>"user_status"}
 
     #name
-      %paper-input-decorator{:label=>"이름을 적으시오",:floatingLabel=>""}
+      paper-input-decorator*{:label=>"이름을 적으시오",:floatingLabel=>""}
         =f.input :name , label: false, wrapper: false
-    %span{:id=>"name_error"}
+    span*{:id=>"name_error"}
 
     #using_languages      
-      %paper-button{:id=>"using_languages_add",:raised=>""}
+      paper-button*{:id=>"using_languages_add",:raised=>""}
         = link_to_add_association(f, :languages, :'data-association-insertion-method'=>"after") do
-          %core-icon{:icon=>"add"}
+          core-icon*{:icon=>"add"}
       = f.simple_fields_for :languages  do |language|
         = render 'language_fields', :f => language
-    %span{:id=>"using_lan_error"}
+    span*{:id=>"using_lan_error"}
 
     #wish_languages      
-      %paper-button{:id=>"wish_languages_add",:raised=>""}
+      paper-button*{:id=>"wish_languages_add",:raised=>""}
         = link_to_add_association(f, :wish_languages, :'data-association-insertion-method'=>"after") do
-          %core-icon{:icon=>"add"}
+          core-icon*{:icon=>"add"}
       = f.simple_fields_for :wish_languages  do |wish_language|
         = render 'wish_language_fields', :f => wish_language
-    %span{:id=>"wish_lan_error"}
+    span*{:id=>"wish_lan_error"}
 
     #gender
       =f.input :gender, label: "성별" , collection: ["여자", "남자"], prompt: "성별을 선택하세요", label: false
@@ -52,10 +51,10 @@
 
     #interests
       =f.hidden_field :interests, label: false
-      %div{:id=>"buttons_field"}
+      div*{:id=>"buttons_field"}
         -['언어교환','술','공부','연애','등산','친목','여행','봉사활동','클럽','비즈니스','게임','독서','영화','공연','음악','맛집'].each do |r|          
-          %paper-button{:class=>'interests_buttons',:raised=>"false"} #{r}
-    %span{:id=>"interests_error"}
+          paper-button*{:class=>'interests_buttons',:raised=>"false"} #{r}
+    span*{:id=>"interests_error"}
 
     #learn_languages      
       = f.input :matching_lan, collection: ["러시아어", "스페인어","영어(영국)", "영어(미국)", "일본어", "중국어(북경어)", "중국어(광동어)","한국어"], prompt:"언어 선택", label:false
@@ -64,23 +63,23 @@
 
     #wish_age
       =f.input :matching_age_from, collection: 14..60, label: false, prompt: "최소 나이", wrapper: false
-      %span ~
+      span ~
       =f.input :matching_age_to, collection: 14..60, label: false, prompt: "최대 나이", wrapper: false 
-    %span{:id=>"age_error"}
+    span*{:id=>"age_error"}
 
     #introduce      
-      %paper-input-decorator{:label=>"쓰든지 말든지",:floatingLabel=>""}
-        %paper-autogrow-textarea             
+      paper-input-decorator*{:label=>"쓰든지 말든지",:floatingLabel=>""}
+        paper-autogrow-textarea             
           =f.input :introduce, label: false, wrapper: false,:maxlength=>"100"
-        %paper-char-counter{:class=>"counter", :target=>"user_introduce"}      
+        paper-char-counter*{:class=>"counter", :target=>"user_introduce"}      
 
     #submit
-      %ml-submit-button{:id=>"button"}
+      ml-submit-button*{:id=>"button"}
         =f.submit "수정하기", :is=>"core-input"
 = content_for :javascript do
   = javascript_include_tag "user_edit", 'data-turbolinks-track' => true
 
-:javascript
+javascript:
   //prevent
   $("#button").on("click",function(){
     var name = $("#user_name").val();

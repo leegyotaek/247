@@ -1,0 +1,42 @@
+ml-profile isPhone="767px"
+	div id="ml_p_profile_edit"
+		- if current_user?@user
+			= link_to(edit_user_path(current_user)) do
+				paper-button raised="" 수정
+	div id="ml_p_img"
+		=image_tag @pic.name_url(:thumb) if @pic = @user.pictures.first
+	div id="ml_p_gallery"
+		|개인 갤러리 요기에
+	span id="ml_p_date"
+		= @user.created_at.strftime("%Y/%m/%d")
+	span id="ml_p_warning"
+		|경고횟수당
+	span id="ml_p_freinds"
+		= link_to friends_user_path(@user) do 
+			=  @user.friends.count  
+			|명
+		- if !current_user?@user
+			= render 'friend_form' if logged_in?
+	div id="ml_p_ment"
+		= @user.status
+	div id="ml_p_name"
+		= @user.name
+		|(
+		= @user.gender
+		|)
+	span id="ml_p_using_lan"
+		= @lan.language if @lan = @user.languages.first
+	span id="ml_p_learning_lan"
+		= @user.matching_lan
+	span id="ml_p_country"
+		= @user.country
+		|/
+		= @user.region
+		|/
+		= @user.city
+	span id="ml_p_interests"
+		= @user.interests
+	div id="ml_p_introduce"
+		= simple_format(@user.introduce) 	
+
+

@@ -1,0 +1,32 @@
+bs-container
+  bs-row
+    bs-col xc="12" sm="10" smoffset="1" md="8" mdoffset="2"
+      ml-signup-form
+        h1 header-a=""
+          |계정 생성
+        h3 header-b=""
+          |이미 회원이신가요?
+          =link_to'여기', login_path
+        = form_for(@user, :html => {:id => "signup_form"})  do |f|
+          ml-signup-inner-form
+            = f.label :name, "이름" 
+            paper-input-decorator label="본명을 지향합니다." id="signup_username"
+              = f.text_field :name, is:"core-input"
+            = f.label :email, "e-mail" 
+            paper-input-decorator label="본인의 이메일을 입력해 주세요." id="signup_email"
+              = f.text_field :email, is:"core-input"
+            = f.label :password , "비밀번호"
+            paper-input-decorator label="비밀번호는 6자리 이상입니다." id="signup_password"
+              = f.password_field :password, is:"core-input"
+            = f.label :password_confirmation, "비밀번호 확인" 
+            paper-input-decorator label="비밀번호를 확인해 주세요." id="signup_password_confirmation"
+              = f.password_field :password_confirmation, is:"core-input"
+            div id="signup_birthday"
+              = f.label :birthday, "생년월일" 
+              br
+              br
+              = f.date_field :birthday
+            ml-submit-button id="signup_button"= f.submit "계정 생성", is:"core-input"
+
+= content_for :javascript do
+  = javascript_include_tag "ml_webshim", 'data-turbolinks-track' => true

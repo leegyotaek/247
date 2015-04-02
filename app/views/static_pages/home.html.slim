@@ -1,0 +1,13 @@
+- if logged_in? 
+	- if current_user.activated && current_user.newbie
+	h1 오늘의 매칭
+	ul class="pending_matchers_list"
+	- @today_matchers.each do |matcher|
+	    = render 'pending_matcher' , matcher: matcher
+- else
+	bs-container
+	    bs-row
+	        bs-col xs="12" sm="12" md="12"                    
+				h1 main 화면
+				h2 무언가 사이트를 알릴 수 있는 이미지나 소개글 등등...
+				h2 = link_to "회원가입하기", signup_path

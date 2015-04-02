@@ -1,0 +1,83 @@
+<polymer-element name="ml-friends" noscript>
+	<template>
+		<style>
+		::content #friend_request,
+		::content #back_my_prof,
+		::content #all_friends,
+		::content .friends_form{
+			display: inline-block;
+		}
+		::content .friends_form{
+			float: left;
+			margin: 0.5rem;
+		}
+		::content .friends_form_picture img,
+		::content .friends_form_picture{
+			width: 5rem;
+			height: 5rem;
+		}
+		::content .friends_form_picture img{
+			border-radius: 1rem 1rem 0 0;
+		}
+		::content .friends_form_name{
+			border-radius: 0 0 1rem 1rem;
+			background: rgba(0,0,0,0.1);
+			font-size: 0.6rem;
+			padding: 0.5rem;
+		}
+
+		::content paper-button{
+			border-radius: 1rem;
+		}
+
+		@media (min-width: 768px){
+			::content .friends_form_picture img,
+			::content .friends_form_picture{
+				width: 7.5rem;
+				height: 7.5rem;
+			}
+			::content .friends_form_name{
+				font-size: 0.75rem;
+			}
+		}
+		@media (min-width: 992px){
+			::content .friends_form_picture img,
+			::content .friends_form_picture{
+				width: 10rem;
+				height: 10rem;
+			}
+			::content .friends_form_name{
+				font-size: 1rem;
+			}
+		}
+		</style>
+		<div layout horizontal center>
+			<div flex></div>
+			<div>
+				<h2><content select="#user_name"></content>님의 친구목록</h2>
+				<div layout vertical center><content select="#back_my_prof"></content></div>
+			</div>			
+			<div flex></div>
+		</div>
+		<section>
+			<div layout horizontal>
+				<h3>수락 대기 중인 친구요청</h3>
+				<div flex></div>
+			</div>
+		</section>
+		<section>
+			<div layout horizontal>
+				<h3>나에게 들어온 친구요청</h3>
+				<div flex></div>
+			</div>
+			<content select="#friend_request"></content>
+		</section>
+		<section>
+			<div layout horizontal>
+				<h3>모든 친구</h3>
+				<div flex></div>
+			</div>
+			<content select="#all_friends"></content>
+		</section>
+	</template>
+</polymer-element>
