@@ -13,5 +13,3 @@ Rails.application.config.assets.version = '1.0'
  %w( users ).each do |controller|
   Rails.application.config.assets.precompile += ["#{controller}.js", "#{controller}.css"]
 end
-
-Uglifier.compile(File.read("*.js"))

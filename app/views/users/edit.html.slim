@@ -76,8 +76,9 @@
     #submit
       ml-submit-button*{:id=>"button"}
         =f.submit "수정하기", :is=>"core-input"
-= content_for :javascript do
-  = javascript_include_tag "user_edit", 'data-turbolinks-track' => true
+- content_for :javascript do
+  script type="text/javascript"
+    = raw Uglifier.new.compile(render file: "#{Rails.root}/app/assets/javascripts/user_edit.js")
 
 javascript:
   //prevent
