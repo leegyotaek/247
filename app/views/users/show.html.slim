@@ -18,7 +18,10 @@ ml-profile isPhone="767px"
 		- if !current_user?@user
 			= render 'friend_form' if logged_in?
 	div id="ml_p_ment"
-		= @user.status
+		- if @user.status!=nil 
+			= @user.status
+		-else
+			|알림말을 등록하세요.
 	div id="ml_p_name"
 		= @user.name
 		|(
@@ -37,6 +40,9 @@ ml-profile isPhone="767px"
 	span id="ml_p_interests"
 		= @user.interests
 	div id="ml_p_introduce"
-		= simple_format(@user.introduce) 	
+		- if @user.introduce != nil
+			= simple_format(@user.introduce) 	
+		- else
+			|자기소개를 적어주세요.
 
 

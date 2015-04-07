@@ -1,6 +1,10 @@
 ml-friends
   span#user_name
-    = @user.name
+    -if current_user
+      |나의
+    -else
+      = @user.name
+      |의 
   #back_my_prof
     paper-button raised=""
       = link_to "내 프로필 보기", current_user unless current_user?@user
