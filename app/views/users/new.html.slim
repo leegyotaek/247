@@ -28,5 +28,7 @@ bs-container
               = f.date_field :birthday
             ml-submit-button id="signup_button"= f.submit "계정 생성", is:"core-input"
 
-= content_for :javascript do
-  = javascript_include_tag "ml_webshim", 'data-turbolinks-track' => true
+- content_for :javascript do
+  script type="text/javascript"
+    = raw Uglifier.new.compile(render file: "#{Rails.root}/app/assets/javascripts/ml_webshim.js")
+

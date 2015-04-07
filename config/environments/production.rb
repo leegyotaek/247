@@ -23,6 +23,8 @@ Rails.application.configure do
   # Disable Rails's static asset server (Apache or NGINX will already do this).
   config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
   
+  config.assets.compile = true
+  config.assets.debug = false
   config.assets.digest = true
 
   break unless ENV['ENABLE_COMPRESSION'] == '1'
@@ -32,26 +34,11 @@ Rails.application.configure do
   # the use of the software somewhere in your Web site or app:
   uglifier = Uglifier.new output: { comments: :none }
 
-  # To keep all comments instead or only keep copyright notices (the default):
-  # uglifier = Uglifier.new output: { comments: :all }
-  # uglifier = Uglifier.new output: { comments: :copyright }
-
-  config.assets.compile = true
-  config.assets.debug = false
-
-  config.assets.js_compressor = uglifier
-  config.assets.css_compressor = :sass
-
-  config.middleware.use Rack::Deflater
-  config.middleware.insert_before ActionDispatch::Static, Rack::Deflater
-
-  config.middleware.use HtmlCompressor::Rack, options
-
   options = {
+    :enabled => true,
     :compress_css => true,
     :compress_javascript => true,
     :css_compressor => :sass,
-    :enabled => true,
     :javascript_compressor => uglifier,
     :preserve_line_breaks => false,
     :remove_comments => true,
@@ -68,7 +55,17 @@ Rails.application.configure do
     :remove_style_attributes => true,
     :simple_boolean_attributes => true,
     :simple_doctype => false
-  }
+  }  
+
+  config.assets.js_compressor = uglifier
+  config.assets.css_compressor = :sass
+
+  config.middleware.use Rack::Deflater
+  config.middleware.insert_before ActionDispatch::Static, Rack::Deflater
+
+  config.middleware.use HtmlCompressor::Rack, options
+
+  
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
