@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
-
-    <%= stylesheet_link_tag    'my_theme', media: 'all', 'data-turbolinks-track' => true,'shim-shadowdom' => "" %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true, 'shim-shadowdom' => 'nil' %>
 
     <%= javascript_include_tag 'application', params[:controller],'data-turbolinks-track' => true %>
 
@@ -19,7 +17,7 @@
     <%= html_import_tag [params[:controller], params[:action]].join('/'),'data-turbolinks-track' => true %>
   </head>
 
-  <body touch-action="auto" >
+  <body touch-action="auto" unresolved>
       
       <ml-scaffold>
 
