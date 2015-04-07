@@ -10,4 +10,7 @@ ml-picture-crop
  div*{:style=>"width:100px; height:100px; overflow:hidden;",:id=>"previewbox_from"}
   =image_tag @pic.name.url(:jumbo),id:'picture_previewbox' if @pic = @user.pictures.first
   
+- content_for :javascript do
+  script type="text/javascript"
+    = raw Uglifier.new.compile(render file: "#{Rails.root}/app/assets/javascripts/pictures.js")
   
