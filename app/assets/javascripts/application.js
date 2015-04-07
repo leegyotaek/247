@@ -3,7 +3,7 @@
 //= require jquery_ujs
 //= require jquery.Jcrop
 //= require webshims/polyfiller
-//= require turbolinks
+
 
 /*$(function() {
   var faye = new Faye.Client('/faye');

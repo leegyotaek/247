@@ -10,15 +10,10 @@
     <!--   
    파라미터로 마지막 인자가 해쉬일경우 중괄호 생략가능, "-"가(data-turbolinks-track) 있을경우 new syntex(data-turbolinks-track: true) 사용못함, hashrocket형으로 표현
   -->
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %> 
-
-
-
-    <%= csrf_meta_tags %>     
-
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>
-
-    <%= html_import_tag HtmlCompressor::Compressor.new.compress([params[:controller], params[:action]].join('/')),'data-turbolinks-track' => true %>
+    <%= html_import_tag [params[:controller], params[:action]].join('/'),'data-turbolinks-track' => true %>
   </head>
   
   <body touch-action="auto" unresolved>

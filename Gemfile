@@ -34,6 +34,7 @@ gem 'jcrop-rails-v2'
 gem 'slim', '~> 3.0.3'
 gem 'haml2slim', '~> 0.4.7'
 gem 'htmlcompressor', '~> 0.2.0'
+gem 'autoprefixer-rails'
 
 #-------------------------------- 메세징 기능
 gem 'mailboxer'

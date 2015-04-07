@@ -32,14 +32,13 @@ Rails.application.configure do
   # Strip all comments from JavaScript files, even copyright notices.
   # By doing so, you are legally required to acknowledge
   # the use of the software somewhere in your Web site or app:
-  uglifier = Uglifier.new output: { comments: :none }
 
   options = {
     :enabled => true,
     :compress_css => true,
     :compress_javascript => true,
     :css_compressor => :sass,
-    :javascript_compressor => uglifier,
+    :javascript_compressor => :uglifier,
     :preserve_line_breaks => false,
     :remove_comments => true,
     :remove_form_attributes => false,
@@ -57,7 +56,7 @@ Rails.application.configure do
     :simple_doctype => false
   }  
 
-  config.assets.js_compressor = uglifier
+  config.assets.js_compressor = :uglifier
   config.assets.css_compressor = :sass
 
   config.middleware.use Rack::Deflater
