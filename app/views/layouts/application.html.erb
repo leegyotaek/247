@@ -20,7 +20,7 @@
 
     <%= render 'layouts/shim' %>
 
-    <%= html_import_tag [params[:controller], params[:action]].join('/'),'data-turbolinks-track' => true %>
+    <%= html_import_tag HtmlCompressor::Compressor.new.compress([params[:controller], params[:action]].join('/')),'data-turbolinks-track' => true %>
   </head>
   
   <body touch-action="auto" >
